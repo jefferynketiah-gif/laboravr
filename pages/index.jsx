@@ -5,6 +5,7 @@ import HeroSection from '../components/HeroSection';
 import FeatureCard from '../components/FeatureCard';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { FlaskConical, Zap, Microscope } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -130,19 +131,19 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <FeatureCard
-              icon="⚗️"
+              icon={FlaskConical}
               title="Chemistry Lab"
               description="Mix chemicals safely, observe reactions instantly, understand reaction kinetics—all without the risks of real labs."
               index={0}
             />
             <FeatureCard
-              icon="⚛️"
+              icon={Zap}
               title="Physics Lab"
               description="Virtual apparatus for motion, forces, electricity, and more. Measure, predict, and verify physics principles safely."
               index={1}
             />
             <FeatureCard
-              icon="🔬"
+              icon={Microscope}
               title="Biology Lab"
               description="Explore cell biology, dissections, and microscopy without harm. Learn at your own pace with unlimited access."
               index={2}
