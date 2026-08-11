@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FlaskConical, Zap, Microscope } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
+import Hero3D from '../components/Hero3D';
 
 export default function Home() {
   return (
@@ -26,6 +27,8 @@ export default function Home() {
         primaryCTA={{ text: "Join Our Pilot Program", href: "/contact" }}
         secondaryCTA={{ text: "Learn More", href: "#features" }}
       />
+
+      <Hero3D />
 
       {/* Problem Section */}
       <ScrollReveal>
@@ -265,7 +268,7 @@ export default function Home() {
         </div>
       </section>
     </ScrollReveal>
-    
+
       <Footer />
     </>
   );
