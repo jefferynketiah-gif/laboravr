@@ -6,6 +6,7 @@ import FeatureCard from '../components/FeatureCard';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FlaskConical, Zap, Microscope } from 'lucide-react';
+import ScrollReveal from '../components/ScrollReveal';
 
 export default function Home() {
   return (
@@ -27,56 +28,59 @@ export default function Home() {
       />
 
       {/* Problem Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">The Challenge</h2>
+      <ScrollReveal>
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-4xl font-bold text-center mb-12">The Challenge</h2>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="text-2xl font-bold mb-6 text-gray-900">
-                African Universities Face a Critical Gap
-              </h3>
-              <ul className="space-y-4">
-                {[
-                  "Expensive lab equipment costs $50K+ per year",
-                  "Limited lab access restricts hands-on learning",
-                  "Safety risks with dangerous chemicals",
-                  "Difficulty replacing consumable materials",
-                  "Student outcomes suffer without practical experience",
-                ].map((item, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex gap-3 text-gray-700"
-                  >
-                    <span className="text-red-500 font-bold text-xl">✗</span>
-                    {item}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h3 className="text-2xl font-bold mb-6 text-gray-900">
+                  African Universities Face a Critical Gap
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    "Expensive lab equipment costs $50K+ per year",
+                    "Limited lab access restricts hands-on learning",
+                    "Safety risks with dangerous chemicals",
+                    "Difficulty replacing consumable materials",
+                    "Student outcomes suffer without practical experience",
+                  ].map((item, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex gap-3 text-gray-700"
+                    >
+                      <span className="text-red-500 font-bold text-xl">✗</span>
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-red-400 to-red-500 rounded-2xl p-12 text-white text-center"
-            >
-              <div className="text-6xl mb-4">💸</div>
-              <p className="text-xl font-bold">Expensive, Limited, Risky</p>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="bg-gradient-to-br from-red-400 to-red-500 rounded-2xl p-12 text-white text-center"
+              >
+                <div className="text-6xl mb-4">💸</div>
+                <p className="text-xl font-bold">Expensive, Limited, Risky</p>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
 
       {/* Solution Section */}
-      <section className="py-16 bg-white">
+      <ScrollReveal>
+        <section>
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-12">Our Solution</h2>
 
@@ -123,9 +127,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+    </ScrollReveal>
 
       {/* Features Section */}
-      <section id="features" className="py-16 bg-gray-50">
+      <ScrollReveal>
+        <section>
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-12">Our Labs</h2>
 
@@ -151,9 +157,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+    </ScrollReveal>
 
       {/* How It Works */}
-      <section className="py-16 bg-white">
+      <ScrollReveal>
+        <section>
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-12">How It Works</h2>
 
@@ -180,9 +188,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+    </ScrollReveal>
 
       {/* ROI Section */}
-      <section className="py-16 bg-blue-50">
+      <ScrollReveal>
+        <section>
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-12">The Financial Case</h2>
 
@@ -216,9 +226,11 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+    </ScrollReveal>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white text-center">
+      <ScrollReveal>
+        <section>
         <div className="max-w-2xl mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -252,7 +264,8 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
+    </ScrollReveal>
+    
       <Footer />
     </>
   );
