@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import { Sora } from 'next/font/google';
+import { Sora, JetBrains_Mono } from 'next/font/google';
 import SmoothScroll from '../components/SmoothScroll';
 
 const sora = Sora({
@@ -8,9 +8,15 @@ const sora = Sora({
   variable: '--font-sora',
 });
 
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-mono',
+});
+
 export default function App({ Component, pageProps }) {
   return (
-    <main className={sora.variable}>
+    <main className={`${sora.variable} ${mono.variable} font-sans`}>
       <SmoothScroll>
         <Component {...pageProps} />
       </SmoothScroll>

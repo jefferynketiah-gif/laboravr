@@ -1,119 +1,183 @@
 import Head from 'next/head';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import HeroSection from '../components/HeroSection';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import PageHeader from '../components/PageHeader';
+
+// Replace with your own form ID from formspree.io
+const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+const fieldClass =
+  'w-full bg-panel border border-edge rounded-md px-4 py-3 text-chalk placeholder:text-muted/60 focus:outline-none focus:border-uv focus:ring-1 focus:ring-uv transition-colors';
+
+const labelClass =
+  'block font-mono text-[10px] tracking-[0.18em] text-uv mb-2.5';
+
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     name: '',
     email: '',
     university: '',
     department: '',
     message: '',
   });
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const handleChange = (e) =>
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // In production, send to your backend or Formspree
-    console.log(formData);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    setFormData({ name: '', email: '', university: '', department: '', message: '' });
+    setStatus('sending');
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) throw new Error('Request failed');
+
+      setStatus('sent');
+      setForm({
+        name: '',
+        email: '',
+        university: '',
+        department: '',
+        message: '',
+      });
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
     <>
       <Head>
-        <title>Contact Us - LaboraVR</title>
-        <meta name="description" content="Join our VR labs pilot program. Contact LaboraVR today." />
+        <title>Join the pilot — LaboraVR</title>
+        <meta
+          name="description"
+          content="Bring LaboraVR's virtual science labs to your department. Tell us what you teach and we'll be in touch."
+        />
       </Head>
 
       <Navbar />
 
-      <HeroSection
-        title="Get In Touch"
-        subtitle="Let's discuss how LaboraVR can transform science education at your institution."
-        bgColor="from-purple-600 to-purple-800"
+      <PageHeader
+        eyebrow="PILOT PROGRAMME"
+        title="Tell us what you teach."
+        intro="We're fitting the first labs around real syllabuses. Send us your department and we'll come back within two working days."
       />
 
-      <section className="py-16 bg-white">
-        <div className="max-width-6xl mx-auto px-6">
-          <div className="max-w-2xl mx-auto">
-            {submitted && (
+      <section className="bg-panel py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-[1fr_340px] gap-14">
+          {/* Form */}
+          <div>
+            {status === 'sent' && (
               <motion.div
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-lg mb-6"
+                className="mb-8 border border-uv/40 bg-uv/10 rounded-md px-5 py-4"
               >
-                ✓ Thanks for reaching out! We'll contact you within 24 hours.
+                <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-1.5">
+                  RECEIVED
+                </p>
+                <p className="text-chalk">
+                  Thanks — we&apos;ll be in touch within two working days.
+                </p>
               </motion.div>
             )}
 
-            <motion.form
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              onSubmit={handleSubmit}
-              className="bg-gray-50 p-8 rounded-xl shadow-lg"
-            >
-              <div className="mb-6">
-                <label className="block font-bold text-gray-900 mb-2">Full Name *</label>
+            {status === 'error' && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-8 border border-red-500/40 bg-red-500/10 rounded-md px-5 py-4"
+              >
+                <p className="font-mono text-[10px] tracking-[0.18em] text-red-400 mb-1.5">
+                  NOT SENT
+                </p>
+                <p className="text-chalk">
+                  The form didn&apos;t go through. Try again, or email{' '}
+                  <a
+                    href="mailto:hello@laboravr.com"
+                    className="text-uv hover:underline"
+                  >
+                    hello@laboravr.com
+                  </a>{' '}
+                  directly.
+                </p>
+              </motion.div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-7">
+              <div>
+                <label htmlFor="name" className={labelClass}>
+                  YOUR NAME
+                </label>
                 <input
-                  type="text"
+                  id="name"
                   name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div className="mb-6">
-                <label className="block font-bold text-gray-900 mb-2">Email Address *</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div className="mb-6">
-                <label className="block font-bold text-gray-900 mb-2">University Name *</label>
-                <input
                   type="text"
-                  name="university"
-                  value={formData.university}
-                  onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-                  placeholder="Your university"
+                  value={form.name}
+                  onChange={handleChange}
+                  className={fieldClass}
+                  placeholder="Dr Ama Mensah"
                 />
               </div>
 
-              <div className="mb-6">
-                <label className="block font-bold text-gray-900 mb-2">Department *</label>
-                <select
-                  name="department"
-                  value={formData.department}
-                  onChange={handleChange}
+              <div>
+                <label htmlFor="email" className={labelClass}>
+                  EMAIL
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  value={form.email}
+                  onChange={handleChange}
+                  className={fieldClass}
+                  placeholder="you@university.edu.gh"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="university" className={labelClass}>
+                  INSTITUTION
+                </label>
+                <input
+                  id="university"
+                  name="university"
+                  type="text"
+                  required
+                  value={form.university}
+                  onChange={handleChange}
+                  className={fieldClass}
+                  placeholder="University of Ghana"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="department" className={labelClass}>
+                  DEPARTMENT
+                </label>
+                <select
+                  id="department"
+                  name="department"
+                  required
+                  value={form.department}
+                  onChange={handleChange}
+                  className={fieldClass}
                 >
-                  <option value="">Select Department</option>
+                  <option value="">Select a department</option>
                   <option value="Chemistry">Chemistry</option>
                   <option value="Physics">Physics</option>
                   <option value="Biology">Biology</option>
@@ -122,39 +186,58 @@ export default function Contact() {
                 </select>
               </div>
 
-              <div className="mb-6">
-                <label className="block font-bold text-gray-900 mb-2">Message (Optional)</label>
+              <div>
+                <label htmlFor="message" className={labelClass}>
+                  WHAT PRACTICALS ARE HARDEST TO RUN? (OPTIONAL)
+                </label>
                 <textarea
+                  id="message"
                   name="message"
-                  value={formData.message}
+                  rows={5}
+                  value={form.message}
                   onChange={handleChange}
-                  rows="5"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-                  placeholder="Tell us about your lab needs..."
+                  className={fieldClass}
+                  placeholder="Class sizes, equipment you're short of, anything that gets cut first."
                 />
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <button
                 type="submit"
-                className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition"
+                disabled={status === 'sending'}
+                className="bg-uv text-white px-8 py-4 rounded-md font-semibold hover:bg-[#6B4AF0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
               >
-                Join Pilot Program
-              </motion.button>
-            </motion.form>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-12 text-center"
-            >
-              <h3 className="text-2xl font-bold mb-4">Other Ways to Reach Us</h3>
-              <p className="text-gray-600 mb-2">Email: <a href="mailto:jefferynketiah20@gmail.com" className="text-blue-600 hover:underline">hello@laboravr.com</a></p>
-              <p className="text-gray-600">Follow us on <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Twitter</a> and <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">LinkedIn</a></p>
-            </motion.div>
+                {status === 'sending' ? 'Sending…' : 'Join the pilot'}
+              </button>
+            </form>
           </div>
+
+          {/* Aside */}
+          <aside className="border-t md:border-t-0 md:border-l border-edge pt-10 md:pt-0 md:pl-10">
+            <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-4">
+              WHAT THE PILOT INVOLVES
+            </p>
+            <ul className="space-y-4 text-muted leading-relaxed mb-10">
+              <li>No cost, and no commitment to buy afterwards.</li>
+              <li>
+                We fit the first practicals to your existing syllabus, not a
+                generic one.
+              </li>
+              <li>
+                In exchange we want honest feedback from demonstrators and
+                students.
+              </li>
+            </ul>
+
+            <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-4">
+              PREFER EMAIL
+            </p>
+            <a
+              href="mailto:hello@laboravr.com"
+              className="text-chalk hover:text-uv transition-colors"
+            >
+              hello@laboravr.com
+            </a>
+          </aside>
         </div>
       </section>
 

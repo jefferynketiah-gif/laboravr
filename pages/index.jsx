@@ -1,273 +1,219 @@
 import Head from 'next/head';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { FlaskConical, Zap, Microscope } from 'lucide-react';
+
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import HeroSection from '../components/HeroSection';
-import FeatureCard from '../components/FeatureCard';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { FlaskConical, Zap, Microscope } from 'lucide-react';
+import CinematicHero from '../components/CinematicHero';
 import ScrollReveal from '../components/ScrollReveal';
-import Hero3D from '../components/Hero3D';
+
+const constraints = [
+  {
+    code: 'COST',
+    text: 'A single working teaching lab runs into tens of thousands a year once equipment, reagents and maintenance are counted.',
+  },
+  {
+    code: 'ACCESS',
+    text: 'One lab, hundreds of students. Practical time gets rationed, and most of it is spent watching.',
+  },
+  {
+    code: 'RISK',
+    text: 'Reactive chemicals and mains-voltage apparatus mean supervision limits how much students are allowed to touch.',
+  },
+  {
+    code: 'SUPPLY',
+    text: 'Consumables run out mid-semester and imported replacements arrive late, if at all.',
+  },
+];
+
+const labs = [
+  {
+    icon: FlaskConical,
+    name: 'Chemistry',
+    line: 'Titrations, reaction kinetics and organic synthesis. Get it wrong, see what happens, run it again.',
+    status: 'IN DEVELOPMENT',
+  },
+  {
+    icon: Zap,
+    name: 'Physics',
+    line: 'Mechanics, optics and circuits on apparatus that never drifts out of calibration.',
+    status: 'PLANNED',
+  },
+  {
+    icon: Microscope,
+    name: 'Biology',
+    line: 'Microscopy, dissection and cell biology without specimen cost or ethical constraints.',
+    status: 'PLANNED',
+  },
+];
+
+const steps = [
+  {
+    n: '01',
+    title: 'Put on the headset',
+    body: 'Standalone hardware. No workstation, no cabling, no dedicated room.',
+  },
+  {
+    n: '02',
+    title: 'Run the practical',
+    body: 'The same procedure your syllabus already specifies, with every instrument to hand.',
+  },
+  {
+    n: '03',
+    title: 'Review the attempt',
+    body: 'Every step is logged, so demonstrators see who understood the method and who guessed.',
+  },
+];
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>LaboraVR - Virtual Reality Labs for African Universities</title>
-        <meta name="description" content="Immersive, safe, and affordable VR labs for chemistry, physics, and biology." />
+        <title>LaboraVR — Virtual reality science labs for African universities</title>
+        <meta
+          name="description"
+          content="Practical chemistry, physics and biology in virtual reality, built for African universities."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <Navbar />
 
-      {/* Hero Section */}
-      <HeroSection
-        title="VR Labs for African Universities"
-        subtitle="Immersive, safe, and affordable science education that transforms how students learn."
-        primaryCTA={{ text: "Join Our Pilot Program", href: "/contact" }}
-        secondaryCTA={{ text: "Learn More", href: "#features" }}
-      />
+      <CinematicHero />
 
-      <Hero3D />
-
-      {/* Problem Section */}
+      {/* ── The gap ─────────────────────────────────────────── */}
       <ScrollReveal>
-        <section className="py-16 bg-gray-50">
+        <section className="relative bg-void grain py-24 md:py-32">
           <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-12">The Challenge</h2>
+            <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-5">
+              THE PROBLEM
+            </p>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
+              Practical science is the first thing a tight budget cuts.
+            </h2>
 
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                <h3 className="text-2xl font-bold mb-6 text-gray-900">
-                  African Universities Face a Critical Gap
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    "Expensive lab equipment costs $50K+ per year",
-                    "Limited lab access restricts hands-on learning",
-                    "Safety risks with dangerous chemicals",
-                    "Difficulty replacing consumable materials",
-                    "Student outcomes suffer without practical experience",
-                  ].map((item, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex gap-3 text-gray-700"
-                    >
-                      <span className="text-red-500 font-bold text-xl">✗</span>
-                      {item}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="bg-gradient-to-br from-red-400 to-red-500 rounded-2xl p-12 text-white text-center"
-              >
-                <div className="text-6xl mb-4">💸</div>
-                <p className="text-xl font-bold">Expensive, Limited, Risky</p>
-              </motion.div>
+            <div className="mt-16 border-t border-edge">
+              {constraints.map((c, i) => (
+                <motion.div
+                  key={c.code}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="grid md:grid-cols-[140px_1fr] gap-2 md:gap-10 py-7 border-b border-edge"
+                >
+                  <p className="font-mono text-[11px] tracking-[0.18em] text-uv pt-1">
+                    {c.code}
+                  </p>
+                  <p className="text-lg text-muted leading-relaxed max-w-2xl">
+                    {c.text}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* Solution Section */}
+      {/* ── The labs ────────────────────────────────────────── */}
       <ScrollReveal>
-        <section>
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Solution</h2>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-green-400 to-green-500 rounded-2xl p-12 text-white text-center"
-            >
-              <div className="text-6xl mb-4">🥽</div>
-              <p className="text-xl font-bold">Safe, Affordable, Scalable</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="text-2xl font-bold mb-6 text-gray-900">
-                LaboraVR: Virtual Reality Labs
-              </h3>
-              <ul className="space-y-4">
-                {[
-                  "Safe experiments without chemical risks",
-                  "80% cost reduction compared to traditional labs",
-                  "Unlimited experiments—students can repeat safely",
-                  "Real-time feedback and performance tracking",
-                  "Scalable to reach more students instantly",
-                ].map((item, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex gap-3 text-gray-700"
-                  >
-                    <span className="text-green-500 font-bold text-xl">✓</span>
-                    {item}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-    </ScrollReveal>
-
-      {/* Features Section */}
-      <ScrollReveal>
-        <section>
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Labs</h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <FeatureCard
-              icon={FlaskConical}
-              title="Chemistry Lab"
-              description="Mix chemicals safely, observe reactions instantly, understand reaction kinetics—all without the risks of real labs."
-              index={0}
-            />
-            <FeatureCard
-              icon={Zap}
-              title="Physics Lab"
-              description="Virtual apparatus for motion, forces, electricity, and more. Measure, predict, and verify physics principles safely."
-              index={1}
-            />
-            <FeatureCard
-              icon={Microscope}
-              title="Biology Lab"
-              description="Explore cell biology, dissections, and microscopy without harm. Learn at your own pace with unlimited access."
-              index={2}
-            />
-          </div>
-        </div>
-      </section>
-    </ScrollReveal>
-
-      {/* How It Works */}
-      <ScrollReveal>
-        <section>
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">How It Works</h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { num: 1, title: "Students Wear VR Headset", desc: "Meta Quest headsets provide immersive, realistic lab environments." },
-              { num: 2, title: "Conduct Safe Experiments", desc: "Mix chemicals, measure forces, explore biology without real-world risks." },
-              { num: 3, title: "Get Instant Feedback", desc: "Real-time feedback guides learning and tracks student progress automatically." },
-            ].map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.2 }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  {step.num}
-                </div>
-                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-gray-600">{step.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </ScrollReveal>
-
-      {/* ROI Section */}
-      <ScrollReveal>
-        <section>
-        <div className="max-w-2xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">The Financial Case</h2>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl p-8 shadow-xl"
-          >
-            <p className="text-center mb-8 font-bold text-gray-700">
-              Annual Cost Comparison: One Physics Lab
+        <section id="labs" className="relative bg-panel py-24 md:py-32">
+          <div className="max-w-6xl mx-auto px-6">
+            <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-5">
+              THE LABS
             </p>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
+              Three disciplines. One headset.
+            </h2>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="border-t-4 border-red-500 pt-6">
-                <h4 className="font-bold text-gray-900 mb-2">Traditional Lab</h4>
-                <div className="text-4xl font-bold text-red-500 mb-2">$50,000</div>
-                <p className="text-gray-600 text-sm">Equipment, chemicals, maintenance, safety protocols</p>
-              </div>
-
-              <div className="border-t-4 border-green-500 pt-6">
-                <h4 className="font-bold text-gray-900 mb-2">LaboraVR</h4>
-                <div className="text-4xl font-bold text-green-500 mb-2">$1,500</div>
-                <p className="text-gray-600 text-sm">Annual subscription for unlimited students</p>
-              </div>
+            <div className="mt-16 grid md:grid-cols-3 gap-px bg-edge border border-edge">
+              {labs.map((lab, i) => (
+                <motion.div
+                  key={lab.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="group bg-void p-8 md:p-10 hover:bg-[#15171F] transition-colors"
+                >
+                  <lab.icon
+                    size={26}
+                    strokeWidth={1.5}
+                    className="text-uv mb-8"
+                  />
+                  <h3 className="text-2xl font-bold text-chalk mb-3">
+                    {lab.name}
+                  </h3>
+                  <p className="text-muted leading-relaxed mb-8">{lab.line}</p>
+                  <p className="font-mono text-[10px] tracking-[0.18em] text-muted group-hover:text-uv transition-colors">
+                    {lab.status}
+                  </p>
+                </motion.div>
+              ))}
             </div>
+          </div>
+        </section>
+      </ScrollReveal>
 
-            <p className="text-center mt-8 text-lg font-bold text-gray-900">
-              <span className="text-green-600">97% Cost Reduction</span> while improving student engagement and safety
-            </p>
-          </motion.div>
-        </div>
-      </section>
-    </ScrollReveal>
-
-      {/* CTA Section */}
+      {/* ── How it works — a genuine sequence, so numbered ───── */}
       <ScrollReveal>
-        <section>
-        <div className="max-w-2xl mx-auto px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl font-bold mb-6"
-          >
-            Ready to Transform Science Education?
-          </motion.h2>
+        <section className="relative bg-void grain py-24 md:py-32">
+          <div className="max-w-6xl mx-auto px-6">
+            <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-5">
+              IN THE ROOM
+            </p>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
+              A practical, start to finish.
+            </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl mb-8 opacity-90"
-          >
-            Join our pilot program and be among the first African universities using VR labs.
-          </motion.p>
+            <div className="mt-16 grid md:grid-cols-3 gap-10 md:gap-14">
+              {steps.map((s, i) => (
+                <motion.div
+                  key={s.n}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.12 }}
+                  className="border-t border-edge pt-6"
+                >
+                  <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-5">
+                    {s.n}
+                  </p>
+                  <h3 className="text-xl font-bold text-chalk mb-3">
+                    {s.title}
+                  </h3>
+                  <p className="text-muted leading-relaxed">{s.body}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Link
-              href="/contact"
-              className="bg-amber-400 text-gray-900 px-10 py-4 rounded-lg font-bold hover:bg-amber-500 transition transform hover:scale-105 inline-block"
-            >
-              Join Our Pilot Program
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-    </ScrollReveal>
+      {/* ── Close ───────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section className="relative bg-panel py-24 md:py-36">
+          <div className="max-w-3xl mx-auto px-6 text-center">
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk leading-[1.05]">
+              We&apos;re looking for the first three departments.
+            </h2>
+            <p className="mt-6 text-lg text-muted leading-relaxed">
+              The pilot is free. You get the labs and your students&apos;
+              practical time back; we get the feedback that decides what gets
+              built next.
+            </p>
+            <div className="mt-10">
+              <Link
+                href="/contact"
+                className="inline-block bg-uv text-white px-8 py-4 rounded-md font-semibold hover:bg-[#6B4AF0] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
+              >
+                Join the pilot
+              </Link>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
 
       <Footer />
     </>

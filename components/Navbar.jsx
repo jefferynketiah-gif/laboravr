@@ -1,6 +1,13 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/labs', label: 'Labs' },
+  { href: '/about', label: 'About' },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,55 +17,67 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 w-full bg-white shadow-md z-50"
+      className="fixed top-0 w-full bg-void/80 backdrop-blur-md border-b border-edge z-50"
     >
       <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-blue-600">
-          LaboraVR
+        <Link
+          href="/"
+          className="font-mono text-sm tracking-[0.15em] text-chalk hover:text-uv transition-colors"
+        >
+          LABORAVR
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8 items-center">
-          <Link href="/" className="text-gray-700 hover:text-blue-600 transition">
-            Home
-          </Link>
-          <Link href="/labs" className="text-gray-700 hover:text-blue-600 transition">
-            Labs
-          </Link>
-          <Link href="/about" className="text-gray-700 hover:text-blue-600 transition">
-            About
-          </Link>
-          <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition">
-            Blog
-          </Link>
-          <Link href="/contact" className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
-            Contact
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="text-sm text-muted hover:text-chalk transition-colors"
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link
+            href="/contact"
+            className="bg-uv text-white text-sm px-5 py-2 rounded-md font-medium hover:bg-[#6B4AF0] transition-colors"
+          >
+            Join the pilot
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-700 text-2xl"
+          className="md:hidden text-chalk"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
         >
-          ☰
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
-      {/* Mobile Navigation */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-white border-t"
+          className="md:hidden bg-void border-t border-edge"
         >
-          <div className="flex flex-col gap-4 px-6 py-4">
-            <Link href="/" className="text-gray-700">Home</Link>
-            <Link href="/labs" className="text-gray-700">Labs</Link>
-            <Link href="/about" className="text-gray-700">About</Link>
-            <Link href="/blog" className="text-gray-700">Blog</Link>
-            <Link href="/contact" className="bg-blue-600 text-white px-4 py-2 rounded text-center">Contact</Link>
+          <div className="flex flex-col gap-4 px-6 py-5">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setIsOpen(false)}
+                className="text-muted hover:text-chalk transition-colors"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              onClick={() => setIsOpen(false)}
+              className="bg-uv text-white px-5 py-2.5 rounded-md text-center font-medium"
+            >
+              Join the pilot
+            </Link>
           </div>
         </motion.div>
       )}
