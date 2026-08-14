@@ -1,121 +1,142 @@
-import Head from 'next/head';
+import Seo from '../components/Seo';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { FlaskConical, Zap, Microscope } from 'lucide-react';
+
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import HeroSection from '../components/HeroSection';
-import FeatureCard from '../components/FeatureCard';
-import { motion } from 'framer-motion';
+import PageHeader from '../components/PageHeader';
+import ScrollReveal from '../components/ScrollReveal';
+
+const labs = [
+  {
+    icon: FlaskConical,
+    name: 'Chemistry',
+    status: 'IN DEVELOPMENT',
+    thesis:
+      'The discipline where the gap between reading a method and running it is widest — and where a mistake in the real lab is expensive or dangerous.',
+    practicals: [
+      'Acid–base titration to endpoint',
+      'Rates of reaction under varied concentration and temperature',
+      'Qualitative analysis of unknown salts',
+      'Simple organic synthesis and purification',
+    ],
+  },
+  {
+    icon: Zap,
+    name: 'Physics',
+    status: 'PLANNED',
+    thesis:
+      'Apparatus that never drifts out of calibration, never goes missing, and lets a student repeat a measurement until the method makes sense.',
+    practicals: [
+      'Simple pendulum and determination of g',
+      'Forces on an inclined plane',
+      'Series and parallel circuits, Ohm\u2019s law',
+      'Refraction and lens focal length',
+    ],
+  },
+  {
+    icon: Microscope,
+    name: 'Biology',
+    status: 'PLANNED',
+    thesis:
+      'Specimens and prepared slides cost money and run out. Here they don\u2019t, and dissection carries no ethical cost.',
+    practicals: [
+      'Light microscopy and slide preparation',
+      'Cell structure and osmosis',
+      'Comparative dissection',
+      'Enzyme activity under varied pH',
+    ],
+  },
+];
 
 export default function Labs() {
-  const labDetails = [
-    {
-      title: "Chemistry Lab",
-      icon: "⚗️",
-      description: "Explore chemical reactions safely",
-      features: [
-        "Mix various chemicals without risk",
-        "Observe color changes and reactions",
-        "Learn about reaction kinetics",
-        "Practice molecular structures",
-        "Access all experiments unlimited",
-      ],
-      bgGradient: "from-pink-100 to-red-100"
-    },
-    {
-      title: "Physics Lab",
-      icon: "⚛️",
-      description: "Master forces, motion, and energy",
-      features: [
-        "Virtual apparatus for experiments",
-        "Measure forces and acceleration",
-        "Explore electricity and magnetism",
-        "Understand wave properties",
-        "Real-time data collection",
-      ],
-      bgGradient: "from-blue-100 to-cyan-100"
-    },
-    {
-      title: "Biology Lab",
-      icon: "🔬",
-      description: "Understand life at every scale",
-      features: [
-        "Cell biology exploration",
-        "Safe virtual dissections",
-        "Microscopy simulations",
-        "Ecology simulations",
-        "Genetics experiments",
-      ],
-      bgGradient: "from-green-100 to-emerald-100"
-    },
-  ];
-
   return (
     <>
-      <Head>
-        <title>Our Labs - LaboraVR</title>
-        <meta name="description" content="Explore LaboraVR's chemistry, physics, and biology virtual labs." />
-      </Head>
+      <Seo
+        title="The labs — LaboraVR"
+        description="Chemistry, physics and biology practicals in virtual reality, built around existing university syllabuses."
+      />
 
       <Navbar />
 
-      <HeroSection
-        title="Our Virtual Labs"
-        subtitle="Each lab is carefully designed with educators to match your curriculum."
-        primaryCTA={{ text: "Try a Demo", href: "/contact" }}
+      <PageHeader
+        eyebrow="THE LABS"
+        title="Built around your syllabus, not ours."
+        intro="Below is what we're building first. The order and the detail are still open — the first departments we work with will decide both."
       />
 
-      <section className="py-16 bg-white">
+      <section className="bg-void grain py-4 md:py-8">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8">
-            {labDetails.map((lab, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.2 }}
-                className={`bg-gradient-to-br ${lab.bgGradient} p-8 rounded-xl`}
-              >
-                <div className="text-5xl mb-4">{lab.icon}</div>
-                <h3 className="text-2xl font-bold mb-2">{lab.title}</h3>
-                <p className="text-gray-700 mb-6">{lab.description}</p>
-                <ul className="space-y-2">
-                  {lab.features.map((feature, j) => (
-                    <li key={j} className="flex gap-2 text-gray-700">
-                      <span className="text-green-600 font-bold">→</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
+          {labs.map((lab, i) => (
+            <ScrollReveal key={lab.name}>
+              <div className="border-t border-edge py-14 md:py-20 grid md:grid-cols-[1fr_1fr] gap-10 md:gap-16">
+                <div>
+                  <lab.icon
+                    size={28}
+                    strokeWidth={1.5}
+                    className="text-uv mb-7"
+                  />
+                  <div className="flex items-baseline gap-4 mb-5 flex-wrap">
+                    <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk">
+                      {lab.name}
+                    </h2>
+                    <span className="font-mono text-[10px] tracking-[0.18em] text-uv border border-uv/30 rounded px-2 py-1">
+                      {lab.status}
+                    </span>
+                  </div>
+                  <p className="text-lg text-muted leading-relaxed max-w-md">
+                    {lab.thesis}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-6">
+                    FIRST PRACTICALS
+                  </p>
+                  <ul className="space-y-0">
+                    {lab.practicals.map((p, j) => (
+                      <motion.li
+                        key={p}
+                        initial={{ opacity: 0, x: -12 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: j * 0.06 }}
+                        className="text-chalk py-4 border-b border-edge first:border-t"
+                      >
+                        {p}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">Why Our Labs Work</h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { title: "Designed by Educators", desc: "Every lab is built with input from university professors to match curriculum standards." },
-              { title: "Research-Based", desc: "Backed by educational research on immersive learning and student engagement." },
-              { title: "Performance Tracked", desc: "Built-in analytics show you exactly what each student learns and struggles with." },
-              { title: "Constantly Updated", desc: "New experiments and improvements added regularly based on feedback." },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white p-6 rounded-lg shadow"
+      <ScrollReveal>
+        <section className="bg-panel py-24 md:py-32">
+          <div className="max-w-2xl mx-auto px-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk leading-[1.05]">
+              Something missing from that list?
+            </h2>
+            <p className="mt-6 text-lg text-muted leading-relaxed">
+              That&apos;s the useful conversation. Tell us which practical your
+              department can&apos;t reliably run, and it goes to the front of
+              the queue.
+            </p>
+            <div className="mt-10">
+              <Link
+                href="/contact"
+                className="inline-block bg-uv text-white px-8 py-4 rounded-md font-semibold hover:bg-[#6B4AF0] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
               >
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
-              </motion.div>
-            ))}
+                Tell us what you need
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
 
       <Footer />
     </>

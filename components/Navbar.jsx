@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Wordmark from './Wordmark';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -20,11 +21,8 @@ export default function Navbar() {
       className="fixed top-0 w-full bg-void/80 backdrop-blur-md border-b border-edge z-50"
     >
       <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link
-          href="/"
-          className="font-mono text-sm tracking-[0.15em] text-chalk hover:text-uv transition-colors"
-        >
-          LABORAVR
+        <Link href="/" aria-label="LaboraVR home" className="group">
+          <Wordmark size="md" />
         </Link>
 
         <div className="hidden md:flex gap-8 items-center">

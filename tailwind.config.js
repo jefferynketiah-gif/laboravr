@@ -18,6 +18,10 @@ module.exports = {
         // uv accent
         uv: '#7C5CFF',
         'uv-dim': '#4A3A99',
+        // atmosphere only — never used on UI elements
+        'glow-cyan': '#22D3EE',
+        'glow-magenta': '#E879F9',
+        'indigo-deep': '#1E1B4B',
         // type
         chalk: '#E8E9F0',
         muted: '#6B6F80',

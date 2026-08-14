@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Wordmark from './Wordmark';
 
 const columns = [
   {
@@ -23,9 +24,9 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
-            <p className="font-mono text-sm tracking-[0.15em] text-chalk mb-4">
-              LABORAVR
-            </p>
+            <div className="mb-4">
+              <Wordmark size="lg" showCaret={false} />
+            </div>
             <p className="text-muted max-w-xs leading-relaxed">
               Virtual reality science labs for African universities.
             </p>

@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import Seo from '../components/Seo';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FlaskConical, Zap, Microscope } from 'lucide-react';
@@ -7,6 +7,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import CinematicHero from '../components/CinematicHero';
 import ScrollReveal from '../components/ScrollReveal';
+import TitrationDemo from '../components/TitrationDemo';
+import ScrollSequence from '../components/ScrollSequence';
 
 const constraints = [
   {
@@ -48,35 +50,23 @@ const labs = [
   },
 ];
 
-const steps = [
-  {
-    n: '01',
-    title: 'Put on the headset',
-    body: 'Standalone hardware. No workstation, no cabling, no dedicated room.',
-  },
-  {
-    n: '02',
-    title: 'Run the practical',
-    body: 'The same procedure your syllabus already specifies, with every instrument to hand.',
-  },
-  {
-    n: '03',
-    title: 'Review the attempt',
-    body: 'Every step is logged, so demonstrators see who understood the method and who guessed.',
-  },
+
+
+const specs = [
+  { k: 'HARDWARE', v: 'Standalone headsets. No workstation, no cabling, no dedicated room.' },
+  { k: 'CONNECTIVITY', v: 'Practicals run offline. Results sync when the network returns.' },
+  { k: 'DEPLOYMENT', v: 'Managed install on department-owned devices. No per-seat licence keys to distribute.' },
+  { k: 'ASSESSMENT', v: 'Every action is timestamped, so a demonstrator sees method, not just the final answer.' },
+  { k: 'CURRICULUM', v: 'Procedures are authored against your existing practical manual, not a generic one.' },
 ];
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>LaboraVR — Virtual reality science labs for African universities</title>
-        <meta
-          name="description"
-          content="Practical chemistry, physics and biology in virtual reality, built for African universities."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <Seo
+        title="LaboraVR — The lab that never runs out"
+        description="Practical chemistry, physics and biology in virtual reality, built for African universities."
+      />
 
       <Navbar />
 
@@ -156,35 +146,58 @@ export default function Home() {
         </section>
       </ScrollReveal>
 
-      {/* ── How it works — a genuine sequence, so numbered ───── */}
+      {/* ── In the room — scroll-driven ─────────────────────── */}
+      <ScrollSequence />
+
+      {/* ── Try it ──────────────────────────────────────────── */}
+      <ScrollReveal>
+        <section className="relative bg-panel py-24 md:py-32">
+          <div className="max-w-5xl mx-auto px-6">
+            <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-5">
+              RUN ONE NOW
+            </p>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
+              This is the chemistry, not a video of it.
+            </h2>
+            <p className="mt-6 text-lg text-muted max-w-xl leading-relaxed mb-12">
+              A strong acid–strong base titration, solved live from the same
+              equations the headset uses. Overshoot it and see what a spoiled
+              titration costs.
+            </p>
+
+            <TitrationDemo />
+
+            <p className="mt-6 font-mono text-[10px] tracking-[0.15em] text-muted">
+              BROWSER PREVIEW · THE HEADSET VERSION ADDS THE GLASSWARE AND THE HANDS
+            </p>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── Specification ───────────────────────────────────── */}
       <ScrollReveal>
         <section className="relative bg-void grain py-24 md:py-32">
           <div className="max-w-6xl mx-auto px-6">
             <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-5">
-              IN THE ROOM
+              SPECIFICATION
             </p>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
-              A practical, start to finish.
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05] mb-16">
+              What your IT department will ask.
             </h2>
 
-            <div className="mt-16 grid md:grid-cols-3 gap-10 md:gap-14">
-              {steps.map((s, i) => (
-                <motion.div
-                  key={s.n}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.12 }}
-                  className="border-t border-edge pt-6"
+            <div className="border-t border-edge">
+              {specs.map((s) => (
+                <div
+                  key={s.k}
+                  className="grid md:grid-cols-[180px_1fr] gap-2 md:gap-10 py-7 border-b border-edge"
                 >
-                  <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-5">
-                    {s.n}
+                  <p className="font-mono text-[11px] tracking-[0.18em] text-uv pt-1">
+                    {s.k}
                   </p>
-                  <h3 className="text-xl font-bold text-chalk mb-3">
-                    {s.title}
-                  </h3>
-                  <p className="text-muted leading-relaxed">{s.body}</p>
-                </motion.div>
+                  <p className="text-lg text-muted leading-relaxed max-w-2xl">
+                    {s.v}
+                  </p>
+                </div>
               ))}
             </div>
           </div>

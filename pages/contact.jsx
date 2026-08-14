@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import Seo from '../components/Seo';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -59,13 +59,10 @@ export default function Contact() {
 
   return (
     <>
-      <Head>
-        <title>Join the pilot — LaboraVR</title>
-        <meta
-          name="description"
-          content="Bring LaboraVR's virtual science labs to your department. Tell us what you teach and we'll be in touch."
-        />
-      </Head>
+      <Seo
+        title="Join the pilot — LaboraVR"
+        description="Bring LaboraVR's virtual science labs to your department. Tell us what you teach."
+      />
 
       <Navbar />
 
