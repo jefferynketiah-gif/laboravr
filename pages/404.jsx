@@ -22,7 +22,7 @@ export default function NotFound() {
           <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-6">
             ERROR 404 — NO SUCH PAGE
           </p>
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tightest text-chalk leading-[0.95] mb-7">
+          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tightest text-chalk leading-[0.95] mb-7">
             This one doesn&apos;t
             <br />
             exist yet.

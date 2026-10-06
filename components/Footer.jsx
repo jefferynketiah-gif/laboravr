@@ -40,7 +40,7 @@ export default function Footer() {
               <Wordmark size="lg" showCaret={false} />
             </div>
             <p className="text-muted max-w-xs leading-relaxed mb-6">
-              Virtual reality science labs for African universities. Built in Ghana,
+              Virtual reality science labs for schools and universities on Cambridge IGCSE, A Levels, WASSCE and other curricula. Built in Ghana,
               for the students who deserve to do science.
             </p>
             {/* Ghana badge */}

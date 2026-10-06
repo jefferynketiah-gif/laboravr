@@ -2,7 +2,7 @@
 // so a page with a film on it stays light.
 export default function LabFilm({ src, title, caption, poster }) {
   return (
-    <figure className="overflow-hidden rounded-2xl border border-edge bg-panel">
+    <figure className="lift-hover overflow-hidden rounded-2xl border border-edge bg-panel">
       <video
         className="aspect-video w-full bg-void"
         src={src}

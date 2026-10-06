@@ -23,7 +23,7 @@ const pilotPoints = [
 
 export default function Contact() {
   const [form, setForm] = useState({
-    name: '', email: '', university: '', department: '', message: '',
+    name: '', email: '', university: '', department: '', curriculum: '', message: '',
   });
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
@@ -41,7 +41,7 @@ export default function Contact() {
       });
       if (!res.ok) throw new Error('Request failed');
       setStatus('sent');
-      setForm({ name: '', email: '', university: '', department: '', message: '' });
+      setForm({ name: '', email: '', university: '', department: '', curriculum: '', message: '' });
     } catch {
       setStatus('error');
     }
@@ -126,7 +126,7 @@ export default function Contact() {
                   <input
                     id="email" name="email" type="email" required
                     value={form.email} onChange={handleChange}
-                    className={inputClass} placeholder="you@university.edu.gh"
+                    className={inputClass} placeholder="you@school.edu.gh"
                   />
                 </div>
               </div>
@@ -136,7 +136,7 @@ export default function Contact() {
                 <input
                   id="university" name="university" type="text" required
                   value={form.university} onChange={handleChange}
-                  className={inputClass} placeholder="University of Ghana"
+                  className={inputClass} placeholder="A school or university"
                 />
               </div>
 
@@ -152,6 +152,21 @@ export default function Contact() {
                   <option value="Physics">Physics</option>
                   <option value="Biology">Biology</option>
                   <option value="Engineering">Engineering</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="curriculum" className={labelClass}>CURRICULUM</label>
+                <select
+                  id="curriculum" name="curriculum" required
+                  value={form.curriculum} onChange={handleChange}
+                  className={inputClass + ' cursor-pointer'}
+                >
+                  <option value="">Select a curriculum</option>
+                  <option value="Cambridge IGCSE">Cambridge IGCSE</option>
+                  <option value="A Levels">A Levels</option>
+                  <option value="WASSCE">WASSCE</option>
                   <option value="Other">Other</option>
                 </select>
               </div>

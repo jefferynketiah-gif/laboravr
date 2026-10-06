@@ -36,21 +36,21 @@ const constraints = [
 
 const labs = [
   {
-    image: '/images/chemistry.jpg',
+    image: '/lab-screens/vr_hands_lesson1.jpg',
     name: 'Chemistry',
     line: 'Titrations, reaction kinetics and organic synthesis. Get it wrong, see what happens, run it again.',
     status: 'IN DEVELOPMENT',
     active: true,
   },
   {
-    image: '/images/physics.jpg',
+    image: '/lab-screens/lab_physics_clean.jpg',
     name: 'Physics',
     line: 'Mechanics, optics and circuits on apparatus that never drifts out of calibration.',
     status: 'PLANNED',
     active: false,
   },
   {
-    image: '/images/biology.jpg',
+    image: '/lab-screens/lab_biology_clean.jpg',
     name: 'Biology',
     line: 'Microscopy, dissection and cell biology without specimen cost or ethical constraints.',
     status: 'PLANNED',
@@ -76,7 +76,7 @@ const specs = [
 const demoFeatures = [
   'Full chemistry lab environment',
   'Acid–base titration practical',
-  'Works on Meta Quest 2 and 3',
+  'Built in Unity 6',
   'No account or login required',
 ];
 
@@ -107,7 +107,7 @@ export default function Home() {
     <>
       <Seo
         title="LaboraVR — The lab that never runs out"
-        description="Practical chemistry, physics and biology in virtual reality, built for African universities."
+        description="Practical chemistry, physics and biology in virtual reality, for schools and universities on Cambridge IGCSE, A Levels, WASSCE and other curricula."
       />
       <Navbar />
       <CinematicHero />
@@ -135,7 +135,7 @@ export default function Home() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">THE PROBLEM</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
               Practical science is the first thing a{' '}
               <span className="gradient-text">tight budget cuts.</span>
             </h2>
@@ -171,7 +171,7 @@ export default function Home() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">THE LABS</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
               Three disciplines.{' '}
               <span className="gradient-text">One headset.</span>
             </h2>
@@ -243,7 +243,7 @@ export default function Home() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">RUN ONE NOW</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
               This is the chemistry,{' '}
               <span className="gradient-text">not a video of it.</span>
             </h2>
@@ -282,8 +282,8 @@ export default function Home() {
                   </h2>
                   <p className="text-lg text-muted leading-relaxed mb-8 max-w-xl">
                     {COMING_SOON
-                      ? 'We\'re building a full VR chemistry lab for Meta Quest. The titration practical you can run above will be the first experiment — with real glassware in your hands. Join the pilot to be notified the moment it\'s ready.'
-                      : 'A Unity build of the chemistry lab is available for Meta Quest devices. Run the titration practical exactly as your students will.'}
+                      ? 'We\'re building a full VR chemistry lab. The titration practical you can run above will be the first experiment — with real glassware in your hands. Join the pilot to be notified the moment it\'s ready.'
+                      : 'The chemistry lab is in active development. Run the titration practical yourself, exactly as your students will.'}
                   </p>
                   <ul className="space-y-2 mb-8">
                     {demoFeatures.map((f) => (
@@ -322,18 +322,18 @@ export default function Home() {
                   </p>
                 </div>
 
-                {/* Visual — VR headset image */}
+                {/* Visual — lab screenshot */}
                 <div className="hidden md:block relative w-52 h-36 rounded-2xl overflow-hidden border border-uv/20 glow-ring flex-shrink-0">
                   <Image
-                    src="/images/vr_headset_hero.jpg"
-                    alt="Meta Quest VR headset with purple glow"
+                    src="/lab-screens/lab_lobby.jpg"
+                    alt="The LaboraVR lab lobby seen in VR"
                     fill
                     sizes="208px"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent" />
                   <p className="absolute bottom-2 left-0 right-0 text-center font-mono text-[9px] tracking-[0.15em] text-uv/80">
-                    META QUEST COMPATIBLE
+                    BUILT IN UNITY 6
                   </p>
                 </div>
               </div>
@@ -350,7 +350,7 @@ export default function Home() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">SPECIFICATION</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05] mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05] mb-16">
               What your IT department will ask.
             </h2>
 
@@ -386,7 +386,7 @@ export default function Home() {
             <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-6">
               PILOT PROGRAMME
             </p>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest leading-[1.05]">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
               <span className="gradient-text">We&apos;re looking for</span>
               <br />
               <span className="text-chalk">the first three departments.</span>

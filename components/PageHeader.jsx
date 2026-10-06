@@ -44,7 +44,7 @@ export default function PageHeader({ eyebrow, title, intro, accentWord }) {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tightest text-chalk max-w-3xl leading-[1.0]"
+          className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tightest text-chalk max-w-3xl leading-[1.0]"
         >
           {renderTitle()}
         </motion.h1>

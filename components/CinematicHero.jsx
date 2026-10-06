@@ -15,11 +15,10 @@ export default function CinematicHero() {
     <section className="relative overflow-hidden bg-void grain min-h-[96vh] flex flex-col justify-center">
       {/* Background layers */}
       <Aurora />
-      <div className="grid-reticle absolute inset-0 opacity-60" />
-      {/* Vignette */}
+            {/* Vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_50%,transparent_25%,#0A0B10_85%)]" />
       {/* Particles */}
-      <ParticleField count={55} className="opacity-70" />
+      <ParticleField count={28} className="opacity-70" />
 
       {/* Hero Video — right side */}
       <motion.div
@@ -39,12 +38,15 @@ export default function CinematicHero() {
             WebkitMaskComposite: 'source-in'
           }}>
             <video
-              src="/images/5043856-hd_1080_1920_30fps.mp4"
+              src="/lab-screens/hero-loop.webm"
+              poster="/lab-screens/hero-loop-poster.jpg"
+              aria-label="A slow view of the LaboraVR chemistry bench"
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover object-[center_12%] opacity-85"
+              preload="metadata"
+              className="hero-drift w-full h-full object-cover object-[center_40%] opacity-85"
             />
           </div>
         </div>
@@ -88,7 +90,7 @@ export default function CinematicHero() {
             className="mt-7 text-lg text-muted max-w-md leading-relaxed [text-shadow:0_2px_12px_rgba(10,11,16,0.9)] relative z-10"
           >
             Practical chemistry, physics and biology in virtual reality — built
-            for African universities, where an equipment budget shouldn&apos;t
+            for schools and universities, where an equipment budget shouldn&apos;t
             decide who gets to do science.
           </motion.p>
 

@@ -8,17 +8,19 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, university, department, message } = req.body;
+  const { name, email, university, department, curriculum, message } = req.body;
 
   // Basic validation
-  if (!name || !email || !university || !department) {
+  if (!name || !email || !university || !department || !curriculum) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
   // 1. Save to Supabase
   const { error: dbError } = await supabase
     .from('contact_submissions')
-    .insert([{ name, email, university, department, message }]);
+    .insert([{ name, email, university, department, message: `Curriculum: ${curriculum}
+
+${message || ''}`.trim() }]);
 
   if (dbError) {
     console.error('Supabase insert error:', dbError);
@@ -47,6 +49,7 @@ export default async function handler(req, res) {
             <tr><td style="color:#6B6F80;padding:10px 0;border-bottom:1px solid #1F2230;width:120px">NAME</td><td style="padding:10px 0;border-bottom:1px solid #1F2230">${escapeHtml(name)}</td></tr>
             <tr><td style="color:#6B6F80;padding:10px 0;border-bottom:1px solid #1F2230">EMAIL</td><td style="padding:10px 0;border-bottom:1px solid #1F2230"><a href="mailto:${escapeHtml(email)}" style="color:#7C5CFF">${escapeHtml(email)}</a></td></tr>
             <tr><td style="color:#6B6F80;padding:10px 0;border-bottom:1px solid #1F2230">INSTITUTION</td><td style="padding:10px 0;border-bottom:1px solid #1F2230">${escapeHtml(university)}</td></tr>
+            <tr><td style="color:#6B6F80;padding:10px 0;border-bottom:1px solid #1F2230">CURRICULUM</td><td style="padding:10px 0;border-bottom:1px solid #1F2230">${escapeHtml(curriculum)}</td></tr>
             <tr><td style="color:#6B6F80;padding:10px 0;border-bottom:1px solid #1F2230">DEPARTMENT</td><td style="padding:10px 0;border-bottom:1px solid #1F2230">${escapeHtml(department)}</td></tr>
             <tr><td style="color:#6B6F80;padding:10px 0" valign="top">MESSAGE</td><td style="padding:10px 0">${message ? escapeHtml(message) : '<em style="color:#6B6F80">No message</em>'}</td></tr>
           </table>

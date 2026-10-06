@@ -60,12 +60,32 @@ const labs = [
   },
 ];
 
+const labScreens = [
+  { src: '/lab-screens/lab_organic.jpg', title: 'ORGANIC TESTS', caption: 'Three unknown liquids, identified with bromine water, sodium carbonate and acidified dichromate.', alt: 'Organic tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_flame.jpg', title: 'FLAME TESTS', caption: 'The flame tests bench, seen from the starting position.', alt: 'Flame tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_skills.jpg', title: 'GRAPH SKILLS', caption: 'Drawing and reading graphs from a set of results.', alt: 'Graph skills practical in the LaboraVR lab' },
+  { src: '/lab-screens/lab_planning.jpg', title: 'PLANNING', caption: 'Planning an experiment before any apparatus is used.', alt: 'Experiment planning screen in the LaboraVR lab' },
+  { src: '/lab-screens/lab_drawing.jpg', title: 'BIOLOGY DRAWING', caption: 'The biology drawing board, for labelled drawings of specimens.', alt: 'Biology drawing board in the LaboraVR lab' },
+  { src: '/lab-screens/lab_raytrace.jpg', title: 'RAY TRACE', caption: 'A physics ray trace through a lens or mirror.', alt: 'Physics ray trace practical in the LaboraVR lab' },
+  { src: '/lab-screens/lab_titration.jpg', title: 'TITRATION', caption: 'The acid–base titration practical.', alt: 'Acid–base titration practical in the LaboraVR lab' },
+  { src: '/lab-screens/lab_chempractical_clean.jpg', title: 'PRACTICAL', caption: 'Temperature change when a salt dissolves: the reading table in the lab.', alt: 'Chemistry practical table for temperature change when a salt dissolves' },
+  { src: '/lab-screens/vr_hands_lesson1.jpg', title: 'THE LESSON', caption: 'The qualitative analysis lesson, seen from inside the headset with the controllers.', alt: 'Qualitative analysis lesson in VR with controllers' },
+  { src: '/lab-screens/lab_lobby.jpg', title: 'THE LOBBY', caption: 'The lab lobby, where students choose a lesson.', alt: 'LaboraVR lab lobby' },
+  { src: '/lab-screens/lab_cations.jpg', title: 'CATION TESTS', caption: 'More cation tests: sodium hydroxide first, then ammonia, with the reagent key.', alt: 'Cation tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_anions.jpg', title: 'ANION TESTS', caption: 'The anion test bench.', alt: 'Anion tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_carbonate.jpg', title: 'CARBONATE TEST', caption: 'The carbonate test bench.', alt: 'Carbonate test bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_ammonia.jpg', title: 'AMMONIA TEST', caption: 'The ammonia test bench.', alt: 'Ammonia test bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_sulfite.jpg', title: 'SULFITE TEST', caption: 'The sulfite test bench.', alt: 'Sulfite test bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_physics_clean.jpg', title: 'PHYSICS', caption: 'The period of a pendulum: timing ten swings and recording the results.', alt: 'Pendulum practical table in the LaboraVR lab' },
+  { src: '/lab-screens/lab_biology_clean.jpg', title: 'BIOLOGY', caption: 'Osmosis in potato discs: measuring the lengths of the discs in each salt solution.', alt: 'Osmosis in potato discs practical table in the LaboraVR lab' },
+];
+
 export default function Labs() {
   return (
     <>
       <Seo
         title="The labs — LaboraVR"
-        description="Chemistry, physics and biology practicals in virtual reality, built around existing university syllabuses."
+        description="Chemistry, physics and biology practicals in virtual reality, built around existing school and university syllabuses."
       />
       <Navbar />
 
@@ -81,12 +101,12 @@ export default function Labs() {
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute top-1/4 left-0 w-[40rem] h-[40rem] bg-[radial-gradient(circle,rgba(124,92,255,0.07),transparent_60%)] blur-3xl" />
           <div className="absolute bottom-0 right-0 w-[32rem] h-[32rem] bg-[radial-gradient(circle,rgba(34,211,238,0.05),transparent_60%)] blur-3xl" />
-          <div className="grid-reticle absolute inset-0 opacity-20" />
+          <div className="grid-reticle absolute inset-0 opacity-10" />
         </div>
         <div className="max-w-6xl mx-auto px-6 space-y-6">
           {labs.map((lab, i) => (
             <ScrollReveal key={lab.name}>
-              <GlowCard innerClassName="p-0 overflow-hidden">
+              <GlowCard className="lift-hover" innerClassName="p-0 overflow-hidden">
                 <div className="grid md:grid-cols-[1fr_1fr]">
                   {/* Left: info */}
                   <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-edge">
@@ -180,7 +200,7 @@ export default function Labs() {
         <div className="max-w-6xl mx-auto px-6">
           <ScrollReveal>
             <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-4">SEE THE CHEMISTRY LAB</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-8">
               From the bench to the mark scheme.
             </h2>
           </ScrollReveal>
@@ -197,6 +217,38 @@ export default function Labs() {
               <Lab360 {...films.lab360} />
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Screens from the lab build */}
+      <section className="relative bg-void py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <ScrollReveal>
+            <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-4">INSIDE THE BUILD</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-8">
+              Real screens from the chemistry, physics and biology practicals.
+            </h2>
+          </ScrollReveal>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {labScreens.map((shot) => (
+              <ScrollReveal key={shot.src}>
+                <figure className="lift-hover overflow-hidden rounded-2xl border border-edge bg-panel">
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    loading="lazy"
+                    width="1600"
+                    height="900"
+                    className="aspect-video w-full object-cover bg-void"
+                  />
+                  <figcaption className="px-5 py-4">
+                    <p className="font-mono text-[11px] tracking-[0.2em] text-uv">{shot.title}</p>
+                    <p className="mt-2 text-sm text-chalk-dim">{shot.caption}</p>
+                  </figcaption>
+                </figure>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 

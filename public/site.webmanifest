@@ -1,7 +1,7 @@
 {
   "name": "LaboraVR",
   "short_name": "LaboraVR",
-  "description": "Virtual reality science labs for African universities.",
+  "description": "Virtual reality science labs for schools and universities.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0A0B10",

@@ -32,7 +32,7 @@ const roadmap = [
     status: 'done',
     period: 'NOW',
     title: 'Chemistry Lab — Titration',
-    desc: 'Acid–base titration practical built and running on Meta Quest. Actively being refined with early testers.',
+    desc: 'Acid–base titration practical, in active development and being refined.',
   },
   {
     status: 'active',
@@ -71,27 +71,30 @@ export default function About() {
     <>
       <Seo
         title="About — LaboraVR"
-        description="Why LaboraVR exists: closing the practical science gap in African universities."
+        description="Why LaboraVR exists: closing the practical science gap in schools and universities."
       />
       <Navbar />
 
       <PageHeader
         eyebrow="ABOUT"
         title="Bright students, empty benches."
-        intro="LaboraVR is being built in Ghana, for Ghanaian universities first."
+        intro="LaboraVR is being built in Ghana, for schools and universities on Cambridge IGCSE, A Levels, WASSCE and similar curricula."
       />
 
       {/* Full-bleed students photo */}
       <ScrollReveal>
         <section className="relative bg-void">
           <div className="relative h-[280px] md:h-[460px] w-full overflow-hidden">
-            <Image
-              src="/images/african_student_vr.jpg"
-              alt="Young African university student wearing a VR headset, engaged in a virtual science practical"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover saturate-[0.85] contrast-[1.05]"
+            <video
+              src="/lab-screens/hero-loop.webm"
+              poster="/lab-screens/hero-loop-poster.jpg"
+              aria-label="A slow view of a LaboraVR chemistry practical"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="absolute inset-0 w-full h-full object-cover saturate-[0.9] contrast-[1.05]"
             />
             <div className="absolute inset-0 bg-void/40" />
             <div className="absolute inset-0 bg-gradient-to-t from-void via-void/10 to-void/50" />
@@ -117,7 +120,7 @@ export default function About() {
           <div className="max-w-3xl mx-auto px-6">
             <div className="space-y-7 text-lg text-muted leading-relaxed">
               <p>
-                Across African universities, science departments teach practical
+                Across schools and universities, science departments teach practical
                 subjects to students who rarely get to practise. Equipment is
                 expensive, reagents run out, and one working lab has to serve
                 hundreds of people. What gets cut first is the part where a
@@ -232,7 +235,7 @@ export default function About() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">ROADMAP</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest leading-[1.05] mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05] mb-16">
               <span className="text-chalk">What&apos;s built. </span>
               <span className="gradient-text">What&apos;s next.</span>
             </h2>
@@ -303,7 +306,7 @@ export default function About() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">HOW WE WORK</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest leading-[1.05] mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05] mb-16">
               <span className="gradient-text">Three things</span>
               <span className="text-chalk"> we hold to.</span>
             </h2>
