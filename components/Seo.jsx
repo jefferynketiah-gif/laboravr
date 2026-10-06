@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const SITE = 'https://laboravr.com';
-const DEFAULT_OG = `${SITE}/og-image.png`;
+const DEFAULT_OG = `${SITE}/og-v2.png`;
 
 export default function Seo({ title, description, image }) {
   const { asPath } = useRouter();
@@ -13,6 +13,10 @@ export default function Seo({ title, description, image }) {
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {/* Favicons */}
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="apple-touch-icon" href="/brand/laboravr-icon.svg" />
       <link rel="canonical" href={url} />
 
       {/* Open Graph — WhatsApp, LinkedIn, Facebook */}

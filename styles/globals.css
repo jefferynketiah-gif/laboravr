@@ -2,33 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Custom properties ──────────────────────────────────── */
+:root {
+  --uv: 124, 92, 255;
+  --cyan: 34, 211, 238;
+  --magenta: 232, 121, 249;
+  --glow-spread: 0 0 60px rgba(var(--uv), 0.35), 0 0 120px rgba(var(--uv), 0.12);
+  --glow-tight:  0 0 20px rgba(var(--uv), 0.5), 0 0 40px rgba(var(--uv), 0.2);
+}
+
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
   background-color: #0A0B10;
 }
 
-/* ── Calibration grid ─────────────────────────────────────── */
-.grid-reticle {
-  background-image:
-    linear-gradient(to right, rgba(124, 92, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(124, 92, 255, 0.07) 1px, transparent 1px);
-  background-size: 80px 80px;
+/* ── Gradient text ────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #E8E9F0 0%, #B8A0FF 45%, #7C5CFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* ── Film grain ───────────────────────────────────────────── */
+.gradient-text-warm {
+  background: linear-gradient(135deg, #E8E9F0 0%, #C4A0FF 50%, #E879F9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glassmorphism ────────────────────────────────────────── */
+.glass {
+  background: rgba(18, 20, 28, 0.65);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(var(--uv), 0.15);
+}
+
+.glass-subtle {
+  background: rgba(18, 20, 28, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Glow border ──────────────────────────────────────────── */
+.glow-ring {
+  box-shadow: 0 0 0 1px rgba(var(--uv), 0.4), var(--glow-spread);
+}
+
+.glow-ring-tight {
+  box-shadow: 0 0 0 1px rgba(var(--uv), 0.5), var(--glow-tight);
+}
+
+/* ── Noise / grain ────────────────────────────────────────── */
 .grain::after {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ── Volumetric light ─────────────────────────────────────── */
+/* ── Calibration grid ─────────────────────────────────────── */
+.grid-reticle {
+  background-image:
+    linear-gradient(to right, rgba(var(--uv), 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--uv), 0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* ── Aurora / volumetric light ────────────────────────────── */
 .aurora-blob {
   position: absolute;
   border-radius: 9999px;
@@ -37,46 +86,59 @@ body {
 }
 
 .aurora-a {
-  width: 46rem;
-  height: 40rem;
-  top: -8rem;
-  right: -6rem;
-  background: radial-gradient(circle, rgba(124, 92, 255, 0.55), transparent 68%);
+  width: 52rem;
+  height: 46rem;
+  top: -10rem;
+  right: -8rem;
+  background: radial-gradient(circle, rgba(var(--uv), 0.6), transparent 68%);
   animation: drift-a 26s ease-in-out infinite alternate;
 }
 
 .aurora-b {
-  width: 40rem;
-  height: 34rem;
-  top: 8rem;
-  right: 14rem;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.28), transparent 68%);
+  width: 44rem;
+  height: 38rem;
+  top: 6rem;
+  right: 12rem;
+  background: radial-gradient(circle, rgba(var(--cyan), 0.3), transparent 68%);
   animation: drift-b 34s ease-in-out infinite alternate;
 }
 
 .aurora-c {
-  width: 28rem;
-  height: 26rem;
-  top: 16rem;
-  right: -2rem;
-  background: radial-gradient(circle, rgba(232, 121, 249, 0.3), transparent 68%);
+  width: 32rem;
+  height: 30rem;
+  top: 18rem;
+  right: -4rem;
+  background: radial-gradient(circle, rgba(var(--magenta), 0.32), transparent 68%);
   animation: drift-c 30s ease-in-out infinite alternate;
+}
+
+.aurora-d {
+  width: 28rem;
+  height: 24rem;
+  top: 28rem;
+  left: -6rem;
+  background: radial-gradient(circle, rgba(var(--uv), 0.2), transparent 68%);
+  animation: drift-d 38s ease-in-out infinite alternate;
 }
 
 @keyframes drift-a {
   from { transform: translate3d(0, 0, 0) scale(1); opacity: 0.9; }
-  to   { transform: translate3d(-5rem, 4rem, 0) scale(1.14); opacity: 1; }
+  to   { transform: translate3d(-6rem, 5rem, 0) scale(1.16); opacity: 1; }
 }
 @keyframes drift-b {
   from { transform: translate3d(0, 0, 0) scale(1.06); opacity: 0.7; }
-  to   { transform: translate3d(6rem, -3rem, 0) scale(0.92); opacity: 0.95; }
+  to   { transform: translate3d(7rem, -4rem, 0) scale(0.9); opacity: 1; }
 }
 @keyframes drift-c {
   from { transform: translate3d(0, 0, 0) scale(0.94); opacity: 0.75; }
-  to   { transform: translate3d(-4rem, -5rem, 0) scale(1.2); opacity: 1; }
+  to   { transform: translate3d(-5rem, -6rem, 0) scale(1.22); opacity: 1; }
+}
+@keyframes drift-d {
+  from { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; }
+  to   { transform: translate3d(4rem, 3rem, 0) scale(1.1); opacity: 0.8; }
 }
 
-/* Wordmark caret — slow blink, terminal-style */
+/* ── Wordmark caret ───────────────────────────────────────── */
 @keyframes caret {
   0%, 62%   { opacity: 1; }
   63%, 100% { opacity: 0.18; }
@@ -85,28 +147,110 @@ body {
   animation: caret 2.4s steps(1, end) infinite;
 }
 
-/* Horizon — light spilling up from a section edge */
+/* ── Horizon spill ────────────────────────────────────────── */
 .horizon {
   background: radial-gradient(
     ellipse 70% 100% at 50% 100%,
-    rgba(124, 92, 255, 0.22),
+    rgba(var(--uv), 0.22),
     transparent 70%
   );
 }
 
-/* Legacy bloom, still used behind the scroll sequence */
+/* ── Legacy bloom ─────────────────────────────────────────── */
 .uv-bloom {
   background: radial-gradient(
     circle at center,
-    rgba(124, 92, 255, 0.18) 0%,
-    rgba(124, 92, 255, 0.05) 40%,
+    rgba(var(--uv), 0.18) 0%,
+    rgba(var(--uv), 0.05) 40%,
     transparent 70%
   );
 }
 
+/* ── Shimmer animation (buttons, cards) ───────────────────── */
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to   { background-position: 200% center; }
+}
+.shimmer-hover {
+  background-size: 200% auto;
+  transition: background-position 0s;
+}
+.shimmer-hover:hover {
+  animation: shimmer 1.4s linear infinite;
+}
+
+/* ── Scan line (preloader) ────────────────────────────────── */
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(100vh); }
+}
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(var(--uv), 0.6) 30%,
+    rgba(var(--uv), 0.9) 50%,
+    rgba(var(--uv), 0.6) 70%,
+    transparent
+  );
+  animation: scan 2.8s linear infinite;
+  pointer-events: none;
+}
+
+/* ── Pulse ring (status badges) ──────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.8; }
+  70%  { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(var(--uv), 0.5);
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* ── Glow button ──────────────────────────────────────────── */
+.btn-glow {
+  box-shadow: 0 8px 40px -8px rgba(var(--uv), 0.65);
+  transition: box-shadow 0.25s ease, background-color 0.2s ease, transform 0.15s ease;
+}
+.btn-glow:hover {
+  box-shadow: 0 12px 55px -6px rgba(var(--uv), 0.9);
+  transform: translateY(-1px);
+}
+.btn-glow:active {
+  transform: translateY(0);
+}
+
+/* ── Roadmap connector line ───────────────────────────────── */
+.timeline-line::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 20px;
+  bottom: -20px;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(var(--uv), 0.5), rgba(var(--uv), 0.05));
+}
+
+/* ── Reduced motion ───────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .aurora-blob, .animate-caret { animation: none !important; }
+  .aurora-blob,
+  .animate-caret,
+  .scan-line,
+  .shimmer-hover:hover,
+  .btn-glow,
+  .btn-glow:hover {
+    animation: none !important;
+    transform: none !important;
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;

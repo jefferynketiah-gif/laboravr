@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LaboraVR – the lab in 360°</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <style>
+    html, body { margin: 0; height: 100%; background: #0A0B10; font-family: system-ui, sans-serif; }
+    #hint {
+      position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+      background: rgba(18, 20, 28, .82); color: #E8E9F0; padding: 9px 16px; border-radius: 999px;
+      font-size: 14px; pointer-events: none; transition: opacity .6s; z-index: 5;
+    }
+    #play {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column;
+      background: rgba(10, 11, 16, .6); color: #E8E9F0; cursor: pointer; z-index: 10; gap: 12px;
+    }
+    #play button {
+      font-size: 18px; padding: 12px 28px; border: 0; border-radius: 999px; background: #7C5CFF; color: #fff; cursor: pointer;
+    }
+    #err { display: none; position: fixed; inset: 0; align-items: center; justify-content: center; color: #B0B4C8; z-index: 11; padding: 24px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div id="play">
+    <button>▶ Enter the lab</button>
+    <span>Drag to look around</span>
+  </div>
+  <div id="hint">Drag to look around · scroll or pinch to zoom</div>
+  <div id="err">The 360° film could not be loaded. Please try again later.</div>
+
+  <a-scene embedded vr-mode-ui="enabled: true" device-orientation-permission-ui="enabled: true">
+    <a-assets>
+      <!-- Hosted on Cloudflare R2. Change this address when a custom media domain is connected. -->
+      <video id="film" src="https://pub-7ec837506c4d4d0a8c05482fc32de42c.r2.dev/laboravr-360-cation-tests.mp4"
+             crossorigin="anonymous" playsinline webkit-playsinline loop preload="metadata"></video>
+    </a-assets>
+    <a-videosphere src="#film" rotation="0 -90 0"></a-videosphere>
+    <a-camera look-controls="reverseMouseDrag: false" wasd-controls-enabled="false"></a-camera>
+  </a-scene>
+
+  <script>
+    const film = document.getElementById('film');
+    const overlay = document.getElementById('play');
+    overlay.addEventListener('click', () => { film.play(); overlay.style.display = 'none'; });
+    film.addEventListener('error', () => { document.getElementById('err').style.display = 'flex'; overlay.style.display = 'none'; });
+    setTimeout(() => { document.getElementById('hint').style.opacity = 0; }, 9000);
+
+    // On a portrait phone the horizontal view is very narrow at the normal field of view,
+    // so start wider there. Vertical FOV is what A-Frame sets, so portrait needs a larger value.
+    const camera = () => document.querySelector('a-camera').getObject3D('camera');
+    const baseFov = () => (innerHeight > innerWidth ? 110 : 80);
+    function setBaseFov() {
+      const cam = camera();
+      if (!cam) return;
+      cam.fov = baseFov();
+      cam.updateProjectionMatrix();
+    }
+    document.querySelector('a-scene').addEventListener('loaded', setBaseFov);
+    window.addEventListener('resize', setBaseFov);
+
+    // Scroll or pinch to zoom.
+    window.addEventListener('wheel', (e) => {
+      const cam = camera();
+      if (!cam) return;
+      cam.fov = Math.min(115, Math.max(35, cam.fov + e.deltaY * 0.04));
+      cam.updateProjectionMatrix();
+    }, { passive: true });
+  </script>
+</body>
+</html>

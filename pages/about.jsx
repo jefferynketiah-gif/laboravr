@@ -1,11 +1,13 @@
 import Seo from '../components/Seo';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
+import GlowCard from '../components/GlowCard';
 
 const principles = [
   {
@@ -25,6 +27,45 @@ const principles = [
   },
 ];
 
+const roadmap = [
+  {
+    status: 'done',
+    period: 'NOW',
+    title: 'Chemistry Lab — Titration',
+    desc: 'Acid–base titration practical built and running on Meta Quest. Actively being refined with early testers.',
+  },
+  {
+    status: 'active',
+    period: 'Q1 2027',
+    title: 'Chemistry Lab — Full Module',
+    desc: 'Rates of reaction, qualitative analysis, and organic synthesis added. Pilot programme with first universities.',
+  },
+  {
+    status: 'upcoming',
+    period: 'Q3 2027',
+    title: 'Physics Lab',
+    desc: 'Mechanics, optics and circuits. Apparatus that never drifts out of calibration.',
+  },
+  {
+    status: 'upcoming',
+    period: 'Q1 2028',
+    title: 'Biology Lab',
+    desc: 'Microscopy, dissection and cell biology without specimen cost or ethical constraints.',
+  },
+  {
+    status: 'upcoming',
+    period: 'LATE 2028',
+    title: 'Multi-user Mode',
+    desc: 'Shared virtual lab sessions — demonstrators and students in the same environment simultaneously.',
+  },
+];
+
+const statusStyles = {
+  done:     { dot: 'bg-uv', line: 'bg-uv/50', label: 'text-uv', border: 'border-uv/30' },
+  active:   { dot: 'bg-glow-cyan', line: 'bg-glow-cyan/30', label: 'text-glow-cyan', border: 'border-glow-cyan/30' },
+  upcoming: { dot: 'bg-edge-bright', line: 'bg-edge', label: 'text-muted', border: 'border-edge' },
+};
+
 export default function About() {
   return (
     <>
@@ -32,7 +73,6 @@ export default function About() {
         title="About — LaboraVR"
         description="Why LaboraVR exists: closing the practical science gap in African universities."
       />
-
       <Navbar />
 
       <PageHeader
@@ -41,27 +81,39 @@ export default function About() {
         intro="LaboraVR is being built in Ghana, for Ghanaian universities first."
       />
 
-      {/* Full-bleed band — the people this is for */}
+      {/* Full-bleed students photo */}
       <ScrollReveal>
         <section className="relative bg-void">
-          <div className="relative h-[280px] md:h-[440px] w-full overflow-hidden">
+          <div className="relative h-[280px] md:h-[460px] w-full overflow-hidden">
             <Image
-              src="/images/students.png"
-              alt="Four university students working together over laptops and notes outdoors on campus"
+              src="/images/african_student_vr.jpg"
+              alt="Young African university student wearing a VR headset, engaged in a virtual science practical"
               fill
               priority
               sizes="100vw"
-              className="object-cover saturate-[0.75] contrast-[1.05]"
+              className="object-cover saturate-[0.85] contrast-[1.05]"
             />
-            {/* Tint the photo into the palette instead of letting it sit on top of it */}
-            <div className="absolute inset-0 bg-void/45" />
-            <div className="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-void/60" />
+            <div className="absolute inset-0 bg-void/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-void via-void/10 to-void/50" />
+            {/* Overlay text */}
+            <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
+              <p className="font-mono text-[10px] tracking-[0.2em] text-uv/80 mb-2">ACCRA, GHANA</p>
+              <p className="text-chalk text-xl md:text-3xl font-extrabold tracking-tightest max-w-md leading-tight">
+                The students who deserve to do science.
+              </p>
+            </div>
           </div>
         </section>
       </ScrollReveal>
 
+      {/* Body copy */}
       <ScrollReveal>
-        <section className="bg-void grain py-20 md:py-28">
+        <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute top-0 right-0 w-[42rem] h-[42rem] bg-[radial-gradient(circle,rgba(124,92,255,0.08),transparent_60%)] blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-[radial-gradient(circle,rgba(34,211,238,0.05),transparent_60%)] blur-3xl" />
+            <div className="grid-reticle absolute inset-0 opacity-20" />
+          </div>
           <div className="max-w-3xl mx-auto px-6">
             <div className="space-y-7 text-lg text-muted leading-relaxed">
               <p>
@@ -84,7 +136,7 @@ export default function About() {
                 syllabuses ours do not follow. LaboraVR is the version built
                 here, for here.
               </p>
-              <p className="text-chalk">
+              <p className="text-chalk font-medium border-l-2 border-uv pl-6 py-1">
                 It is early. We are looking for the first departments willing to
                 shape it.
               </p>
@@ -95,86 +147,200 @@ export default function About() {
 
       {/* Founder */}
       <ScrollReveal>
-        <section className="bg-panel py-20 md:py-28">
-          <div className="max-w-4xl mx-auto px-6">
-            <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-10">
-              WHO IS BUILDING THIS
-            </p>
+        <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="aurora-blob aurora-d opacity-15" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-[20rem] bg-[radial-gradient(ellipse,rgba(124,92,255,0.07),transparent_60%)] blur-3xl" />
+            <div className="grid-reticle absolute inset-0 opacity-20" />
+          </div>
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="flex items-center gap-3 mb-10">
+              <span className="w-6 h-px bg-uv" />
+              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">WHO IS BUILDING THIS</p>
+            </div>
 
-            <div className="grid sm:grid-cols-[220px_1fr] gap-10 items-start">
-              <div className="relative w-[200px] h-[250px] sm:w-full sm:h-[275px] overflow-hidden rounded-md border border-edge">
-                <Image
-                  src="/images/Founder.jpg"
-                  alt="Portrait of the founder of LaboraVR"
-                  fill
-                  sizes="(max-width: 640px) 200px, 220px"
-                  className="object-cover grayscale contrast-[1.1]"
-                />
-                <div className="absolute inset-0 bg-uv/10 mix-blend-color" />
+            <GlowCard innerClassName="p-8 md:p-12">
+              <div className="grid sm:grid-cols-[240px_1fr] gap-10 items-start">
+                {/* Photo */}
+                <div className="relative w-[200px] sm:w-full overflow-hidden rounded-2xl border border-edge" style={{ aspectRatio: '3/4' }}>
+                  <Image
+                    src="/images/Founder.jpg"
+                    alt="Portrait of Jeffery Nketiah, founder of LaboraVR"
+                    fill
+                    sizes="(max-width: 640px) 200px, 240px"
+                    className="object-cover grayscale contrast-[1.1]"
+                  />
+                  <div className="absolute inset-0 bg-uv/10 mix-blend-color" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent" />
+                </div>
+
+                {/* Bio */}
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-extrabold tracking-tightest text-chalk mb-1">
+                    Jeffery Nketiah
+                  </h2>
+                  <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-2">
+                    FOUNDER — DEVELOPER
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-[0.15em] text-muted border border-edge rounded-full px-3 py-1 mb-6">
+                    🇬🇭 BASED IN GHANA
+                  </span>
+                  <p className="text-muted leading-relaxed max-w-lg mb-5">
+                    LaboraVR is a one-person company right now. I write the code,
+                    build the simulations, and sit in the meetings — which means
+                    when a department tells me something is wrong, it gets changed
+                    by the person who built it.
+                  </p>
+                  <p className="text-muted leading-relaxed max-w-lg mb-8">
+                    If you run a science department in Ghana, I&apos;d rather hear
+                    what you actually need than guess at it.
+                  </p>
+                  {/* Social stubs */}
+                  <div className="flex gap-3">
+                    <a
+                      href="https://www.linkedin.com/in/jefferynketiah20"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-mono text-[10px] tracking-[0.15em] text-muted hover:text-uv border border-edge hover:border-uv/40 px-3 py-2 rounded-lg transition-colors"
+                    >
+                      LINKEDIN
+                    </a>
+                    <a
+                      href="mailto:hello@laboravr.com"
+                      className="font-mono text-[10px] tracking-[0.15em] text-muted hover:text-uv border border-edge hover:border-uv/40 px-3 py-2 rounded-lg transition-colors"
+                    >
+                      EMAIL
+                    </a>
+                  </div>
+                </div>
               </div>
+            </GlowCard>
+          </div>
+        </section>
+      </ScrollReveal>
 
-              <div>
-                <h2 className="text-2xl md:text-3xl font-extrabold tracking-tightest text-chalk mb-1">
-                  Jeffery Nketiah
-                </h2>
-                <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-6">
-                  FOUNDER — DEVELOPER
-                </p>
-                <p className="text-muted leading-relaxed max-w-lg mb-5">
-                  LaboraVR is a one-person company right now. I write the code,
-                  build the simulations, and sit in the meetings — which means
-                  when a department tells me something is wrong, it gets changed
-                  by the person who built it.
-                </p>
-                <p className="text-muted leading-relaxed max-w-lg">
-                  If you run a science department in Ghana, I&apos;d rather hear
-                  what you actually need than guess at it.
-                </p>
+      {/* Roadmap */}
+      <ScrollReveal>
+        <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute top-0 left-0 w-[50rem] h-[50rem] bg-[radial-gradient(circle,rgba(124,92,255,0.07),transparent_60%)] blur-3xl" />
+            <div className="absolute bottom-0 right-0 w-[35rem] h-[35rem] bg-[radial-gradient(circle,rgba(232,121,249,0.05),transparent_60%)] blur-3xl" />
+            <div className="grid-reticle absolute inset-0 opacity-20" />
+          </div>
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-6 h-px bg-uv" />
+              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">ROADMAP</p>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest leading-[1.05] mb-16">
+              <span className="text-chalk">What&apos;s built. </span>
+              <span className="gradient-text">What&apos;s next.</span>
+            </h2>
+
+            {/* Timeline */}
+            <div className="relative">
+              {/* Vertical connector */}
+              <div className="absolute left-[9px] top-5 bottom-5 w-px bg-gradient-to-b from-uv via-edge to-transparent" />
+
+              <div className="space-y-0">
+                {roadmap.map((item, i) => {
+                  const s = statusStyles[item.status];
+                  return (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, x: -16 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.08 }}
+                      className="relative flex gap-8 pb-10 last:pb-0"
+                    >
+                      {/* Dot */}
+                      <div className="relative flex-shrink-0 mt-1">
+                        <div className={`w-[18px] h-[18px] rounded-full border-2 border-void flex items-center justify-center ${s.dot}`} />
+                      </div>
+
+                      {/* Content */}
+                      <div className={`flex-1 pb-10 border-b last:border-0 ${
+                        item.status === 'upcoming' ? 'border-edge' : 'border-edge'
+                      }`}>
+                        <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                          <span className={`font-mono text-[9px] tracking-[0.18em] ${s.label}`}>
+                            {item.period}
+                          </span>
+                          {item.status === 'done' && (
+                            <span className="font-mono text-[9px] tracking-[0.15em] text-uv border border-uv/30 rounded px-2 py-0.5">
+                              COMPLETE
+                            </span>
+                          )}
+                          {item.status === 'active' && (
+                            <span className="font-mono text-[9px] tracking-[0.15em] text-glow-cyan border border-glow-cyan/30 rounded px-2 py-0.5 flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-glow-cyan animate-pulse" />
+                              IN PROGRESS
+                            </span>
+                          )}
+                        </div>
+                        <h3 className={`text-xl font-bold tracking-tightest mb-2 ${
+                          item.status === 'upcoming' ? 'text-chalk-dim' : 'text-chalk'
+                        }`}>
+                          {item.title}
+                        </h3>
+                        <p className="text-muted leading-relaxed max-w-xl">{item.desc}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </div>
         </section>
       </ScrollReveal>
 
+      {/* Principles */}
       <ScrollReveal>
-        <section className="bg-void grain py-20 md:py-28">
+        <section className="bg-panel py-20 md:py-28">
           <div className="max-w-6xl mx-auto px-6">
-            <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-5">
-              HOW WE WORK
-            </p>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05] mb-16">
-              Three things we hold to.
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-6 h-px bg-uv" />
+              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">HOW WE WORK</p>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest leading-[1.05] mb-16">
+              <span className="gradient-text">Three things</span>
+              <span className="text-chalk"> we hold to.</span>
             </h2>
 
-            <div className="border-t border-edge">
-              {principles.map((p) => (
-                <div
+            <div className="grid md:grid-cols-3 gap-4">
+              {principles.map((p, i) => (
+                <motion.div
                   key={p.code}
-                  className="grid md:grid-cols-[140px_1fr] gap-3 md:gap-10 py-9 border-b border-edge"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
-                  <p className="font-mono text-[11px] tracking-[0.18em] text-uv pt-1.5">
-                    {p.code}
-                  </p>
-                  <div>
-                    <h3 className="text-xl font-bold text-chalk mb-3">
+                  <GlowCard innerClassName="p-8 h-full flex flex-col">
+                    <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-4">
+                      {p.code}
+                    </p>
+                    <h3 className="text-xl font-bold text-chalk mb-3 leading-snug">
                       {p.title}
                     </h3>
-                    <p className="text-muted leading-relaxed max-w-2xl">
-                      {p.body}
-                    </p>
-                  </div>
-                </div>
+                    <p className="text-muted leading-relaxed flex-1">{p.body}</p>
+                  </GlowCard>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
       </ScrollReveal>
 
+      {/* CTA */}
       <ScrollReveal>
-        <section className="bg-panel py-24 md:py-32">
-          <div className="max-w-2xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk leading-[1.05]">
-              Work with us early.
+        <section className="relative bg-void grain py-24 md:py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_50%_60%,rgba(124,92,255,0.15),transparent)]" />
+          <div className="relative max-w-2xl mx-auto px-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
+              <span className="gradient-text">Work with us </span>
+              <span className="text-chalk">early.</span>
             </h2>
             <p className="mt-6 text-lg text-muted leading-relaxed">
               The first departments get the most say in what gets built.
@@ -182,7 +348,7 @@ export default function About() {
             <div className="mt-10">
               <Link
                 href="/contact"
-                className="inline-block bg-uv text-white px-8 py-4 rounded-md font-semibold hover:bg-[#6B4AF0] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
+                className="btn-glow inline-block bg-uv text-white px-10 py-4 rounded-xl font-semibold hover:bg-uv-bright transition-colors text-lg"
               >
                 Join the pilot
               </Link>
