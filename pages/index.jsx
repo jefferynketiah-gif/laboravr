@@ -107,7 +107,7 @@ export default function Home() {
     <>
       <Seo
         title="LaboraVR — The lab that never runs out"
-        description="Practical chemistry, physics and biology in virtual reality, for schools and universities on Cambridge IGCSE, A Levels, WASSCE and other curricula."
+        description="Practical chemistry, physics and biology in virtual reality, for schools and universities on Cambridge IGCSE and A Levels, with WASSCE coming next."
       />
       <Navbar />
       <CinematicHero />

@@ -78,7 +78,7 @@ export default function About() {
       <PageHeader
         eyebrow="ABOUT"
         title="Bright students, empty benches."
-        intro="LaboraVR is being built in Ghana, for schools and universities on Cambridge IGCSE, A Levels, WASSCE and similar curricula."
+        intro="LaboraVR is being built in Ghana, for schools and universities on Cambridge IGCSE and A Levels, with WASSCE coming next."
       />
 
       {/* Full-bleed students photo */}

@@ -166,7 +166,7 @@ export default function Contact() {
                   <option value="">Select a curriculum</option>
                   <option value="Cambridge IGCSE">Cambridge IGCSE</option>
                   <option value="A Levels">A Levels</option>
-                  <option value="WASSCE">WASSCE</option>
+                  <option value="WASSCE">WASSCE (coming next)</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
