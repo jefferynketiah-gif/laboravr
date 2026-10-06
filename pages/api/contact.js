@@ -1,5 +1,6 @@
 import { supabase } from '../../lib/supabase';
 import { confirmationEmail, escapeHtml } from '../../lib/contactEmails';
+import { sendViaResend } from '../../lib/resend';
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
@@ -58,11 +59,14 @@ export default async function handler(req, res) {
     console.error('Notification email error:', emailError.message);
   }
 
-  // 3. Automatic reply to the person who submitted, with the LaboraVR logo
+  // 3. Automatic reply to the person who submitted, sent from hello@laboravr.com through Resend.
+  // Replies go to your Gmail, so you still see anything they write back.
   try {
-    await transporter.sendMail({
-      ...confirmationEmail({ name, university, department, from: process.env.NOTIFY_EMAIL_USER }),
+    await sendViaResend({
+      from: 'LaboraVR <hello@laboravr.com>',
       to: email,
+      replyTo: process.env.NOTIFY_EMAIL_USER,
+      ...confirmationEmail({ name, university, department }),
     });
   } catch (replyError) {
     console.error('Confirmation email error:', replyError.message);
