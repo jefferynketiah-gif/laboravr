@@ -1,81 +1,113 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Aurora from './Aurora';
-import Scene3D from './Scene3D';
+import ParticleField from './ParticleField';
+import { ChevronDown } from 'lucide-react';
 
 const readouts = [
   { label: 'DISCIPLINES', value: 'Chemistry · Physics · Biology' },
-  { label: 'REPEATS', value: 'Unlimited' },
-  { label: 'CONSUMABLES', value: 'None' },
+  { label: 'REPEATS',     value: 'Unlimited'                      },
+  { label: 'CONSUMABLES', value: 'None'                           },
 ];
 
 export default function CinematicHero() {
   return (
-    <section className="relative overflow-hidden bg-void grain min-h-[92vh] flex flex-col justify-center">
-      {/* Light bed, behind everything */}
+    <section className="relative overflow-hidden bg-void grain min-h-[96vh] flex flex-col justify-center">
+      {/* Background layers */}
       <Aurora />
-      {/* Grid reads through the light */}
-      <div className="grid-reticle absolute inset-0 opacity-70" />
-      {/* Pull the edges back to black so the light feels contained */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_50%,transparent_30%,#0A0B10_88%)]" />
+      <div className="grid-reticle absolute inset-0 opacity-60" />
+      {/* Vignette */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_50%,transparent_25%,#0A0B10_85%)]" />
+      {/* Particles */}
+      <ParticleField count={55} className="opacity-70" />
 
-      {/* 3D layer — oversized and bled off the right edge */}
-      <div
-        className="absolute inset-y-0 right-[-20%] w-[110%] md:right-[-6%] md:w-[58%] opacity-80 md:opacity-100"
-        aria-hidden="true"
+      {/* Hero Video — right side */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute top-[-5vh] right-0 bottom-[-5vh] w-[100%] md:w-[75%] pointer-events-none z-0"
       >
-        <Scene3D />
-      </div>
+        <div className="relative w-full h-full">
+          {/* Ambient glow behind video */}
+          <div className="absolute inset-0 bg-uv/20 blur-[100px] rounded-full scale-100" />
+          
+          <div className="relative w-full h-full" style={{
+            maskImage: 'linear-gradient(to right, transparent 0%, black 35%), linear-gradient(to bottom, transparent 5%, black 25%, black 80%, transparent 100%)',
+            maskComposite: 'intersect',
+            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 35%), linear-gradient(to bottom, transparent 5%, black 25%, black 80%, transparent 100%)',
+            WebkitMaskComposite: 'source-in'
+          }}>
+            <video
+              src="/images/5043856-hd_1080_1920_30fps.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover object-[center_12%] opacity-85"
+            />
+          </div>
+        </div>
+        {/* Text protection gradient over the video */}
+        <div className="absolute inset-0 bg-gradient-to-r from-void via-void/90 to-transparent w-full md:w-[70%]" />
+      </motion.div>
 
       {/* Copy layer */}
-      <div className="relative max-w-6xl mx-auto px-6 w-full pt-32 pb-10 md:pt-24">
+      <div className="relative max-w-6xl mx-auto px-6 w-full pt-36 pb-12 md:pt-28">
         <div className="max-w-xl">
+          {/* Eyebrow */}
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-mono text-[11px] tracking-[0.2em] text-uv mb-6"
+            className="font-mono text-[11px] tracking-[0.2em] text-uv mb-6 flex items-center gap-3"
           >
+            <span className="w-6 h-px bg-uv inline-block" />
             LABORAVR — VIRTUAL LABORATORY SYSTEM
           </motion.p>
 
+          {/* Headline with gradient */}
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="text-[2.75rem] leading-[0.95] sm:text-6xl md:text-7xl font-extrabold tracking-tightest text-chalk [text-shadow:0_2px_40px_rgba(10,11,16,0.9)]"
+            transition={{ duration: 0.9, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[2.75rem] leading-[0.95] sm:text-6xl md:text-[5rem] font-extrabold tracking-tightest"
           >
-            The lab that
+            <span className="gradient-text">The lab that</span>
             <br />
-            never runs out.
+            <span className="text-chalk [text-shadow:0_2px_60px_rgba(124,92,255,0.4)]">
+              never runs out.
+            </span>
           </motion.h1>
 
+          {/* Sub-copy */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25 }}
-            className="mt-7 text-lg text-muted max-w-md leading-relaxed [text-shadow:0_1px_20px_rgba(10,11,16,0.9)]"
+            transition={{ duration: 0.8, delay: 0.28 }}
+            className="mt-7 text-lg text-muted max-w-md leading-relaxed [text-shadow:0_2px_12px_rgba(10,11,16,0.9)] relative z-10"
           >
             Practical chemistry, physics and biology in virtual reality — built
             for African universities, where an equipment budget shouldn&apos;t
             decide who gets to do science.
           </motion.p>
 
+          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.35 }}
+            transition={{ duration: 0.8, delay: 0.38 }}
             className="mt-10 flex flex-wrap gap-3"
           >
             <Link
               href="/contact"
-              className="bg-uv text-white px-7 py-3.5 rounded-md font-semibold shadow-[0_8px_40px_-8px_rgba(124,92,255,0.7)] hover:bg-[#6B4AF0] hover:shadow-[0_10px_50px_-6px_rgba(124,92,255,0.9)] transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
+              className="btn-glow bg-uv text-white px-8 py-4 rounded-xl font-semibold hover:bg-uv-bright transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
             >
               Join the pilot
             </Link>
             <Link
               href="/labs"
-              className="border border-edge bg-void/40 backdrop-blur-sm text-chalk px-7 py-3.5 rounded-md font-semibold hover:border-uv hover:text-uv transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
+              className="glass border border-edge text-chalk px-8 py-4 rounded-xl font-semibold hover:border-uv/50 hover:text-uv-bright transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
             >
               See the labs
             </Link>
@@ -87,26 +119,43 @@ export default function CinematicHero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.9, delay: 0.55 }}
+        transition={{ duration: 0.9, delay: 0.6 }}
         className="relative max-w-6xl mx-auto px-6 w-full"
       >
-        <div className="border-t border-edge grid grid-cols-1 sm:grid-cols-3 backdrop-blur-sm">
+        <div className="border-t border-edge grid grid-cols-1 sm:grid-cols-3 glass-subtle">
           {readouts.map((r) => (
             <div
               key={r.label}
-              className="py-5 sm:px-6 sm:first:pl-0 border-b sm:border-b-0 sm:border-r border-edge last:border-none"
+              className="py-5 sm:px-6 sm:first:pl-0 border-b sm:border-b-0 sm:border-r border-edge last:border-none group"
             >
               <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-1.5">
                 {r.label}
               </p>
-              <p className="text-sm text-chalk">{r.value}</p>
+              <p className="text-sm text-chalk-dim group-hover:text-chalk transition-colors">
+                {r.value}
+              </p>
             </div>
           ))}
         </div>
       </motion.div>
 
-      {/* Horizon spill into the next section */}
-      <div className="horizon pointer-events-none absolute bottom-0 left-0 right-0 h-40" />
+      {/* Horizon spill */}
+      <div className="horizon pointer-events-none absolute bottom-0 left-0 right-0 h-48" />
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 pointer-events-none"
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <ChevronDown size={18} className="text-uv/60" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

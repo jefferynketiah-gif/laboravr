@@ -1,54 +1,28 @@
-import { Suspense, useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, Environment } from '@react-three/drei';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
+import Image from 'next/image';
 
 const STAGES = [
   {
     n: '01',
     title: 'Put on the headset',
     body: 'Standalone hardware. No workstation, no cabling, no dedicated room — the lab goes where the students already are.',
+    image: '/images/pexels-areous-ahmad-843141-3175975.jpg'
   },
   {
     n: '02',
     title: 'Run the practical',
     body: 'The same procedure your syllabus specifies, with every instrument to hand and no queue for the one working set.',
+    image: '/images/chemistry.jpg'
   },
   {
     n: '03',
     title: 'Review the attempt',
     body: 'Every action is timestamped. Demonstrators see who understood the method and who arrived at the answer by luck.',
+    image: '/images/african_student_vr.jpg'
   },
 ];
 
-function Model({ progress }) {
-  const { scene } = useGLTF('/models/headset/scene.gltf');
-  const ref = useRef();
-
-  useFrame((state, delta) => {
-    if (!ref.current) return;
-    const p = progress.current;
-
-    // One full turn across the whole section, eased by scroll position
-    const targetRotY = p * Math.PI * 2;
-    ref.current.rotation.y += (targetRotY - ref.current.rotation.y) * Math.min(1, delta * 4);
-
-    // Tilt forward slightly as you descend
-    const targetRotX = p * 0.5 - 0.15;
-    ref.current.rotation.x += (targetRotX - ref.current.rotation.x) * Math.min(1, delta * 4);
-
-    // Push in, then settle back
-    const targetScale = 3.6 + Math.sin(p * Math.PI) * 1.1;
-    const s = ref.current.scale.x;
-    const next = s + (targetScale - s) * Math.min(1, delta * 4);
-    ref.current.scale.setScalar(next);
-
-    // Ambient float
-    ref.current.position.y = Math.sin(state.clock.elapsedTime * 0.45) * 0.06;
-  });
-
-  return <primitive ref={ref} object={scene} scale={3.6} />;
-}
 
 export default function ScrollSequence() {
   const sectionRef = useRef(null);
@@ -79,23 +53,35 @@ export default function ScrollSequence() {
           <div className="uv-bloom absolute inset-0" />
         </motion.div>
 
-        <div className="absolute inset-0">
-          <Canvas camera={{ position: [0, 0, 5], fov: 42 }} dpr={[1, 2]}>
-            <ambientLight intensity={0.85} />
-            <directionalLight position={[4, 5, 4]} intensity={2.2} color="#FFFFFF" />
-            <directionalLight position={[-3, 0, 3]} intensity={1} color="#B8BCD0" />
-            <directionalLight position={[-5, 2, -4]} intensity={4} color="#7C5CFF" />
-            <directionalLight position={[5, -1, -3]} intensity={2} color="#7C5CFF" />
-            <Suspense fallback={null}>
-              <Model progress={progress} />
-              <Environment preset="city" environmentIntensity={0.6} />
-            </Suspense>
-          </Canvas>
+        {/* Cross-fading Image Sequence Layer */}
+        <div className="absolute inset-0 right-0 md:left-[40%] lg:left-[38%] z-0 flex items-center justify-center p-6 md:p-12 lg:p-16">
+          <div className="relative w-full h-[50vh] md:h-[65vh] rounded-[2rem] overflow-hidden border border-edge shadow-2xl glow-ring">
+            {STAGES.map((s, i) => (
+              <motion.div
+                key={s.n}
+                initial={false}
+                animate={{
+                  opacity: stage === i ? 1 : 0,
+                  scale: stage === i ? 1 : 1.05,
+                }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                className="absolute inset-0"
+              >
+                <div className="absolute inset-0 bg-void/20 z-10 mix-blend-overlay" />
+                <Image
+                  src={s.image}
+                  alt={s.title}
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* Copy layer */}
-        <div className="relative h-full max-w-6xl mx-auto px-6 flex items-end md:items-center pb-20 md:pb-0 pointer-events-none">
-          <div className="w-full md:max-w-sm">
+        <div className="relative h-full max-w-6xl mx-auto px-6 flex items-end md:items-center pb-20 md:pb-0 pointer-events-none z-10">
+          <div className="w-full md:max-w-[300px] lg:max-w-sm pr-4 md:pr-8">
             <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-8">
               IN THE ROOM
             </p>

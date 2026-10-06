@@ -9,32 +9,25 @@ const BOOT_LINES = [
 ];
 
 export default function Preloader() {
-  const [done, setDone] = useState(true);
+  const [done, setDone]   = useState(true);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // Only run the sequence on the first visit of a session
-    const seen =
-      typeof window !== 'undefined' &&
-      window.sessionStorage.getItem('lv_booted');
-
-    const reduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const seen = typeof window !== 'undefined' && window.sessionStorage.getItem('lv_booted');
+    const reduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (seen || reduced) return;
 
     setDone(false);
     document.body.style.overflow = 'hidden';
 
-    const start = performance.now();
-    const DURATION = 1900;
+    const start    = performance.now();
+    const DURATION = 2000;
 
     let frame;
     const tick = (now) => {
-      const t = Math.min(1, (now - start) / DURATION);
-      // ease-out so it decelerates into 100
-      const eased = 1 - Math.pow(1 - t, 3);
+      const t      = Math.min(1, (now - start) / DURATION);
+      const eased  = 1 - Math.pow(1 - t, 3);
       setCount(Math.round(eased * 100));
       if (t < 1) {
         frame = requestAnimationFrame(tick);
@@ -43,56 +36,73 @@ export default function Preloader() {
         setTimeout(() => {
           setDone(true);
           document.body.style.overflow = '';
-        }, 380);
+        }, 420);
       }
     };
     frame = requestAnimationFrame(tick);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      document.body.style.overflow = '';
-    };
+    return () => { cancelAnimationFrame(frame); document.body.style.overflow = ''; };
   }, []);
 
-  const lineIndex = Math.min(
-    BOOT_LINES.length - 1,
-    Math.floor((count / 100) * BOOT_LINES.length)
-  );
+  const lineIndex = Math.min(BOOT_LINES.length - 1, Math.floor((count / 100) * BOOT_LINES.length));
 
   return (
     <AnimatePresence>
       {!done && (
         <motion.div
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.55, ease: [0.65, 0, 0.35, 1] }}
-          className="fixed inset-0 z-[999] bg-void flex flex-col justify-between p-6 md:p-10"
+          exit={{ opacity: 0, scale: 1.02 }}
+          transition={{ duration: 0.65, ease: [0.65, 0, 0.35, 1] }}
+          className="fixed inset-0 z-[999] bg-void flex flex-col justify-between p-6 md:p-10 overflow-hidden"
         >
-          <div className="grid-reticle absolute inset-0 opacity-60" />
+          {/* Background grid */}
+          <div className="grid-reticle absolute inset-0 opacity-50" />
 
-          <p className="relative font-mono text-[11px] tracking-[0.2em] text-uv">
+          {/* Scanning line */}
+          <div className="scan-line" />
+
+          {/* UV glow bloom */}
+          <div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full pointer-events-none"
+            style={{
+              background: `radial-gradient(circle, rgba(124,92,255,${count / 400}) 0%, transparent 70%)`,
+              transition: 'background 0.1s linear',
+            }}
+          />
+
+          {/* Top wordmark */}
+          <p className="relative font-mono text-[11px] tracking-[0.22em] text-uv">
             LABORAVR
           </p>
 
+          {/* Bottom counter */}
           <div className="relative">
-            <motion.p
-              key={lineIndex}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="font-mono text-[10px] tracking-[0.2em] text-muted mb-5"
-            >
-              {BOOT_LINES[lineIndex]}
-            </motion.p>
+            {/* Boot message */}
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={lineIndex}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="font-mono text-[10px] tracking-[0.22em] text-muted mb-5"
+              >
+                {BOOT_LINES[lineIndex]}
+              </motion.p>
+            </AnimatePresence>
 
-            <p className="font-mono text-6xl md:text-8xl text-chalk tabular-nums leading-none">
+            {/* Big counter */}
+            <p className="font-mono text-[5rem] md:text-[8rem] text-chalk tabular-nums leading-none [text-shadow:0_0_60px_rgba(124,92,255,0.5)]">
               {String(count).padStart(3, '0')}
             </p>
 
-            {/* Progress rule */}
-            <div className="mt-6 h-px w-full bg-edge relative overflow-hidden">
+            {/* Progress bar */}
+            <div className="relative mt-6 h-px w-full bg-edge overflow-hidden">
               <div
-                className="absolute inset-y-0 left-0 bg-uv"
-                style={{ width: `${count}%` }}
+                className="absolute inset-y-0 left-0 transition-all duration-75"
+                style={{
+                  width: `${count}%`,
+                  background: `linear-gradient(90deg, #4A3A99, #7C5CFF ${count}%, #9B80FF)`,
+                  boxShadow: '0 0 12px rgba(124,92,255,0.8)',
+                }}
               />
             </div>
           </div>

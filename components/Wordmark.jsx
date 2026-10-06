@@ -1,13 +1,48 @@
 /*
   The wordmark. "LABORA" in chalk, "VR" in UV — the split falls exactly where
   the name does, so the accent means something instead of decorating.
-  The caret is the same mark as the favicon, tying tab to page.
+
+  Two carets is one too many: when the mark is shown, the blinking caret is
+  suppressed automatically. Use <Wordmark showMark /> in the navbar and
+  <Wordmark /> where the wordmark stands alone.
+
+  tone="light" swaps the chalk for void on paper sections.
+  tone="mono"  renders single-ink, for stamps and university forms.
 */
-export default function Wordmark({ size = 'md', showCaret = true }) {
+export function Mark({ className = '', tone = 'dark' }) {
+  const ink = tone === 'light' ? '#0A0B10' : tone === 'mono' ? 'currentColor' : '#E8E9F0';
+  const uv = tone === 'mono' ? 'currentColor' : '#7C5CFF';
+  return (
+    <svg
+      viewBox="0 0 255 231"
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+    >
+      <rect x="0" y="0" width="46" height="231" fill={ink} />
+      <rect x="0" y="201" width="143" height="30" fill={ink} />
+      <rect x="179" y="14" width="76" height="153" fill={uv} />
+    </svg>
+  );
+}
+
+export default function Wordmark({
+  size = 'md',
+  showMark = false,
+  showCaret = true,
+  tone = 'dark',
+}) {
   const scale = {
     sm: 'text-base',
     md: 'text-xl',
     lg: 'text-3xl',
+  }[size];
+
+  // Mark height tracks cap height, not line height — 24px beside 20px type.
+  const markSize = {
+    sm: 'h-[15px]',
+    md: 'h-[22px]',
+    lg: 'h-[32px]',
   }[size];
 
   const caret = {
@@ -16,12 +51,19 @@ export default function Wordmark({ size = 'md', showCaret = true }) {
     lg: 'w-1.5 h-7',
   }[size];
 
+  const caretOn = showCaret && !showMark;
+
   return (
-    <span className={`inline-flex items-center gap-1.5 ${scale}`}>
-      <span className="font-extrabold tracking-tightest leading-none text-chalk">
-        Labora<span className="text-uv">VR</span>
+    <span className={`inline-flex items-center gap-2 ${scale}`}>
+      {showMark && <Mark tone={tone} className={`${markSize} w-auto`} />}
+      <span
+        className={`font-extrabold tracking-tightest leading-none ${
+          tone === 'light' ? 'text-void' : 'text-chalk'
+        }`}
+      >
+        Labora<span className={tone === 'mono' ? '' : 'text-uv'}>VR</span>
       </span>
-      {showCaret && (
+      {caretOn && (
         <span
           aria-hidden="true"
           className={`${caret} bg-uv rounded-[1px] animate-caret`}
