@@ -59,13 +59,12 @@ export default async function handler(req, res) {
     console.error('Notification email error:', emailError.message);
   }
 
-  // 3. Automatic reply to the person who submitted, sent from hello@laboravr.com through Resend.
-  // Replies go to your Gmail, so you still see anything they write back.
+  // 3. Automatic confirmation to the person who submitted, through Resend. It is a no-reply message:
+  // there is no Reply-To, so anything they send back goes nowhere and you contact them yourself.
   try {
     await sendViaResend({
-      from: 'LaboraVR <hello@laboravr.com>',
+      from: 'LaboraVR <noreply@laboravr.com>',
       to: email,
-      replyTo: process.env.NOTIFY_EMAIL_USER,
       ...confirmationEmail({ name, university, department }),
     });
   } catch (replyError) {
