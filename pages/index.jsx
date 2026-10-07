@@ -422,7 +422,12 @@ export default function Home() {
       {/* ── Close CTA ──────────────────────────────────────────── */}
       <ScrollReveal>
         <section className="relative bg-void grain py-24 md:py-36 overflow-hidden">
-          {/* Full-bleed gradient bg */}
+          {/* Full-bleed real photo, faded under the page so it reads as texture, not a photo */}
+          <div className="absolute inset-0">
+            <Image src="/lab-screens/lab_lobby.jpg" alt="" fill className="object-cover opacity-[0.3]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-void via-transparent to-void" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_62%_75%_at_50%_50%,rgba(255,255,255,0.92),transparent_72%)]" />
+          </div>
 
           <div className="relative max-w-3xl mx-auto px-6 text-center">
             <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-6">

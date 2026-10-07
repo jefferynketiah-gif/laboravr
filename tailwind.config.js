@@ -13,7 +13,7 @@ module.exports = {
       colors: {
         // clean & clinical, light base
         void:    '#FFFFFF',
-        panel:   '#F8FAFC',
+        panel:   '#EEF2F7',
         surface: '#FFFFFF',
         edge:    '#E2E8F0',
         'edge-bright': '#CBD5E1',
