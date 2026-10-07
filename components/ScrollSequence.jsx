@@ -103,7 +103,7 @@ export default function ScrollSequence() {
             {/* Stage rule */}
             <div className="mt-10 flex gap-2 w-40">
               {STAGES.map((s, i) => (
-                <div key={s.n} className="h-px flex-1 bg-edge relative overflow-hidden">
+                <div key={s.n} className="h-[3px] rounded-full flex-1 bg-edge-bright relative overflow-hidden">
                   <motion.div
                     className="absolute inset-0 bg-uv origin-left"
                     initial={false}

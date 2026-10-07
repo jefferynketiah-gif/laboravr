@@ -251,7 +251,7 @@ export default function Home() {
                         src={lab.image}
                         alt={`${lab.name} virtual lab`}
                         fill
-                        className="object-cover opacity-40 grayscale"
+                        className="object-cover opacity-65 grayscale"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-void/80 to-transparent" />
                     </div>
@@ -375,8 +375,8 @@ export default function Home() {
                     sizes="208px"
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent" />
-                  <p className="absolute bottom-2 left-0 right-0 text-center font-mono text-[9px] tracking-[0.15em] text-uv/80">
+                  <div className="absolute inset-0 bg-gradient-to-t from-chalk/75 to-transparent" />
+                  <p className="absolute bottom-2 left-0 right-0 text-center font-mono text-[9px] tracking-[0.15em] text-white">
                     BUILT IN UNITY 6
                   </p>
                 </div>
@@ -424,9 +424,9 @@ export default function Home() {
         <section className="relative bg-void grain py-24 md:py-36 overflow-hidden">
           {/* Full-bleed real photo, faded under the page so it reads as texture, not a photo */}
           <div className="absolute inset-0">
-            <Image src="/lab-screens/lab_lobby.jpg" alt="" fill className="object-cover opacity-[0.3]" />
+            <Image src="/lab-screens/student_start.jpg" alt="" fill className="object-cover opacity-[0.32]" />
             <div className="absolute inset-0 bg-gradient-to-b from-void via-transparent to-void" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_62%_75%_at_50%_50%,rgba(255,255,255,0.92),transparent_72%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_68%_88%_at_50%_50%,rgba(255,255,255,0.96),rgba(255,255,255,0.7)_45%,transparent_78%)]" />
           </div>
 
           <div className="relative max-w-3xl mx-auto px-6 text-center">

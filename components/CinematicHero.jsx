@@ -11,7 +11,6 @@ const readouts = [
 export default function CinematicHero() {
   return (
     <section className="relative overflow-hidden bg-void grain min-h-[96vh] flex flex-col justify-center">
-      <div className="mesh-hero" />
       {/* Hero Video — right side */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -45,6 +44,9 @@ export default function CinematicHero() {
         {/* Text protection gradient over the video */}
         <div className="absolute inset-0 bg-gradient-to-r from-void via-void/90 to-transparent w-full md:w-[70%]" />
       </motion.div>
+
+      {/* One soft gradient mesh above the video fade, so there is no seam */}
+      <div className="mesh-hero" />
 
       {/* Copy layer */}
       <div className="relative max-w-6xl mx-auto px-6 w-full pt-36 pb-12 md:pt-28">

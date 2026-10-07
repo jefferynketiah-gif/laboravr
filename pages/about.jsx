@@ -96,8 +96,7 @@ export default function About() {
               preload="metadata"
               className="absolute inset-0 w-full h-full object-cover saturate-[0.9] contrast-[1.05]"
             />
-            <div className="absolute inset-0 bg-void/40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-void via-void/10 to-void/50" />
+            <div className="absolute inset-0 bg-gradient-to-t from-void via-void/25 to-transparent" />
             {/* Overlay text */}
             <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
               <p className="font-mono text-[10px] tracking-[0.2em] text-uv/80 mb-2">ACCRA, GHANA</p>
@@ -266,7 +265,7 @@ export default function About() {
                           </span>
                           {item.status === 'done' && (
                             <span className="font-mono text-[9px] tracking-[0.15em] text-uv border border-uv/30 rounded px-2 py-0.5">
-                              COMPLETE
+                              WORKING DRAFT
                             </span>
                           )}
                           {item.status === 'active' && (

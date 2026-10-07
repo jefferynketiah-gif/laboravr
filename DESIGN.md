@@ -89,7 +89,9 @@ its own dark styling because it's read in an inbox, not on the site.
   hover-only.
 - `.mesh-hero` — the hero's static gradient mesh (blue + warm + teal radial
   gradients, no animation). This is the "one signature flourish." Use it
-  **only** in the hero. Don't copy it to every section.
+  **only** in the hero. Don't copy it to every section. In the DOM it must
+  sit *after* the hero video and its white fade panel, so it tints both;
+  placed before them, the fade panel covers it and leaves a visible seam.
 - `.grid-reticle` — a very faint technical grid texture, kept at low opacity
   (10–20%). Used sparingly (hero removed it; `PageHeader`, `404`, labs
   gallery intro section, `Navbar` mobile overlay, `ScrollSequence` still
@@ -149,6 +151,9 @@ animation class should be added to that list too.
   switch to the real media domain once it's connected (see `lib/media.js`).
 - Screenshots live in `public/lab-screens/` as optimized JPEGs (~120–180KB
   each, 1600px wide max). Convert new ones the same way before adding them.
+- Photo backgrounds behind text (e.g. the homepage's final CTA) must come
+  from a *calm* screenshot. A shot with a UI menu in the middle (like the
+  lobby) ghosts its text through the heading, even at low opacity.
 - Gallery captions (Labs page) describe what's on screen, nothing more —
   no claims about outcomes, correctness, or results. See §7.
 
@@ -187,8 +192,12 @@ animation class should be added to that list too.
   sometimes kept (not deleted) when there's a reasonable chance of reverting
   a direction. Check git history before deleting something that looks
   unused — it might be a recent, deliberate rollback point.
-- `pages/api/contact.js`'s email HTML keeps the old dark styling on
-  purpose (read in an inbox, separate medium from the site).
+- `pages/api/contact.js`'s email HTML (the notification sent to the
+  owner) keeps the old dark styling on purpose (read in an inbox, separate
+  medium from the site). The email visitors receive
+  (`lib/contactEmails.js`) is customer-facing, so it follows the light
+  theme. It loads its logo from the live site's `/icon-192.png`, so it
+  only shows the new blue icon once the new icons are deployed.
 - `public/360/index.html` is a standalone static page (the 360° viewer),
   not part of the Next.js app — it won't show up in a `pages`/`components`
   grep. It keeps a dark immersive-viewer background on purpose, but its
