@@ -54,19 +54,10 @@ export default function Preloader() {
           className="fixed inset-0 z-[999] bg-void flex flex-col justify-between p-6 md:p-10 overflow-hidden"
         >
           {/* Background grid */}
-          <div className="grid-reticle absolute inset-0 opacity-50" />
+          <div className="grid-reticle absolute inset-0 opacity-20" />
 
           {/* Scanning line */}
           <div className="scan-line" />
-
-          {/* UV glow bloom */}
-          <div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full pointer-events-none"
-            style={{
-              background: `radial-gradient(circle, rgba(124,92,255,${count / 400}) 0%, transparent 70%)`,
-              transition: 'background 0.1s linear',
-            }}
-          />
 
           {/* Top wordmark */}
           <p className="relative font-mono text-[11px] tracking-[0.22em] text-uv">
@@ -90,7 +81,7 @@ export default function Preloader() {
             </AnimatePresence>
 
             {/* Big counter */}
-            <p className="font-mono text-[5rem] md:text-[8rem] text-chalk tabular-nums leading-none [text-shadow:0_0_60px_rgba(124,92,255,0.5)]">
+            <p className="font-mono text-[5rem] md:text-[8rem] text-chalk tabular-nums leading-none">
               {String(count).padStart(3, '0')}
             </p>
 
@@ -100,8 +91,8 @@ export default function Preloader() {
                 className="absolute inset-y-0 left-0 transition-all duration-75"
                 style={{
                   width: `${count}%`,
-                  background: `linear-gradient(90deg, #4A3A99, #7C5CFF ${count}%, #9B80FF)`,
-                  boxShadow: '0 0 12px rgba(124,92,255,0.8)',
+                  background: `linear-gradient(90deg, #93C5FD, #2563EB ${count}%, #1D4ED8)`,
+                  boxShadow: '0 0 8px rgba(37,99,235,0.4)',
                 }}
               />
             </div>

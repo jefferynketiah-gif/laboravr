@@ -64,9 +64,6 @@ export default function Contact() {
       <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
         {/* Ambient glows */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="aurora-blob aurora-d opacity-20" />
-          <div className="absolute top-0 right-0 w-[36rem] h-[36rem] bg-[radial-gradient(circle,rgba(124,92,255,0.09),transparent_60%)] blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[28rem] h-[28rem] bg-[radial-gradient(circle,rgba(34,211,238,0.05),transparent_60%)] blur-3xl" />
           <div className="grid-reticle absolute inset-0 opacity-25" />
         </div>
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-[1fr_320px] gap-10">

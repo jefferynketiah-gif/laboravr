@@ -45,7 +45,7 @@ export default function Navbar() {
                   key={l.href}
                   href={l.href}
                   className="relative text-sm font-medium transition-colors duration-200 group"
-                  style={{ color: active ? '#E8E9F0' : '#6B6F80' }}
+                  style={{ color: active ? '#0F172A' : '#64748B' }}
                 >
                   {l.label}
                   {/* Active/hover underline */}
@@ -56,7 +56,7 @@ export default function Navbar() {
                   />
                   {/* Hover text colour */}
                   <style jsx>{`
-                    a:hover { color: #E8E9F0 !important; }
+                    a:hover { color: #0F172A !important; }
                   `}</style>
                 </Link>
               );
@@ -96,9 +96,7 @@ export default function Navbar() {
           transition={{ duration: 0.3 }}
           className="fixed inset-0 z-[60] bg-void/95 backdrop-blur-2xl flex flex-col"
         >
-          {/* Aurora accent top-right */}
-          <div className="aurora-blob aurora-a opacity-30 pointer-events-none" />
-          <div className="grid-reticle absolute inset-0 opacity-40 pointer-events-none" />
+          <div className="grid-reticle absolute inset-0 opacity-15 pointer-events-none" />
 
           <div className="relative flex justify-between items-center px-6 pt-4 pb-8 border-b border-edge">
             <Wordmark size="md" showMark />

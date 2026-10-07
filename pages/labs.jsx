@@ -18,7 +18,7 @@ const labs = [
     name: 'Chemistry',
     status: 'IN DEVELOPMENT',
     active: true,
-    colour: '#7C5CFF',
+    colour: '#2563EB',
     thesis:
       'The discipline where the gap between reading a method and running it is widest — and where a mistake in the real lab is expensive or dangerous.',
     practicals: [
@@ -33,7 +33,7 @@ const labs = [
     name: 'Physics',
     status: 'PLANNED — 2027',
     active: false,
-    colour: '#22D3EE',
+    colour: '#0D9488',
     thesis:
       'Apparatus that never drifts out of calibration, never goes missing, and lets a student repeat a measurement until the method makes sense.',
     practicals: [
@@ -48,7 +48,7 @@ const labs = [
     name: 'Biology',
     status: 'PLANNED — 2028',
     active: false,
-    colour: '#E879F9',
+    colour: '#7C3AED',
     thesis:
       'Specimens and prepared slides cost money and run out. Here they don\'t, and dissection carries no ethical cost.',
     practicals: [
@@ -101,8 +101,6 @@ export default function Labs() {
       <section className="relative bg-void grain py-12 md:py-16 overflow-hidden">
         {/* Ambient depth */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute top-1/4 left-0 w-[40rem] h-[40rem] bg-[radial-gradient(circle,rgba(124,92,255,0.07),transparent_60%)] blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-[32rem] h-[32rem] bg-[radial-gradient(circle,rgba(34,211,238,0.05),transparent_60%)] blur-3xl" />
           <div className="grid-reticle absolute inset-0 opacity-10" />
         </div>
         <div className="max-w-6xl mx-auto px-6 space-y-6">
@@ -137,8 +135,8 @@ export default function Labs() {
                         <span
                           className="font-mono text-[9px] tracking-[0.18em] border rounded px-2.5 py-1"
                           style={{
-                            color: lab.active ? '#7C5CFF' : '#6B6F80',
-                            borderColor: lab.active ? 'rgba(124,92,255,0.35)' : '#1F2230',
+                            color: lab.active ? '#2563EB' : '#64748B',
+                            borderColor: lab.active ? 'rgba(37,99,235,0.35)' : '#E2E8F0',
                           }}
                         >
                           {lab.status}
@@ -173,13 +171,13 @@ export default function Labs() {
                           <span
                             className="mt-0.5 flex-shrink-0 w-4 h-4 rounded flex items-center justify-center border transition-colors"
                             style={{
-                              borderColor: lab.active ? 'rgba(124,92,255,0.4)' : '#1F2230',
-                              background:  lab.active ? 'rgba(124,92,255,0.12)' : 'transparent',
+                              borderColor: lab.active ? 'rgba(37,99,235,0.4)' : '#E2E8F0',
+                              background:  lab.active ? 'rgba(37,99,235,0.12)' : 'transparent',
                             }}
                           >
                             {lab.active && (
                               <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
-                                <path d="M1 3L3 5L7 1" stroke="#7C5CFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M1 3L3 5L7 1" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                               </svg>
                             )}
                           </span>
@@ -257,7 +255,6 @@ export default function Labs() {
       {/* CTA */}
       <ScrollReveal>
         <section className="relative bg-panel py-24 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_50%_60%,rgba(124,92,255,0.1),transparent)]" />
           <div className="relative max-w-2xl mx-auto px-6 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
               <span className="text-chalk">Something missing </span>

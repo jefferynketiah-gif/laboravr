@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import Image from 'next/image';
 
 const STAGES = [
@@ -40,18 +40,10 @@ export default function ScrollSequence() {
     setStage((prev) => (prev === next ? prev : next));
   });
 
-  const bloom = useTransform(scrollYProgress, [0, 0.5, 1], [0.35, 1, 0.35]);
-
   return (
     <section ref={sectionRef} className="relative bg-void" style={{ height: '320vh' }}>
-      <div className="sticky top-0 h-screen overflow-hidden grain">
-        <div className="grid-reticle absolute inset-0 opacity-70" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,#0A0B10_80%)]" />
-
-        {/* 3D layer */}
-        <motion.div className="absolute inset-0" style={{ opacity: bloom }}>
-          <div className="uv-bloom absolute inset-0" />
-        </motion.div>
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <div className="grid-reticle absolute inset-0 opacity-15" />
 
         {/* Cross-fading Image Sequence Layer */}
         <div className="absolute inset-0 right-0 md:left-[40%] lg:left-[38%] z-0 flex items-center justify-center p-6 md:p-12 lg:p-16">
@@ -67,7 +59,6 @@ export default function ScrollSequence() {
                 transition={{ duration: 0.8, ease: 'easeOut' }}
                 className="absolute inset-0"
               >
-                <div className="absolute inset-0 bg-void/20 z-10 mix-blend-overlay" />
                 <Image
                   src={s.image}
                   alt={s.title}

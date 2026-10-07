@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import Aurora from './Aurora';
-import ParticleField from './ParticleField';
 import { ChevronDown } from 'lucide-react';
 
 const readouts = [
@@ -13,13 +11,6 @@ const readouts = [
 export default function CinematicHero() {
   return (
     <section className="relative overflow-hidden bg-void grain min-h-[96vh] flex flex-col justify-center">
-      {/* Background layers */}
-      <Aurora />
-            {/* Vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_50%,transparent_25%,#0A0B10_85%)]" />
-      {/* Particles */}
-      <ParticleField count={28} className="opacity-70" />
-
       {/* Hero Video — right side */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -77,7 +68,7 @@ export default function CinematicHero() {
           >
             <span className="gradient-text">The lab that</span>
             <br />
-            <span className="text-chalk [text-shadow:0_2px_60px_rgba(124,92,255,0.4)]">
+            <span className="text-chalk">
               never runs out.
             </span>
           </motion.h1>

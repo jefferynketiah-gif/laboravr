@@ -116,7 +116,6 @@ export default function Home() {
       <ScrollReveal>
         <section className="relative bg-panel py-20 md:py-24 overflow-hidden">
           {/* Background glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_50%,rgba(124,92,255,0.07),transparent)]" />
           <div className="relative max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-edge border border-edge overflow-hidden rounded-xl">
               {stats.map((s, i) => (
@@ -264,7 +263,6 @@ export default function Home() {
       <ScrollReveal>
         <section className="relative bg-void grain py-24 md:py-32 overflow-hidden">
           {/* Big glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_60%,rgba(124,92,255,0.14),transparent_70%)] pointer-events-none" />
 
           <div className="relative max-w-5xl mx-auto px-6">
             <GlowCard innerClassName="p-8 md:p-14">
@@ -379,8 +377,6 @@ export default function Home() {
       <ScrollReveal>
         <section className="relative bg-void grain py-24 md:py-36 overflow-hidden">
           {/* Full-bleed gradient bg */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_70%_at_50%_60%,rgba(124,92,255,0.18),transparent_70%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_30%_30%,rgba(34,211,238,0.06),transparent_60%)]" />
 
           <div className="relative max-w-3xl mx-auto px-6 text-center">
             <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-6">

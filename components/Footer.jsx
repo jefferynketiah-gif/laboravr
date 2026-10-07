@@ -29,9 +29,6 @@ export default function Footer() {
       {/* Top gradient border */}
       <div className="h-px bg-gradient-to-r from-transparent via-uv/50 to-transparent" />
 
-      {/* Subtle aurora */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-48 bg-gradient-radial-uv opacity-20 pointer-events-none" />
-
       <div className="relative max-w-6xl mx-auto px-6 py-16 md:py-20">
         <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
           {/* Brand */}

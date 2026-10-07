@@ -113,8 +113,6 @@ export default function About() {
       <ScrollReveal>
         <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute top-0 right-0 w-[42rem] h-[42rem] bg-[radial-gradient(circle,rgba(124,92,255,0.08),transparent_60%)] blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-[radial-gradient(circle,rgba(34,211,238,0.05),transparent_60%)] blur-3xl" />
             <div className="grid-reticle absolute inset-0 opacity-20" />
           </div>
           <div className="max-w-3xl mx-auto px-6">
@@ -152,8 +150,6 @@ export default function About() {
       <ScrollReveal>
         <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
-            <div className="aurora-blob aurora-d opacity-15" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-[20rem] bg-[radial-gradient(ellipse,rgba(124,92,255,0.07),transparent_60%)] blur-3xl" />
             <div className="grid-reticle absolute inset-0 opacity-20" />
           </div>
           <div className="max-w-5xl mx-auto px-6">
@@ -226,8 +222,6 @@ export default function About() {
       <ScrollReveal>
         <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute top-0 left-0 w-[50rem] h-[50rem] bg-[radial-gradient(circle,rgba(124,92,255,0.07),transparent_60%)] blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-[35rem] h-[35rem] bg-[radial-gradient(circle,rgba(232,121,249,0.05),transparent_60%)] blur-3xl" />
             <div className="grid-reticle absolute inset-0 opacity-20" />
           </div>
           <div className="max-w-5xl mx-auto px-6">
@@ -339,7 +333,6 @@ export default function About() {
       {/* CTA */}
       <ScrollReveal>
         <section className="relative bg-void grain py-24 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_50%_60%,rgba(124,92,255,0.15),transparent)]" />
           <div className="relative max-w-2xl mx-auto px-6 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
               <span className="gradient-text">Work with us </span>
