@@ -23,7 +23,7 @@ const pilotPoints = [
 
 export default function Contact() {
   const [form, setForm] = useState({
-    name: '', email: '', university: '', department: '', message: '',
+    name: '', email: '', university: '', department: '', curriculum: '', message: '',
   });
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
@@ -41,7 +41,7 @@ export default function Contact() {
       });
       if (!res.ok) throw new Error('Request failed');
       setStatus('sent');
-      setForm({ name: '', email: '', university: '', department: '', message: '' });
+      setForm({ name: '', email: '', university: '', department: '', curriculum: '', message: '' });
     } catch {
       setStatus('error');
     }
@@ -64,9 +64,6 @@ export default function Contact() {
       <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
         {/* Ambient glows */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="aurora-blob aurora-d opacity-20" />
-          <div className="absolute top-0 right-0 w-[36rem] h-[36rem] bg-[radial-gradient(circle,rgba(124,92,255,0.09),transparent_60%)] blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[28rem] h-[28rem] bg-[radial-gradient(circle,rgba(34,211,238,0.05),transparent_60%)] blur-3xl" />
           <div className="grid-reticle absolute inset-0 opacity-25" />
         </div>
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-[1fr_320px] gap-10">
@@ -126,7 +123,7 @@ export default function Contact() {
                   <input
                     id="email" name="email" type="email" required
                     value={form.email} onChange={handleChange}
-                    className={inputClass} placeholder="you@university.edu.gh"
+                    className={inputClass} placeholder="you@school.edu.gh"
                   />
                 </div>
               </div>
@@ -136,7 +133,7 @@ export default function Contact() {
                 <input
                   id="university" name="university" type="text" required
                   value={form.university} onChange={handleChange}
-                  className={inputClass} placeholder="University of Ghana"
+                  className={inputClass} placeholder="A school or university"
                 />
               </div>
 
@@ -152,6 +149,21 @@ export default function Contact() {
                   <option value="Physics">Physics</option>
                   <option value="Biology">Biology</option>
                   <option value="Engineering">Engineering</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="curriculum" className={labelClass}>CURRICULUM</label>
+                <select
+                  id="curriculum" name="curriculum" required
+                  value={form.curriculum} onChange={handleChange}
+                  className={inputClass + ' cursor-pointer'}
+                >
+                  <option value="">Select a curriculum</option>
+                  <option value="Cambridge IGCSE">Cambridge IGCSE</option>
+                  <option value="A Levels">A Levels</option>
+                  <option value="WASSCE">WASSCE (coming next)</option>
                   <option value="Other">Other</option>
                 </select>
               </div>

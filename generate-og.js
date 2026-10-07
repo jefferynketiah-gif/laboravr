@@ -16,12 +16,12 @@ const puppeteer = require('puppeteer');
           padding: 0;
           width: 1200px;
           height: 630px;
-          background: #0A0B10;
+          background: #FFFFFF;
           display: flex;
           align-items: center;
           justify-content: center;
           font-family: 'Inter', sans-serif;
-          color: #E8E9F0;
+          color: #0F172A;
         }
         .container {
           display: flex;
@@ -46,14 +46,14 @@ const puppeteer = require('puppeteer');
           margin-bottom: 20px;
         }
         .labora {
-          color: #E8E9F0;
+          color: #0F172A;
         }
         .vr {
-          color: #7C5CFF;
+          color: #2563EB;
         }
         .subtext {
           font-size: 40px;
-          color: #8C8D9C;
+          color: #64748B;
           font-weight: 500;
           letter-spacing: -0.02em;
         }
@@ -62,14 +62,14 @@ const puppeteer = require('puppeteer');
           bottom: 60px;
           left: 100px;
           font-size: 32px;
-          color: #7C5CFF;
+          color: #2563EB;
           font-weight: 500;
         }
         .glow {
           position: absolute;
           width: 800px;
           height: 800px;
-          background: radial-gradient(circle, rgba(124,92,255,0.05) 0%, transparent 60%);
+          background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 60%);
           z-index: 0;
           pointer-events: none;
         }
@@ -82,13 +82,13 @@ const puppeteer = require('puppeteer');
           viewBox="0 0 255 231"
           class="mark"
         >
-          <rect x="0" y="0" width="46" height="231" fill="#E8E9F0" />
-          <rect x="0" y="201" width="143" height="30" fill="#E8E9F0" />
-          <rect x="179" y="14" width="76" height="153" fill="#7C5CFF" />
+          <rect x="0" y="0" width="46" height="231" fill="#0F172A" />
+          <rect x="0" y="201" width="143" height="30" fill="#0F172A" />
+          <rect x="179" y="14" width="76" height="153" fill="#2563EB" />
         </svg>
         <div class="text-container">
           <div class="logo-text"><span class="labora">Labora</span><span class="vr">VR</span></div>
-          <div class="subtext">Virtual Science Labs for African Universities</div>
+          <div class="subtext">Virtual science labs for schools and universities</div>
         </div>
       </div>
       <div class="url">laboravr.com</div>

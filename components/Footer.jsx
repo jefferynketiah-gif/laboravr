@@ -29,9 +29,6 @@ export default function Footer() {
       {/* Top gradient border */}
       <div className="h-px bg-gradient-to-r from-transparent via-uv/50 to-transparent" />
 
-      {/* Subtle aurora */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-48 bg-gradient-radial-uv opacity-20 pointer-events-none" />
-
       <div className="relative max-w-6xl mx-auto px-6 py-16 md:py-20">
         <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
           {/* Brand */}
@@ -40,7 +37,7 @@ export default function Footer() {
               <Wordmark size="lg" showCaret={false} />
             </div>
             <p className="text-muted max-w-xs leading-relaxed mb-6">
-              Virtual reality science labs for African universities. Built in Ghana,
+              Virtual reality science labs for schools and universities on Cambridge IGCSE and A Levels, with WASSCE coming next. Built in Ghana,
               for the students who deserve to do science.
             </p>
             {/* Ghana badge */}

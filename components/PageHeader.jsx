@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import Aurora from './Aurora';
-import ParticleField from './ParticleField';
 
 export default function PageHeader({ eyebrow, title, intro, accentWord }) {
   // If accentWord is set, wrap it in gradient-text
@@ -20,11 +18,8 @@ export default function PageHeader({ eyebrow, title, intro, accentWord }) {
   };
 
   return (
-    <section className="relative bg-void grain overflow-hidden">
-      <Aurora />
-      <div className="grid-reticle absolute inset-0 opacity-50" />
-      <ParticleField count={35} className="opacity-50" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_75%_at_50%_45%,transparent_20%,#0A0B10_80%)]" />
+    <section className="relative bg-void overflow-hidden">
+      <div className="grid-reticle absolute inset-0 opacity-20" />
 
       <div className="relative max-w-6xl mx-auto px-6 pt-40 pb-20 md:pt-48 md:pb-28">
         {/* Eyebrow with line */}
@@ -44,7 +39,7 @@ export default function PageHeader({ eyebrow, title, intro, accentWord }) {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tightest text-chalk max-w-3xl leading-[1.0]"
+          className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tightest text-chalk max-w-3xl leading-[1.0]"
         >
           {renderTitle()}
         </motion.h1>

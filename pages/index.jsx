@@ -36,21 +36,21 @@ const constraints = [
 
 const labs = [
   {
-    image: '/images/chemistry.jpg',
+    image: '/lab-screens/vr_hands_lesson1.jpg',
     name: 'Chemistry',
     line: 'Titrations, reaction kinetics and organic synthesis. Get it wrong, see what happens, run it again.',
     status: 'IN DEVELOPMENT',
     active: true,
   },
   {
-    image: '/images/physics.jpg',
+    image: '/lab-screens/lab_physics_clean.jpg',
     name: 'Physics',
     line: 'Mechanics, optics and circuits on apparatus that never drifts out of calibration.',
     status: 'PLANNED',
     active: false,
   },
   {
-    image: '/images/biology.jpg',
+    image: '/lab-screens/lab_biology_clean.jpg',
     name: 'Biology',
     line: 'Microscopy, dissection and cell biology without specimen cost or ethical constraints.',
     status: 'PLANNED',
@@ -76,7 +76,7 @@ const specs = [
 const demoFeatures = [
   'Full chemistry lab environment',
   'Acid–base titration practical',
-  'Works on Meta Quest 2 and 3',
+  'Built in Unity 6',
   'No account or login required',
 ];
 
@@ -107,7 +107,7 @@ export default function Home() {
     <>
       <Seo
         title="LaboraVR — The lab that never runs out"
-        description="Practical chemistry, physics and biology in virtual reality, built for African universities."
+        description="Practical chemistry, physics and biology in virtual reality, for schools and universities on Cambridge IGCSE and A Levels, with WASSCE coming next."
       />
       <Navbar />
       <CinematicHero />
@@ -116,7 +116,6 @@ export default function Home() {
       <ScrollReveal>
         <section className="relative bg-panel py-20 md:py-24 overflow-hidden">
           {/* Background glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_50%,rgba(124,92,255,0.07),transparent)]" />
           <div className="relative max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-edge border border-edge overflow-hidden rounded-xl">
               {stats.map((s, i) => (
@@ -135,7 +134,7 @@ export default function Home() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">THE PROBLEM</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
               Practical science is the first thing a{' '}
               <span className="gradient-text">tight budget cuts.</span>
             </h2>
@@ -171,51 +170,97 @@ export default function Home() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">THE LABS</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
               Three disciplines.{' '}
               <span className="gradient-text">One headset.</span>
             </h2>
 
-            <div className="mt-16 grid md:grid-cols-3 gap-4">
-              {labs.map((lab, i) => (
+            <div className="mt-16 grid md:grid-cols-2 gap-5">
+              {/* Featured — Chemistry, the one that's active */}
+              <motion.div
+                className="md:col-span-2"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <GlowCard innerClassName="p-0 overflow-hidden">
+                  <div className="grid md:grid-cols-[1.1fr_1fr]">
+                    <div className="relative h-56 md:h-auto min-h-[16rem]">
+                      <Image
+                        src={labs[0].image}
+                        alt="Chemistry virtual lab"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-void/70 md:from-void/10 via-transparent to-transparent" />
+                      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 font-mono text-[9px] tracking-[0.18em] text-uv bg-void/70 backdrop-blur-md px-2.5 py-1 rounded-full border border-uv/30">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-uv opacity-75" />
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-uv" />
+                        </span>
+                        LIVE
+                      </div>
+                    </div>
+                    <div className="p-8 md:p-10 flex flex-col">
+                      <h3 className="text-3xl font-bold text-chalk mb-3">{labs[0].name}</h3>
+                      <p className="text-muted leading-relaxed">{labs[0].line}</p>
+
+                      {/* Real numbers from the build */}
+                      <div className="mt-7 grid grid-cols-4 gap-3">
+                        {[
+                          ['12', 'Cation tests'],
+                          ['8',  'Anion tests'],
+                          ['6',  'Gas tests'],
+                          ['5',  'Flame tests'],
+                        ].map(([n, label]) => (
+                          <div key={label}>
+                            <p className="font-mono text-xl md:text-2xl font-bold text-warm tabular-nums leading-none">{n}</p>
+                            <p className="mt-1 text-[11px] text-muted leading-tight">{label}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-auto pt-8 flex items-center justify-between">
+                        <p className="font-mono text-[10px] tracking-[0.18em] text-uv">{labs[0].status}</p>
+                        <Link
+                          href="/labs"
+                          className="text-muted hover:text-uv transition-colors"
+                          aria-label="Learn more about Chemistry lab"
+                        >
+                          <ChevronRight size={16} />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </GlowCard>
+              </motion.div>
+
+              {/* Planned — Physics & Biology, smaller */}
+              {labs.slice(1).map((lab, i) => (
                 <motion.div
                   key={lab.name}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
                 >
-                  <GlowCard className="h-full" innerClassName="p-8 md:p-10 flex flex-col h-full">
-                    {/* Image Banner */}
-                    <div className="mb-6 relative w-full h-40 rounded-xl overflow-hidden border border-edge">
-                      <Image 
+                  <GlowCard className="h-full" innerClassName="p-6 md:p-8 flex flex-col h-full">
+                    <div className="mb-5 relative w-full h-32 rounded-xl overflow-hidden border border-edge">
+                      <Image
                         src={lab.image}
                         alt={`${lab.name} virtual lab`}
                         fill
-                        className={`object-cover transition-opacity ${lab.active ? 'opacity-100' : 'opacity-40 grayscale'}`}
+                        className="object-cover opacity-65 grayscale"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-void/80 to-transparent" />
-                      
-                      {lab.active && (
-                        <div className="absolute bottom-3 left-3 flex items-center gap-1.5 font-mono text-[9px] tracking-[0.18em] text-uv bg-void/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-uv/30">
-                          <span className="relative flex h-1.5 w-1.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-uv opacity-75" />
-                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-uv" />
-                          </span>
-                          LIVE
-                        </div>
-                      )}
                     </div>
 
-                    <h3 className="text-2xl font-bold text-chalk mb-3">{lab.name}</h3>
-                    <p className="text-muted leading-relaxed mb-auto">{lab.line}</p>
+                    <h3 className="text-xl font-bold text-chalk mb-2">{lab.name}</h3>
+                    <p className="text-sm text-muted leading-relaxed mb-auto">{lab.line}</p>
 
-                    <div className="mt-8 flex items-center justify-between">
-                      <p className={`font-mono text-[10px] tracking-[0.18em] ${
-                        lab.active ? 'text-uv' : 'text-muted'
-                      }`}>
-                        {lab.status}
-                      </p>
+                    <div className="mt-6 flex items-center justify-between">
+                      <p className="font-mono text-[10px] tracking-[0.18em] text-muted">{lab.status}</p>
                       <Link
                         href="/labs"
                         className="text-muted hover:text-uv transition-colors"
@@ -243,7 +288,7 @@ export default function Home() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">RUN ONE NOW</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
               This is the chemistry,{' '}
               <span className="gradient-text">not a video of it.</span>
             </h2>
@@ -264,7 +309,6 @@ export default function Home() {
       <ScrollReveal>
         <section className="relative bg-void grain py-24 md:py-32 overflow-hidden">
           {/* Big glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_60%,rgba(124,92,255,0.14),transparent_70%)] pointer-events-none" />
 
           <div className="relative max-w-5xl mx-auto px-6">
             <GlowCard innerClassName="p-8 md:p-14">
@@ -282,8 +326,8 @@ export default function Home() {
                   </h2>
                   <p className="text-lg text-muted leading-relaxed mb-8 max-w-xl">
                     {COMING_SOON
-                      ? 'We\'re building a full VR chemistry lab for Meta Quest. The titration practical you can run above will be the first experiment — with real glassware in your hands. Join the pilot to be notified the moment it\'s ready.'
-                      : 'A Unity build of the chemistry lab is available for Meta Quest devices. Run the titration practical exactly as your students will.'}
+                      ? 'We\'re building a full VR chemistry lab. The titration practical you can run above will be the first experiment — with real glassware in your hands. Join the pilot to be notified the moment it\'s ready.'
+                      : 'The chemistry lab is in active development. Run the titration practical yourself, exactly as your students will.'}
                   </p>
                   <ul className="space-y-2 mb-8">
                     {demoFeatures.map((f) => (
@@ -322,18 +366,18 @@ export default function Home() {
                   </p>
                 </div>
 
-                {/* Visual — VR headset image */}
+                {/* Visual — lab screenshot */}
                 <div className="hidden md:block relative w-52 h-36 rounded-2xl overflow-hidden border border-uv/20 glow-ring flex-shrink-0">
                   <Image
-                    src="/images/vr_headset_hero.jpg"
-                    alt="Meta Quest VR headset with purple glow"
+                    src="/lab-screens/lab_lobby.jpg"
+                    alt="The LaboraVR lab lobby seen in VR"
                     fill
                     sizes="208px"
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent" />
-                  <p className="absolute bottom-2 left-0 right-0 text-center font-mono text-[9px] tracking-[0.15em] text-uv/80">
-                    META QUEST COMPATIBLE
+                  <div className="absolute inset-0 bg-gradient-to-t from-chalk/75 to-transparent" />
+                  <p className="absolute bottom-2 left-0 right-0 text-center font-mono text-[9px] tracking-[0.15em] text-white">
+                    BUILT IN UNITY 6
                   </p>
                 </div>
               </div>
@@ -350,7 +394,7 @@ export default function Home() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">SPECIFICATION</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05] mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05] mb-16">
               What your IT department will ask.
             </h2>
 
@@ -378,15 +422,18 @@ export default function Home() {
       {/* ── Close CTA ──────────────────────────────────────────── */}
       <ScrollReveal>
         <section className="relative bg-void grain py-24 md:py-36 overflow-hidden">
-          {/* Full-bleed gradient bg */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_70%_at_50%_60%,rgba(124,92,255,0.18),transparent_70%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_30%_30%,rgba(34,211,238,0.06),transparent_60%)]" />
+          {/* Full-bleed real photo, faded under the page so it reads as texture, not a photo */}
+          <div className="absolute inset-0">
+            <Image src="/lab-screens/student_start.jpg" alt="" fill className="object-cover opacity-[0.32]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-void via-transparent to-void" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_68%_88%_at_50%_50%,rgba(255,255,255,0.96),rgba(255,255,255,0.7)_45%,transparent_78%)]" />
+          </div>
 
           <div className="relative max-w-3xl mx-auto px-6 text-center">
             <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-6">
               PILOT PROGRAMME
             </p>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest leading-[1.05]">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
               <span className="gradient-text">We&apos;re looking for</span>
               <br />
               <span className="text-chalk">the first three departments.</span>

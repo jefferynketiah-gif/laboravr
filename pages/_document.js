@@ -8,7 +8,7 @@ export default function Document() {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#0A0B10" />
+        <meta name="theme-color" content="#FFFFFF" />
       </Head>
       <body className="bg-void">
         <Main />

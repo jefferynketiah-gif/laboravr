@@ -2,7 +2,7 @@
 // 3D viewer only load when someone opens it.
 export default function Lab360({ page = '/360/index.html', title, caption }) {
   return (
-    <figure className="overflow-hidden rounded-2xl border border-edge bg-panel">
+    <figure className="lift-hover card-shadow overflow-hidden rounded-2xl border border-edge bg-panel">
       <iframe
         className="aspect-video w-full bg-void"
         src={page}

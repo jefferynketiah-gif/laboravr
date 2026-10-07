@@ -32,13 +32,13 @@ const roadmap = [
     status: 'done',
     period: 'NOW',
     title: 'Chemistry Lab — Titration',
-    desc: 'Acid–base titration practical built and running on Meta Quest. Actively being refined with early testers.',
+    desc: 'Acid–base titration practical, in active development and being refined.',
   },
   {
     status: 'active',
     period: 'Q1 2027',
     title: 'Chemistry Lab — Full Module',
-    desc: 'Rates of reaction, qualitative analysis, and organic synthesis added. Pilot programme with first universities.',
+    desc: 'Rates of reaction, qualitative analysis, and organic synthesis added — completing Cambridge IGCSE Chemistry (0620). Pilot programme with first institutions.',
   },
   {
     status: 'upcoming',
@@ -71,30 +71,32 @@ export default function About() {
     <>
       <Seo
         title="About — LaboraVR"
-        description="Why LaboraVR exists: closing the practical science gap in African universities."
+        description="Why LaboraVR exists: closing the practical science gap in schools and universities."
       />
       <Navbar />
 
       <PageHeader
         eyebrow="ABOUT"
         title="Bright students, empty benches."
-        intro="LaboraVR is being built in Ghana, for Ghanaian universities first."
+        intro="LaboraVR is being built in Ghana, for schools and universities on Cambridge IGCSE and A Levels, with WASSCE coming next."
       />
 
       {/* Full-bleed students photo */}
       <ScrollReveal>
         <section className="relative bg-void">
           <div className="relative h-[280px] md:h-[460px] w-full overflow-hidden">
-            <Image
-              src="/images/african_student_vr.jpg"
-              alt="Young African university student wearing a VR headset, engaged in a virtual science practical"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover saturate-[0.85] contrast-[1.05]"
+            <video
+              src="/lab-screens/hero-loop.webm"
+              poster="/lab-screens/hero-loop-poster.jpg"
+              aria-label="A slow view of a LaboraVR chemistry practical"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="absolute inset-0 w-full h-full object-cover saturate-[0.9] contrast-[1.05]"
             />
-            <div className="absolute inset-0 bg-void/40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-void via-void/10 to-void/50" />
+            <div className="absolute inset-0 bg-gradient-to-t from-void via-void/25 to-transparent" />
             {/* Overlay text */}
             <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
               <p className="font-mono text-[10px] tracking-[0.2em] text-uv/80 mb-2">ACCRA, GHANA</p>
@@ -110,14 +112,12 @@ export default function About() {
       <ScrollReveal>
         <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute top-0 right-0 w-[42rem] h-[42rem] bg-[radial-gradient(circle,rgba(124,92,255,0.08),transparent_60%)] blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-[radial-gradient(circle,rgba(34,211,238,0.05),transparent_60%)] blur-3xl" />
             <div className="grid-reticle absolute inset-0 opacity-20" />
           </div>
           <div className="max-w-3xl mx-auto px-6">
             <div className="space-y-7 text-lg text-muted leading-relaxed">
               <p>
-                Across African universities, science departments teach practical
+                Across schools and universities, science departments teach practical
                 subjects to students who rarely get to practise. Equipment is
                 expensive, reagents run out, and one working lab has to serve
                 hundreds of people. What gets cut first is the part where a
@@ -149,8 +149,6 @@ export default function About() {
       <ScrollReveal>
         <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
-            <div className="aurora-blob aurora-d opacity-15" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-[20rem] bg-[radial-gradient(ellipse,rgba(124,92,255,0.07),transparent_60%)] blur-3xl" />
             <div className="grid-reticle absolute inset-0 opacity-20" />
           </div>
           <div className="max-w-5xl mx-auto px-6">
@@ -223,8 +221,6 @@ export default function About() {
       <ScrollReveal>
         <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute top-0 left-0 w-[50rem] h-[50rem] bg-[radial-gradient(circle,rgba(124,92,255,0.07),transparent_60%)] blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-[35rem] h-[35rem] bg-[radial-gradient(circle,rgba(232,121,249,0.05),transparent_60%)] blur-3xl" />
             <div className="grid-reticle absolute inset-0 opacity-20" />
           </div>
           <div className="max-w-5xl mx-auto px-6">
@@ -232,7 +228,7 @@ export default function About() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">ROADMAP</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest leading-[1.05] mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05] mb-16">
               <span className="text-chalk">What&apos;s built. </span>
               <span className="gradient-text">What&apos;s next.</span>
             </h2>
@@ -269,7 +265,7 @@ export default function About() {
                           </span>
                           {item.status === 'done' && (
                             <span className="font-mono text-[9px] tracking-[0.15em] text-uv border border-uv/30 rounded px-2 py-0.5">
-                              COMPLETE
+                              WORKING DRAFT
                             </span>
                           )}
                           {item.status === 'active' && (
@@ -303,7 +299,7 @@ export default function About() {
               <span className="w-6 h-px bg-uv" />
               <p className="font-mono text-[11px] tracking-[0.2em] text-uv">HOW WE WORK</p>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest leading-[1.05] mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05] mb-16">
               <span className="gradient-text">Three things</span>
               <span className="text-chalk"> we hold to.</span>
             </h2>
@@ -336,7 +332,6 @@ export default function About() {
       {/* CTA */}
       <ScrollReveal>
         <section className="relative bg-void grain py-24 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_50%_60%,rgba(124,92,255,0.15),transparent)]" />
           <div className="relative max-w-2xl mx-auto px-6 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
               <span className="gradient-text">Work with us </span>

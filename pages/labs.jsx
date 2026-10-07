@@ -18,7 +18,8 @@ const labs = [
     name: 'Chemistry',
     status: 'IN DEVELOPMENT',
     active: true,
-    colour: '#7C5CFF',
+    colour: '#2563EB',
+    syllabus: 'CAMBRIDGE IGCSE CHEMISTRY 0620',
     thesis:
       'The discipline where the gap between reading a method and running it is widest — and where a mistake in the real lab is expensive or dangerous.',
     practicals: [
@@ -33,7 +34,7 @@ const labs = [
     name: 'Physics',
     status: 'PLANNED — 2027',
     active: false,
-    colour: '#22D3EE',
+    colour: '#0D9488',
     thesis:
       'Apparatus that never drifts out of calibration, never goes missing, and lets a student repeat a measurement until the method makes sense.',
     practicals: [
@@ -48,7 +49,7 @@ const labs = [
     name: 'Biology',
     status: 'PLANNED — 2028',
     active: false,
-    colour: '#E879F9',
+    colour: '#7C3AED',
     thesis:
       'Specimens and prepared slides cost money and run out. Here they don\'t, and dissection carries no ethical cost.',
     practicals: [
@@ -60,12 +61,34 @@ const labs = [
   },
 ];
 
+const labScreens = [
+  { src: '/lab-screens/lab_organic.jpg', title: 'ORGANIC TESTS', caption: 'Three unknown liquids, identified with bromine water, sodium carbonate and acidified dichromate.', alt: 'Organic tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_flame.jpg', title: 'FLAME TESTS', caption: 'The flame tests bench, seen from the starting position.', alt: 'Flame tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_skills.jpg', title: 'GRAPH SKILLS', caption: 'Drawing and reading graphs from a set of results.', alt: 'Graph skills practical in the LaboraVR lab' },
+  { src: '/lab-screens/lab_planning.jpg', title: 'PLANNING', caption: 'Planning an experiment before any apparatus is used.', alt: 'Experiment planning screen in the LaboraVR lab' },
+  { src: '/lab-screens/lab_drawing.jpg', title: 'BIOLOGY DRAWING', caption: 'The biology drawing board, for labelled drawings of specimens.', alt: 'Biology drawing board in the LaboraVR lab' },
+  { src: '/lab-screens/lab_raytrace.jpg', title: 'RAY TRACE', caption: 'A physics ray trace through a lens or mirror.', alt: 'Physics ray trace practical in the LaboraVR lab' },
+  { src: '/lab-screens/lab_titration.jpg', title: 'TITRATION', caption: 'The acid–base titration practical.', alt: 'Acid–base titration practical in the LaboraVR lab' },
+  { src: '/lab-screens/lab_gases.jpg', title: 'GAS TESTS', caption: 'Identifying a gas, seen from the student view of the lab.', alt: 'Gas identification practical in the LaboraVR lab' },
+  { src: '/lab-screens/student_start.jpg', title: 'START OF THE LESSON', caption: 'The qualitative analysis lab, as a student sees it at the start.', alt: 'Start of the qualitative analysis lesson in the LaboraVR lab' },
+  { src: '/lab-screens/lab_chempractical_clean.jpg', title: 'PRACTICAL', caption: 'Temperature change when a salt dissolves: the reading table in the lab.', alt: 'Chemistry practical table for temperature change when a salt dissolves' },
+  { src: '/lab-screens/vr_hands_lesson1.jpg', title: 'THE LESSON', caption: 'The qualitative analysis lesson, seen from inside the headset with the controllers.', alt: 'Qualitative analysis lesson in VR with controllers' },
+  { src: '/lab-screens/lab_lobby.jpg', title: 'THE LOBBY', caption: 'The lab lobby, where students choose a lesson.', alt: 'LaboraVR lab lobby' },
+  { src: '/lab-screens/lab_cations.jpg', title: 'CATION TESTS', caption: 'More cation tests: sodium hydroxide first, then ammonia, with the reagent key.', alt: 'Cation tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_anions.jpg', title: 'ANION TESTS', caption: 'The anion test bench.', alt: 'Anion tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_carbonate.jpg', title: 'CARBONATE TEST', caption: 'The carbonate test bench.', alt: 'Carbonate test bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_ammonia.jpg', title: 'AMMONIA TEST', caption: 'The ammonia test bench.', alt: 'Ammonia test bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_sulfite.jpg', title: 'SULFITE TEST', caption: 'The sulfite test bench.', alt: 'Sulfite test bench in the LaboraVR lab' },
+  { src: '/lab-screens/lab_physics_clean.jpg', title: 'PHYSICS', caption: 'The period of a pendulum: timing ten swings and recording the results.', alt: 'Pendulum practical table in the LaboraVR lab' },
+  { src: '/lab-screens/lab_biology_clean.jpg', title: 'BIOLOGY', caption: 'Osmosis in potato discs: measuring the lengths of the discs in each salt solution.', alt: 'Osmosis in potato discs practical table in the LaboraVR lab' },
+];
+
 export default function Labs() {
   return (
     <>
       <Seo
         title="The labs — LaboraVR"
-        description="Chemistry, physics and biology practicals in virtual reality, built around existing university syllabuses."
+        description="Chemistry practicals in virtual reality, built around Cambridge IGCSE Chemistry (0620). Physics and biology are in development."
       />
       <Navbar />
 
@@ -79,14 +102,12 @@ export default function Labs() {
       <section className="relative bg-void grain py-12 md:py-16 overflow-hidden">
         {/* Ambient depth */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute top-1/4 left-0 w-[40rem] h-[40rem] bg-[radial-gradient(circle,rgba(124,92,255,0.07),transparent_60%)] blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-[32rem] h-[32rem] bg-[radial-gradient(circle,rgba(34,211,238,0.05),transparent_60%)] blur-3xl" />
-          <div className="grid-reticle absolute inset-0 opacity-20" />
+          <div className="grid-reticle absolute inset-0 opacity-10" />
         </div>
         <div className="max-w-6xl mx-auto px-6 space-y-6">
           {labs.map((lab, i) => (
             <ScrollReveal key={lab.name}>
-              <GlowCard innerClassName="p-0 overflow-hidden">
+              <GlowCard className="lift-hover" innerClassName="p-0 overflow-hidden">
                 <div className="grid md:grid-cols-[1fr_1fr]">
                   {/* Left: info */}
                   <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-edge">
@@ -115,8 +136,8 @@ export default function Labs() {
                         <span
                           className="font-mono text-[9px] tracking-[0.18em] border rounded px-2.5 py-1"
                           style={{
-                            color: lab.active ? '#7C5CFF' : '#6B6F80',
-                            borderColor: lab.active ? 'rgba(124,92,255,0.35)' : '#1F2230',
+                            color: lab.active ? '#2563EB' : '#64748B',
+                            borderColor: lab.active ? 'rgba(37,99,235,0.35)' : '#E2E8F0',
                           }}
                         >
                           {lab.status}
@@ -124,9 +145,14 @@ export default function Labs() {
                       </div>
                     </div>
 
-                    <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-4">
+                    <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-3">
                       {lab.name}
                     </h2>
+                    {lab.syllabus && (
+                      <p className="font-mono text-[10px] tracking-[0.15em] text-warm mb-4">
+                        {lab.syllabus}
+                      </p>
+                    )}
                     <p className="text-lg text-muted leading-relaxed">
                       {lab.thesis}
                     </p>
@@ -151,13 +177,13 @@ export default function Labs() {
                           <span
                             className="mt-0.5 flex-shrink-0 w-4 h-4 rounded flex items-center justify-center border transition-colors"
                             style={{
-                              borderColor: lab.active ? 'rgba(124,92,255,0.4)' : '#1F2230',
-                              background:  lab.active ? 'rgba(124,92,255,0.12)' : 'transparent',
+                              borderColor: lab.active ? 'rgba(37,99,235,0.4)' : '#E2E8F0',
+                              background:  lab.active ? 'rgba(37,99,235,0.12)' : 'transparent',
                             }}
                           >
                             {lab.active && (
                               <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
-                                <path d="M1 3L3 5L7 1" stroke="#7C5CFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M1 3L3 5L7 1" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                               </svg>
                             )}
                           </span>
@@ -180,7 +206,7 @@ export default function Labs() {
         <div className="max-w-6xl mx-auto px-6">
           <ScrollReveal>
             <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-4">SEE THE CHEMISTRY LAB</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-8">
               From the bench to the mark scheme.
             </h2>
           </ScrollReveal>
@@ -200,10 +226,41 @@ export default function Labs() {
         </div>
       </section>
 
+      {/* Screens from the lab build */}
+      <section className="relative bg-void py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <ScrollReveal>
+            <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-4">INSIDE THE BUILD</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-8">
+              Real screens from the chemistry, physics and biology practicals.
+            </h2>
+          </ScrollReveal>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {labScreens.map((shot) => (
+              <ScrollReveal key={shot.src}>
+                <figure className="lift-hover card-shadow overflow-hidden rounded-2xl border border-edge bg-panel">
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    loading="lazy"
+                    width="1600"
+                    height="900"
+                    className="aspect-video w-full object-cover bg-void"
+                  />
+                  <figcaption className="px-5 py-4">
+                    <p className="font-mono text-[11px] tracking-[0.2em] text-uv">{shot.title}</p>
+                    <p className="mt-2 text-sm text-chalk-dim">{shot.caption}</p>
+                  </figcaption>
+                </figure>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <ScrollReveal>
         <section className="relative bg-panel py-24 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_50%_60%,rgba(124,92,255,0.1),transparent)]" />
           <div className="relative max-w-2xl mx-auto px-6 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
               <span className="text-chalk">Something missing </span>
