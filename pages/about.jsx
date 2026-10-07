@@ -38,7 +38,7 @@ const roadmap = [
     status: 'active',
     period: 'Q1 2027',
     title: 'Chemistry Lab — Full Module',
-    desc: 'Rates of reaction, qualitative analysis, and organic synthesis added. Pilot programme with first universities.',
+    desc: 'Rates of reaction, qualitative analysis, and organic synthesis added — completing Cambridge IGCSE Chemistry (0620). Pilot programme with first institutions.',
   },
   {
     status: 'upcoming',

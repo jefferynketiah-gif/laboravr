@@ -19,6 +19,7 @@ const labs = [
     status: 'IN DEVELOPMENT',
     active: true,
     colour: '#2563EB',
+    syllabus: 'CAMBRIDGE IGCSE CHEMISTRY 0620',
     thesis:
       'The discipline where the gap between reading a method and running it is widest — and where a mistake in the real lab is expensive or dangerous.',
     practicals: [
@@ -87,7 +88,7 @@ export default function Labs() {
     <>
       <Seo
         title="The labs — LaboraVR"
-        description="Chemistry, physics and biology practicals in virtual reality, built around existing school and university syllabuses."
+        description="Chemistry practicals in virtual reality, built around Cambridge IGCSE Chemistry (0620). Physics and biology are in development."
       />
       <Navbar />
 
@@ -144,9 +145,14 @@ export default function Labs() {
                       </div>
                     </div>
 
-                    <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-4">
+                    <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-3">
                       {lab.name}
                     </h2>
+                    {lab.syllabus && (
+                      <p className="font-mono text-[10px] tracking-[0.15em] text-warm mb-4">
+                        {lab.syllabus}
+                      </p>
+                    )}
                     <p className="text-lg text-muted leading-relaxed">
                       {lab.thesis}
                     </p>
