@@ -69,6 +69,7 @@ const labScreens = [
   { src: '/lab-screens/lab_raytrace.jpg', title: 'RAY TRACE', caption: 'A physics ray trace through a lens or mirror.', alt: 'Physics ray trace practical in the LaboraVR lab' },
   { src: '/lab-screens/lab_titration.jpg', title: 'TITRATION', caption: 'The acid–base titration practical.', alt: 'Acid–base titration practical in the LaboraVR lab' },
   { src: '/lab-screens/lab_gases.jpg', title: 'GAS TESTS', caption: 'Identifying a gas, seen from the student view of the lab.', alt: 'Gas identification practical in the LaboraVR lab' },
+  { src: '/lab-screens/student_start.jpg', title: 'START OF THE LESSON', caption: 'The qualitative analysis lab, as a student sees it at the start.', alt: 'Start of the qualitative analysis lesson in the LaboraVR lab' },
   { src: '/lab-screens/lab_chempractical_clean.jpg', title: 'PRACTICAL', caption: 'Temperature change when a salt dissolves: the reading table in the lab.', alt: 'Chemistry practical table for temperature change when a salt dissolves' },
   { src: '/lab-screens/vr_hands_lesson1.jpg', title: 'THE LESSON', caption: 'The qualitative analysis lesson, seen from inside the headset with the controllers.', alt: 'Qualitative analysis lesson in VR with controllers' },
   { src: '/lab-screens/lab_lobby.jpg', title: 'THE LOBBY', caption: 'The lab lobby, where students choose a lesson.', alt: 'LaboraVR lab lobby' },
