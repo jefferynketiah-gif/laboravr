@@ -237,6 +237,22 @@ body {
   animation: hero-drift 14s ease-out forwards;
 }
 
+/* ── Resting card elevation (depth without a hover) ───────── */
+.card-shadow {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 2px 8px -2px rgba(15, 23, 42, 0.06);
+}
+
+/* ── Hero gradient mesh — static, one signature flourish ──── */
+.mesh-hero {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(40rem 32rem at 18% -8%, rgba(var(--uv), 0.22), transparent 62%),
+    radial-gradient(30rem 24rem at 6% 78%, rgba(194, 101, 12, 0.16), transparent 60%),
+    radial-gradient(24rem 20rem at 46% 48%, rgba(13, 148, 136, 0.11), transparent 65%);
+}
+
 /* ── Hover lift for cards and film frames ─────────────────── */
 .lift-hover {
   transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease, border-color 0.3s ease;

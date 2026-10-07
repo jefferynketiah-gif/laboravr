@@ -24,7 +24,7 @@ export default function GlowCard({ children, className = '', innerClassName = ''
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden rounded-xl border border-edge bg-panel transition-colors duration-300 hover:border-uv/40 ${className}`}
+      className={`relative overflow-hidden rounded-xl border border-edge bg-panel card-shadow transition-colors duration-300 hover:border-uv/40 ${className}`}
       style={{
         background: `radial-gradient(circle at ${glow.x}% ${glow.y}%, rgba(37,99,235,${glow.opacity * 0.05}) 0%, transparent 60%), #F8FAFC`,
         transition: 'background 0.1s ease, border-color 0.3s ease',

@@ -31,6 +31,9 @@ module.exports = {
         muted:   '#64748B',
         // alternate section tint
         paper:   '#F1F5F9',
+        // second accent — warm, for highlights and real numbers; never the primary CTA color
+        warm:    '#C2650C',
+        'warm-bg': '#FFF7ED',
       },
       letterSpacing: {
         tightest: '-0.02em',

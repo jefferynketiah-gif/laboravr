@@ -232,7 +232,7 @@ export default function Labs() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {labScreens.map((shot) => (
               <ScrollReveal key={shot.src}>
-                <figure className="lift-hover overflow-hidden rounded-2xl border border-edge bg-panel">
+                <figure className="lift-hover card-shadow overflow-hidden rounded-2xl border border-edge bg-panel">
                   <img
                     src={shot.src}
                     alt={shot.alt}

@@ -175,46 +175,92 @@ export default function Home() {
               <span className="gradient-text">One headset.</span>
             </h2>
 
-            <div className="mt-16 grid md:grid-cols-3 gap-4">
-              {labs.map((lab, i) => (
+            <div className="mt-16 grid md:grid-cols-2 gap-5">
+              {/* Featured — Chemistry, the one that's active */}
+              <motion.div
+                className="md:col-span-2"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <GlowCard innerClassName="p-0 overflow-hidden">
+                  <div className="grid md:grid-cols-[1.1fr_1fr]">
+                    <div className="relative h-56 md:h-auto min-h-[16rem]">
+                      <Image
+                        src={labs[0].image}
+                        alt="Chemistry virtual lab"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-void/70 md:from-void/10 via-transparent to-transparent" />
+                      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 font-mono text-[9px] tracking-[0.18em] text-uv bg-void/70 backdrop-blur-md px-2.5 py-1 rounded-full border border-uv/30">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-uv opacity-75" />
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-uv" />
+                        </span>
+                        LIVE
+                      </div>
+                    </div>
+                    <div className="p-8 md:p-10 flex flex-col">
+                      <h3 className="text-3xl font-bold text-chalk mb-3">{labs[0].name}</h3>
+                      <p className="text-muted leading-relaxed">{labs[0].line}</p>
+
+                      {/* Real numbers from the build */}
+                      <div className="mt-7 grid grid-cols-4 gap-3">
+                        {[
+                          ['12', 'Cation tests'],
+                          ['8',  'Anion tests'],
+                          ['6',  'Gas tests'],
+                          ['5',  'Flame tests'],
+                        ].map(([n, label]) => (
+                          <div key={label}>
+                            <p className="font-mono text-xl md:text-2xl font-bold text-warm tabular-nums leading-none">{n}</p>
+                            <p className="mt-1 text-[11px] text-muted leading-tight">{label}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-auto pt-8 flex items-center justify-between">
+                        <p className="font-mono text-[10px] tracking-[0.18em] text-uv">{labs[0].status}</p>
+                        <Link
+                          href="/labs"
+                          className="text-muted hover:text-uv transition-colors"
+                          aria-label="Learn more about Chemistry lab"
+                        >
+                          <ChevronRight size={16} />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </GlowCard>
+              </motion.div>
+
+              {/* Planned — Physics & Biology, smaller */}
+              {labs.slice(1).map((lab, i) => (
                 <motion.div
                   key={lab.name}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
                 >
-                  <GlowCard className="h-full" innerClassName="p-8 md:p-10 flex flex-col h-full">
-                    {/* Image Banner */}
-                    <div className="mb-6 relative w-full h-40 rounded-xl overflow-hidden border border-edge">
-                      <Image 
+                  <GlowCard className="h-full" innerClassName="p-6 md:p-8 flex flex-col h-full">
+                    <div className="mb-5 relative w-full h-32 rounded-xl overflow-hidden border border-edge">
+                      <Image
                         src={lab.image}
                         alt={`${lab.name} virtual lab`}
                         fill
-                        className={`object-cover transition-opacity ${lab.active ? 'opacity-100' : 'opacity-40 grayscale'}`}
+                        className="object-cover opacity-40 grayscale"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-void/80 to-transparent" />
-                      
-                      {lab.active && (
-                        <div className="absolute bottom-3 left-3 flex items-center gap-1.5 font-mono text-[9px] tracking-[0.18em] text-uv bg-void/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-uv/30">
-                          <span className="relative flex h-1.5 w-1.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-uv opacity-75" />
-                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-uv" />
-                          </span>
-                          LIVE
-                        </div>
-                      )}
                     </div>
 
-                    <h3 className="text-2xl font-bold text-chalk mb-3">{lab.name}</h3>
-                    <p className="text-muted leading-relaxed mb-auto">{lab.line}</p>
+                    <h3 className="text-xl font-bold text-chalk mb-2">{lab.name}</h3>
+                    <p className="text-sm text-muted leading-relaxed mb-auto">{lab.line}</p>
 
-                    <div className="mt-8 flex items-center justify-between">
-                      <p className={`font-mono text-[10px] tracking-[0.18em] ${
-                        lab.active ? 'text-uv' : 'text-muted'
-                      }`}>
-                        {lab.status}
-                      </p>
+                    <div className="mt-6 flex items-center justify-between">
+                      <p className="font-mono text-[10px] tracking-[0.18em] text-muted">{lab.status}</p>
                       <Link
                         href="/labs"
                         className="text-muted hover:text-uv transition-colors"

@@ -11,6 +11,7 @@ const readouts = [
 export default function CinematicHero() {
   return (
     <section className="relative overflow-hidden bg-void grain min-h-[96vh] flex flex-col justify-center">
+      <div className="mesh-hero" />
       {/* Hero Video — right side */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
