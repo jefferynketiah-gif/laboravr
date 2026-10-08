@@ -13,6 +13,7 @@ import TitrationDemo from '../components/TitrationDemo';
 import PrecipitateDemo from '../components/PrecipitateDemo';
 import ScrollSequence from '../components/ScrollSequence';
 import GlowCard from '../components/GlowCard';
+import TiltCard from '../components/TiltCard';
 
 /* ── Data ─────────────────────────────────────────────────────────── */
 
@@ -191,26 +192,28 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 className="relative md:col-span-2 h-[400px] md:h-[500px] rounded-3xl overflow-hidden group"
               >
-                <Image
-                  src="/images/african_student_vr.jpg"
-                  alt="Student using VR headset"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-transparent opacity-80" />
-                
-                {/* Overlay content */}
-                <div className="absolute bottom-0 left-0 p-8 md:p-10 w-full">
-                  <div className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] text-uv bg-void/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-uv/30 mb-4">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-uv opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-uv" />
-                    </span>
-                    100% SAFE
+                <TiltCard className="w-full h-full">
+                  <Image
+                    src="/images/african_student_vr.jpg"
+                    alt="Student using VR headset"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-transparent opacity-80" />
+                  
+                  {/* Overlay content */}
+                  <div className="absolute bottom-0 left-0 p-8 md:p-10 w-full" style={{ transform: 'translateZ(30px)' }}>
+                    <div className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] text-uv bg-void/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-uv/30 mb-4 shadow-xl">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-uv opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-uv" />
+                      </span>
+                      100% SAFE
+                    </div>
+                    <h3 className="text-2xl md:text-4xl font-bold text-chalk mb-3">Zero Consumables</h3>
+                    <p className="text-muted text-lg max-w-md">No waiting for reagents to arrive. No shattered glassware. Every student gets hands-on time.</p>
                   </div>
-                  <h3 className="text-2xl md:text-4xl font-bold text-chalk mb-3">Zero Consumables</h3>
-                  <p className="text-muted text-lg max-w-md">No waiting for reagents to arrive. No shattered glassware. Every student gets hands-on time.</p>
-                </div>
+                </TiltCard>
               </motion.div>
 
               {/* Top Right Tile */}
@@ -221,18 +224,20 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="relative h-[250px] md:h-[500px] rounded-3xl overflow-hidden group"
               >
-                <Image
-                  src="/images/Vrheadset.avif"
-                  alt="VR Headset"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-void to-transparent opacity-90" />
-                
-                <div className="absolute bottom-0 left-0 p-8 w-full">
-                  <h3 className="text-xl font-bold text-chalk mb-2">Modern Hardware</h3>
-                  <p className="text-muted text-sm leading-relaxed">Built for standalone headsets. No PC required.</p>
-                </div>
+                <TiltCard className="w-full h-full">
+                  <Image
+                    src="/images/Vrheadset.avif"
+                    alt="VR Headset"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-void to-transparent opacity-90" />
+                  
+                  <div className="absolute bottom-0 left-0 p-8 w-full" style={{ transform: 'translateZ(30px)' }}>
+                    <h3 className="text-xl font-bold text-chalk mb-2">Modern Hardware</h3>
+                    <p className="text-muted text-sm leading-relaxed">Built for standalone headsets. No PC required.</p>
+                  </div>
+                </TiltCard>
               </motion.div>
 
               {/* Bottom Row - 3 Tiles */}
@@ -243,16 +248,18 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="relative h-[250px] rounded-3xl overflow-hidden group"
               >
-                <Image
-                  src="/images/chemistry.jpg"
-                  alt="Chemistry"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/40" />
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <h3 className="text-2xl font-bold tracking-tightest text-white drop-shadow-md">Chemistry</h3>
-                </div>
+                <TiltCard className="w-full h-full">
+                  <Image
+                    src="/images/chemistry.jpg"
+                    alt="Chemistry"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/30" />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'translateZ(20px)' }}>
+                    <h3 className="text-2xl font-bold tracking-tightest text-chalk drop-shadow-sm bg-void/50 backdrop-blur-md px-6 py-2 rounded-full border border-void/50">Chemistry</h3>
+                  </div>
+                </TiltCard>
               </motion.div>
 
               <motion.div
@@ -262,16 +269,18 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="relative h-[250px] rounded-3xl overflow-hidden group"
               >
-                <Image
-                  src="/images/physics.jpg"
-                  alt="Physics"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/40" />
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <h3 className="text-2xl font-bold tracking-tightest text-white drop-shadow-md">Physics</h3>
-                </div>
+                <TiltCard className="w-full h-full">
+                  <Image
+                    src="/images/physics.jpg"
+                    alt="Physics"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/30" />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'translateZ(20px)' }}>
+                    <h3 className="text-2xl font-bold tracking-tightest text-chalk drop-shadow-sm bg-void/50 backdrop-blur-md px-6 py-2 rounded-full border border-void/50">Physics</h3>
+                  </div>
+                </TiltCard>
               </motion.div>
 
               <motion.div
@@ -281,16 +290,18 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="relative h-[250px] rounded-3xl overflow-hidden group"
               >
-                <Image
-                  src="/images/biology.jpg"
-                  alt="Biology"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/40" />
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <h3 className="text-2xl font-bold tracking-tightest text-white drop-shadow-md">Biology</h3>
-                </div>
+                <TiltCard className="w-full h-full">
+                  <Image
+                    src="/images/biology.jpg"
+                    alt="Biology"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/30" />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'translateZ(20px)' }}>
+                    <h3 className="text-2xl font-bold tracking-tightest text-chalk drop-shadow-sm bg-void/50 backdrop-blur-md px-6 py-2 rounded-full border border-void/50">Biology</h3>
+                  </div>
+                </TiltCard>
               </motion.div>
             </div>
           </div>
