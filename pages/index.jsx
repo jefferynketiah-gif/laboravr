@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import CinematicHero from '../components/CinematicHero';
 import ScrollReveal from '../components/ScrollReveal';
 import TitrationDemo from '../components/TitrationDemo';
+import PrecipitateDemo from '../components/PrecipitateDemo';
 import ScrollSequence from '../components/ScrollSequence';
 import GlowCard from '../components/GlowCard';
 
@@ -292,14 +293,26 @@ export default function Home() {
               This is the chemistry,{' '}
               <span className="gradient-text">not a video of it.</span>
             </h2>
-            <p className="mt-6 text-lg text-muted max-w-xl leading-relaxed mb-12">
-              A strong acid–strong base titration, solved live from the same
-              equations the headset uses. Overshoot it and see what a spoiled
-              titration costs.
-            </p>
-            <TitrationDemo />
-            <p className="mt-6 font-mono text-[10px] tracking-[0.15em] text-muted">
-              BROWSER PREVIEW · THE HEADSET VERSION ADDS THE GLASSWARE AND THE HANDS
+            <div className="mt-12 grid lg:grid-cols-2 gap-8">
+              <div>
+                <p className="text-lg text-muted leading-relaxed mb-8">
+                  A strong acid–strong base titration, solved live from the same
+                  equations the headset uses. Overshoot it and see what a spoiled
+                  titration costs.
+                </p>
+                <TitrationDemo />
+              </div>
+              <div>
+                <p className="text-lg text-muted leading-relaxed mb-8">
+                  A qualitative analysis cation test. Add sodium hydroxide to a
+                  copper(II) solution and observe the precipitate, exactly as
+                  specified in the marking scheme.
+                </p>
+                <PrecipitateDemo />
+              </div>
+            </div>
+            <p className="mt-8 font-mono text-[10px] tracking-[0.15em] text-muted text-center lg:text-left">
+              BROWSER PREVIEWS · THE HEADSET VERSION ADDS THE GLASSWARE AND THE HANDS
             </p>
           </div>
         </section>
