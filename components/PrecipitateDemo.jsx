@@ -15,6 +15,7 @@ const EXCESS_THRESHOLD = 8; // Drops needed to be considered "excess"
 
 export default function PrecipitateDemo() {
   const [drops, setDrops] = useState(0);
+  const [isHolding, setIsHolding] = useState(false);
   const holdRef = useRef(null);
 
   const add = useCallback((amount) => {
@@ -22,12 +23,15 @@ export default function PrecipitateDemo() {
   }, []);
 
   const startHold = () => {
+    if (holdRef.current) clearInterval(holdRef.current);
+    setIsHolding(true);
     add(1);
     holdRef.current = setInterval(() => add(1), 250);
   };
   const stopHold = () => {
     if (holdRef.current) clearInterval(holdRef.current);
     holdRef.current = null;
+    setIsHolding(false);
   };
 
   useEffect(() => () => stopHold(), []);
@@ -49,6 +53,8 @@ export default function PrecipitateDemo() {
   }
 
   const atMax = drops >= MAX_DROPS;
+  const liquidTop = 80 - (drops * 1.2); // Liquid level rises
+  const solutionPath = `M36 ${liquidTop} L36 130 A 14 14 0 0 0 64 130 L64 ${liquidTop} Z`;
 
   return (
     <div className="border border-edge bg-void">
@@ -67,29 +73,49 @@ export default function PrecipitateDemo() {
 
       <div className="grid md:grid-cols-[200px_1fr] divide-y md:divide-y-0 md:divide-x divide-edge">
         {/* Apparatus */}
-        <div className="p-6 flex flex-col items-center justify-center">
-          <svg viewBox="0 0 100 150" className="w-[110px]" role="img" aria-label="Test tube contents">
+        <div className="p-6 flex flex-col items-center justify-center bg-surface/50 rounded-tl-xl md:rounded-l-xl md:rounded-tr-none">
+          <svg viewBox="0 0 100 150" className="w-[110px] drop-shadow-xl overflow-visible" role="img" aria-label="Test tube contents">
+            <defs>
+              <linearGradient id="glass-tube" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+                <stop offset="15%" stopColor="#ffffff" stopOpacity="0.1" />
+                <stop offset="40%" stopColor="#ffffff" stopOpacity="0" />
+                <stop offset="85%" stopColor="#ffffff" stopOpacity="0.1" />
+                <stop offset="100%" stopColor="#ffffff" stopOpacity="0.4" />
+              </linearGradient>
+              <linearGradient id="glass-specular" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
+                <stop offset="10%" stopColor="#ffffff" stopOpacity="0.7" />
+                <stop offset="16%" stopColor="#ffffff" stopOpacity="0" />
+                <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="liquid-shadow" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#000000" stopOpacity="0.15" />
+                <stop offset="50%" stopColor="#000000" stopOpacity="0" />
+                <stop offset="100%" stopColor="#000000" stopOpacity="0.1" />
+              </linearGradient>
+            </defs>
+
             {/* Dropper */}
             <path d="M48 5 L52 5 L52 30 L49 35 L48 35 Z" fill="#F8FAFC" stroke="#CBD5E1" strokeWidth="1" />
             <rect x="47" y="0" width="6" height="5" rx="2" fill="#2563EB" />
             
             {/* Falling drop */}
-            {holdRef.current && (
+            {isHolding && (
               <circle cx="50" cy="45" r="2.5" fill="#F8FAFC" stroke="#CBD5E1" strokeWidth="0.5">
-                <animate attributeName="cy" from="38" to="80" dur="0.25s" repeatCount="indefinite" />
+                <animate attributeName="cy" from="38" to={liquidTop} dur="0.25s" repeatCount="indefinite" />
               </circle>
             )}
 
-            {/* Test Tube */}
-            <path d="M35 50 L35 130 A 15 15 0 0 0 65 130 L65 50" fill="none" stroke="#CBD5E1" strokeWidth="1.5" />
-            <path d="M32 50 L68 50" fill="none" stroke="#CBD5E1" strokeWidth="1.5" />
+            {/* Test tube back glass */}
+            <path d="M35 50 L35 130 A 15 15 0 0 0 65 130 L65 50 Z" fill="#F8FAFC" />
 
             {/* Solution */}
-            <path d="M36 80 L36 130 A 14 14 0 0 0 64 130 L64 80 Z" fill={solutionHex} style={{ transition: 'fill 300ms linear' }} />
+            <path d={solutionPath} fill={solutionHex} style={{ transition: 'all 300ms linear' }} />
             
-            {/* Precipitate (Particles) */}
+            {/* Precipitate (Particles + Overlay) */}
             <g style={{ opacity: precipitateOpacity, transition: 'opacity 300ms linear' }}>
-              <path d="M36 95 L36 130 A 14 14 0 0 0 64 130 L64 95 Z" fill="#8CC6E8" opacity="0.8" />
+              <path d={solutionPath} fill="#8CC6E8" opacity="0.8" style={{ transition: 'all 300ms linear' }} />
               {/* Speckles to look like precipitate */}
               <circle cx="42" cy="110" r="1.5" fill="#6AADD6" />
               <circle cx="50" cy="120" r="2" fill="#6AADD6" />
@@ -98,6 +124,16 @@ export default function PrecipitateDemo() {
               <circle cx="55" cy="125" r="1" fill="#6AADD6" />
               <circle cx="48" cy="100" r="1.5" fill="#6AADD6" />
             </g>
+
+            {/* Liquid shading overlay */}
+            <path d={solutionPath} fill="url(#liquid-shadow)" style={{ transition: 'all 300ms linear', mixBlendMode: 'multiply' }} />
+
+            {/* Test Tube Front Glass & Outline */}
+            <path d="M35 50 L35 130 A 15 15 0 0 0 65 130 L65 50" fill="url(#glass-tube)" stroke="#CBD5E1" strokeWidth="1.5" />
+            <path d="M32 50 L68 50" fill="none" stroke="#CBD5E1" strokeWidth="1.5" strokeLinecap="round" />
+            
+            {/* Specular Highlight */}
+            <path d="M35 50 L35 130 A 15 15 0 0 0 65 130 L65 50 Z" fill="url(#glass-specular)" pointerEvents="none" />
           </svg>
 
           <div className="mt-5 w-full space-y-2">
@@ -108,7 +144,7 @@ export default function PrecipitateDemo() {
               onTouchStart={(e) => { e.preventDefault(); startHold(); }}
               onTouchEnd={stopHold}
               disabled={atMax}
-              className="w-full bg-uv text-white text-sm font-semibold py-2.5 rounded-md hover:bg-uv-bright disabled:opacity-40 transition-colors"
+              className="w-full btn-glow bg-uv text-white text-sm font-semibold py-2.5 rounded-lg disabled:opacity-40 disabled:hover:transform-none disabled:hover:box-shadow-none"
             >
               Add NaOH
             </button>

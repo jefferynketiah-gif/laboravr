@@ -107,22 +107,22 @@ export default function Labs() {
         <div className="max-w-6xl mx-auto px-6 space-y-6">
           {labs.map((lab, i) => (
             <ScrollReveal key={lab.name}>
-              <GlowCard className="lift-hover" innerClassName="p-0 overflow-hidden">
+              <GlowCard className="lift-hover group" innerClassName="p-0 overflow-hidden">
                 <div className="grid md:grid-cols-[1fr_1fr]">
                   {/* Left: info */}
                   <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-edge">
                     {/* Icon + status */}
                     <div className="flex items-start justify-between mb-8">
                       <div
-                        className="w-14 h-14 rounded-2xl flex items-center justify-center border"
+                        className="w-14 h-14 rounded-2xl flex items-center justify-center border bg-white/60 backdrop-blur-md shadow-sm transition-all duration-300 group-hover:scale-105"
                         style={{
-                          background: `${lab.colour}18`,
-                          borderColor: `${lab.colour}30`,
+                          borderColor: `${lab.colour}40`,
+                          boxShadow: `0 8px 24px -6px ${lab.colour}40`,
                         }}
                       >
                         <lab.icon
                           size={24}
-                          strokeWidth={1.5}
+                          strokeWidth={2}
                           style={{ color: lab.colour }}
                         />
                       </div>
@@ -238,7 +238,7 @@ export default function Labs() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {labScreens.map((shot) => (
               <ScrollReveal key={shot.src}>
-                <figure className="lift-hover card-shadow overflow-hidden rounded-2xl border border-edge bg-panel">
+                <figure className="lift-hover card-shadow overflow-hidden rounded-2xl border border-edge/50 bg-white/60 backdrop-blur-md">
                   <img
                     src={shot.src}
                     alt={shot.alt}

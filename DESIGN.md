@@ -12,17 +12,18 @@ It does not cover the Unity VR build.
 
 ## 1. Direction
 
-**Clean & clinical, with one signature flourish.** Light background, blue
-accent, restrained motion — think Linear or Stripe's marketing pages, not a
-neon dark-mode dashboard. The site went through a full retheme from an
+**Clean & clinical, elevated with premium polish.** Light background, blue
+accent, and refined modern aesthetics (glassmorphism, subtle scroll-driven
+entry/exit animations). The site went through a full retheme from an
 earlier dark/purple "cyberpunk lab" direction; that direction is retired.
 Do not reintroduce glow blobs, grain, particle fields, or dark vignettes
 site-wide — see §4.
 
 The "one signature flourish" rule: depth and richness come from **one**
-deliberate element per context (e.g. the hero's gradient mesh), not from
-stacking multiple atmospheric effects. If you want to add a visual flourish
-somewhere, remove or tone down something else first.
+deliberate element per context (e.g., a glassmorphic nav bar, or the hero's
+gradient mesh), not from stacking multiple atmospheric effects. Scroll-driven
+animations should feel deliberate and elegant, following modern web guidance
+for performance and accessibility.
 
 ## 2. Color tokens (`tailwind.config.js`)
 
@@ -83,20 +84,17 @@ its own dark styling because it's read in an inbox, not on the site.
 ## 4. Motion & effects — what's allowed
 
 **Allowed, used deliberately:**
+- `.glass-panel` — premium glassmorphism using `backdrop-blur` and semi-transparent backgrounds. Use this for floating elements like the Navbar or sticky headers.
+- Scroll-driven entry/exit animations — use native CSS `@supports (animation-timeline: view())` for fading and scaling elements as they enter the scrollport.
 - `.lift-hover` — 4px rise + neutral shadow on hover, for cards and film frames.
 - `.card-shadow` — a soft *resting* shadow (not just on hover) on `GlowCard`,
   film frames (`LabFilm`, `Lab360`), and gallery cards. Depth shouldn't be
   hover-only.
 - `.mesh-hero` — the hero's static gradient mesh (blue + warm + teal radial
   gradients, no animation). This is the "one signature flourish." Use it
-  **only** in the hero. Don't copy it to every section. In the DOM it must
-  sit *after* the hero video and its white fade panel, so it tints both;
-  placed before them, the fade panel covers it and leaves a visible seam.
+  **only** in the hero. In the DOM it must sit *after* the hero video and its white fade panel, so it tints both.
 - `.grid-reticle` — a very faint technical grid texture, kept at low opacity
-  (10–20%). Used sparingly (hero removed it; `PageHeader`, `404`, labs
-  gallery intro section, `Navbar` mobile overlay, `ScrollSequence` still
-  have it at reduced opacity). It's the one "precise/technical" texture cue
-  — don't add a second competing texture.
+  (10–20%). Used sparingly.
 - `.btn-glow` — a small elevation shadow on primary buttons, tinted with the
   accent color. Not a neon glow.
 - `.hero-drift` — a one-time 14s slow zoom-out on the hero's video loop.

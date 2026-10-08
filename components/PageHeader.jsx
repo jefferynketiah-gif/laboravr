@@ -19,6 +19,8 @@ export default function PageHeader({ eyebrow, title, intro, accentWord }) {
 
   return (
     <section className="relative bg-void overflow-hidden">
+      <div className="absolute inset-0 bg-uv/5 blur-[120px] pointer-events-none" />
+      <div className="aurora-blob aurora-a opacity-30 pointer-events-none mix-blend-multiply" />
       <div className="grid-reticle absolute inset-0 opacity-20" />
 
       <div className="relative max-w-6xl mx-auto px-6 pt-40 pb-20 md:pt-48 md:pb-28">

@@ -11,9 +11,9 @@ import GlowCard from '../components/GlowCard';
 const labelClass = 'block font-mono text-[10px] tracking-[0.18em] text-uv mb-2.5';
 
 const inputClass =
-  'w-full bg-void border border-edge rounded-xl px-4 py-3.5 text-chalk placeholder:text-muted/50 ' +
-  'focus:outline-none focus:border-uv focus:ring-1 focus:ring-uv/50 ' +
-  'hover:border-edge-bright transition-all duration-200';
+  'w-full bg-white/50 backdrop-blur-sm border border-edge/60 rounded-xl px-4 py-3.5 text-chalk placeholder:text-muted/50 ' +
+  'focus:outline-none focus:border-uv focus:ring-4 focus:ring-uv/10 focus:bg-white ' +
+  'hover:border-uv/30 hover:bg-white/80 transition-all duration-300 shadow-[inset_0_2px_6px_rgba(15,23,42,0.02)]';
 
 const pilotPoints = [
   'No cost, and no commitment to buy afterwards.',

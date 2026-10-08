@@ -58,6 +58,7 @@ const curvePath = curve
 
 export default function TitrationDemo() {
   const [volume, setVolume] = useState(0);
+  const [isHolding, setIsHolding] = useState(false);
   const holdRef = useRef(null);
 
   const pH = pHat(volume);
@@ -70,12 +71,15 @@ export default function TitrationDemo() {
   }, []);
 
   const startHold = (amount) => {
+    if (holdRef.current) clearInterval(holdRef.current);
+    setIsHolding(true);
     add(amount);
     holdRef.current = setInterval(() => add(amount), 90);
   };
   const stopHold = () => {
     if (holdRef.current) clearInterval(holdRef.current);
     holdRef.current = null;
+    setIsHolding(false);
   };
 
   useEffect(() => () => stopHold(), []);
@@ -99,29 +103,70 @@ export default function TitrationDemo() {
 
       <div className="grid md:grid-cols-[200px_1fr] divide-y md:divide-y-0 md:divide-x divide-edge">
         {/* Apparatus */}
-        <div className="p-6 flex flex-col items-center justify-center">
-          <svg viewBox="0 0 100 150" className="w-[130px]" role="img"
+        <div className="p-6 flex flex-col items-center justify-center bg-surface/50 rounded-tl-xl md:rounded-l-xl md:rounded-tr-none">
+          <svg viewBox="0 0 100 150" className="w-[130px] drop-shadow-xl overflow-visible" role="img"
                aria-label={`Flask contents, pH ${pH.toFixed(2)}`}>
-            {/* Burette */}
+            <defs>
+              <linearGradient id="glass-flask" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+                <stop offset="15%" stopColor="#ffffff" stopOpacity="0.1" />
+                <stop offset="40%" stopColor="#ffffff" stopOpacity="0" />
+                <stop offset="85%" stopColor="#ffffff" stopOpacity="0.1" />
+                <stop offset="100%" stopColor="#ffffff" stopOpacity="0.4" />
+              </linearGradient>
+              <linearGradient id="glass-flask-specular" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
+                <stop offset="10%" stopColor="#ffffff" stopOpacity="0.7" />
+                <stop offset="16%" stopColor="#ffffff" stopOpacity="0" />
+                <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="flask-shadow" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#000000" stopOpacity="0.15" />
+                <stop offset="50%" stopColor="#000000" stopOpacity="0" />
+                <stop offset="100%" stopColor="#000000" stopOpacity="0.1" />
+              </linearGradient>
+            </defs>
+
+            {/* Burette Background */}
             <rect x="45" y="4" width="10" height="52" rx="1"
                   fill="#F8FAFC" stroke="#CBD5E1" strokeWidth="1" />
+            {/* Burette Liquid */}
             <rect x="46" y={5 + (52 - fillHeight)} width="8" height={fillHeight}
                   fill="#2563EB" opacity="0.55" />
+            {/* Burette Overlay Specular */}
+            <rect x="45" y="4" width="10" height="52" rx="1"
+                  fill="url(#glass-flask)" pointerEvents="none" />
+            
             <rect x="47.5" y="56" width="5" height="8" fill="#CBD5E1" />
+            
             {/* Falling drop */}
-            {holdRef.current && (
+            {isHolding && (
               <circle cx="50" cy="70" r="1.6" fill="#2563EB">
-                <animate attributeName="cy" from="66" to="92"
+                <animate attributeName="cy" from="66" to="120"
                          dur="0.35s" repeatCount="indefinite" />
               </circle>
             )}
-            {/* Conical flask */}
+
+            {/* Conical flask back */}
             <path d="M42 96 L42 104 L26 138 Q24 144 31 144 L69 144 Q76 144 74 138 L58 104 L58 96 Z"
-                  fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="1.2" />
+                  fill="#F8FAFC" />
+                  
             {/* Solution */}
             <path d="M33.5 126 L29 138 Q28 141.5 31.5 141.5 L68.5 141.5 Q72 141.5 71 138 L66.5 126 Z"
                   fill={`rgb(${Math.round(226 - 7 * alpha)}, ${Math.round(232 - 193 * alpha)}, ${Math.round(240 - 121 * alpha)})`}
                   style={{ transition: 'fill 220ms linear' }} />
+                  
+            {/* Solution Shadow Overlay */}
+            <path d="M33.5 126 L29 138 Q28 141.5 31.5 141.5 L68.5 141.5 Q72 141.5 71 138 L66.5 126 Z"
+                  fill="url(#flask-shadow)" style={{ mixBlendMode: 'multiply' }} pointerEvents="none" />
+                  
+            {/* Conical flask front glass & stroke */}
+            <path d="M42 96 L42 104 L26 138 Q24 144 31 144 L69 144 Q76 144 74 138 L58 104 L58 96"
+                  fill="url(#glass-flask)" stroke="#CBD5E1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            
+            {/* Specular highlight */}
+            <path d="M42 96 L42 104 L26 138 Q24 144 31 144 L69 144 Q76 144 74 138 L58 104 L58 96 Z"
+                  fill="url(#glass-flask-specular)" pointerEvents="none" />
           </svg>
 
           <div className="mt-5 w-full space-y-2">
@@ -132,14 +177,14 @@ export default function TitrationDemo() {
               onTouchStart={(e) => { e.preventDefault(); startHold(0.1); }}
               onTouchEnd={stopHold}
               disabled={volume >= V_MAX}
-              className="w-full bg-uv text-white text-sm font-semibold py-2.5 rounded-md hover:bg-uv-bright disabled:opacity-40 transition-colors"
+              className="w-full btn-glow bg-uv text-white text-sm font-semibold py-2.5 rounded-lg disabled:opacity-40 disabled:hover:transform-none disabled:hover:box-shadow-none"
             >
               Add titrant
             </button>
             <button
               onClick={() => add(1)}
               disabled={volume >= V_MAX}
-              className="w-full border border-edge text-chalk text-sm py-2 rounded-md hover:border-uv hover:text-uv disabled:opacity-40 transition-colors"
+              className="w-full border border-edge text-chalk text-sm py-2 rounded-lg hover:border-uv hover:text-uv disabled:opacity-40 transition-colors"
             >
               +1.00 mL
             </button>

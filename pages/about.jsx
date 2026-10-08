@@ -160,16 +160,14 @@ export default function About() {
             <GlowCard innerClassName="p-8 md:p-12">
               <div className="grid sm:grid-cols-[240px_1fr] gap-10 items-start">
                 {/* Photo */}
-                <div className="relative w-[200px] sm:w-full overflow-hidden rounded-2xl border border-edge" style={{ aspectRatio: '3/4' }}>
+                <div className="relative w-[180px] sm:w-[200px] aspect-square flex-shrink-0 mx-auto sm:mx-0 overflow-hidden rounded-full border-4 border-white glow-ring-tight">
                   <Image
                     src="/images/Founder.jpg"
                     alt="Portrait of Jeffery Nketiah, founder of LaboraVR"
                     fill
-                    sizes="(max-width: 640px) 200px, 240px"
-                    className="object-cover grayscale contrast-[1.1]"
+                    sizes="(max-width: 640px) 180px, 200px"
+                    className="object-cover object-[center_15%]"
                   />
-                  <div className="absolute inset-0 bg-uv/10 mix-blend-color" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent" />
                 </div>
 
                 {/* Bio */}

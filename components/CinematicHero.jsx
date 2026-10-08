@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 const readouts = [
@@ -9,12 +9,17 @@ const readouts = [
 ];
 
 export default function CinematicHero() {
+  const { scrollY } = useScroll();
+  const yBg = useTransform(scrollY, [0, 1000], [0, 300]);
+  const yText = useTransform(scrollY, [0, 1000], [0, 150]);
+
   return (
     <section className="relative overflow-hidden bg-void grain min-h-[96vh] flex flex-col justify-center">
       {/* Hero Video — right side */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
+        style={{ y: yBg }}
         transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         className="absolute top-[-5vh] right-0 bottom-[-5vh] w-[100%] md:w-[75%] pointer-events-none z-0"
       >
@@ -49,7 +54,7 @@ export default function CinematicHero() {
       <div className="mesh-hero" />
 
       {/* Copy layer */}
-      <div className="relative max-w-6xl mx-auto px-6 w-full pt-36 pb-12 md:pt-28">
+      <motion.div style={{ y: yText }} className="relative max-w-6xl mx-auto px-6 w-full pt-36 pb-12 md:pt-28">
         <div className="max-w-xl">
           {/* Eyebrow */}
           <motion.p
@@ -109,7 +114,7 @@ export default function CinematicHero() {
             </Link>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Readout rail */}
       <motion.div

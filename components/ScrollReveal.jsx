@@ -1,40 +1,33 @@
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export default function ScrollReveal({ children, className = '' }) {
   const ref = useRef(null);
 
   useEffect(() => {
-    const el = ref.current;
+    // Only run fallback if native scroll-driven animations are not supported
+    if (typeof CSS !== 'undefined' && !CSS.supports('(animation-timeline: view()) and (animation-range: entry)')) {
+      const el = ref.current;
+      if (!el) return;
 
-    const anim = gsap.fromTo(
-      el,
-      { opacity: 0, y: 60 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              observer.unobserve(entry.target);
+            }
+          }
         },
-      }
-    );
+        { threshold: 0.15 }
+      );
 
-    return () => {
-      anim.scrollTrigger?.kill();
-      anim.kill();
-    };
+      observer.observe(el);
+      return () => observer.disconnect();
+    }
   }, []);
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={`modern-scroll-reveal ${className}`}>
       {children}
     </div>
   );

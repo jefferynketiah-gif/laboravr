@@ -83,7 +83,6 @@ const demoFeatures = [
 
 const COMING_SOON = true; // set to false when the APK is ready
 
-/* ── Static stat tile ────────────────────────────────────────────── */
 function StatTile({ display, label, note, index }) {
   return (
     <motion.div
@@ -91,7 +90,7 @@ function StatTile({ display, label, note, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-void p-8 md:p-10 flex flex-col gap-2 group hover:bg-surface transition-colors"
+      className="bg-white/60 backdrop-blur-md border border-edge/50 rounded-2xl p-8 md:p-10 flex flex-col gap-2 group hover:shadow-[0_8px_30px_rgba(37,99,235,0.08)] hover:-translate-y-1 transition-all duration-500"
     >
       <p className="font-mono text-4xl md:text-5xl font-extrabold text-uv leading-none tabular-nums">
         {display}
@@ -118,7 +117,7 @@ export default function Home() {
         <section className="relative bg-panel py-20 md:py-24 overflow-hidden">
           {/* Background glow */}
           <div className="relative max-w-6xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-edge border border-edge overflow-hidden rounded-xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {stats.map((s, i) => (
                 <StatTile key={s.label} index={i} {...s} />
               ))}
@@ -140,7 +139,7 @@ export default function Home() {
               <span className="gradient-text">tight budget cuts.</span>
             </h2>
 
-            <div className="mt-16 border-t border-edge">
+            <div className="mt-16 space-y-4">
               {constraints.map((c, i) => (
                 <motion.div
                   key={c.code}
@@ -148,12 +147,12 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="grid md:grid-cols-[140px_1fr] gap-2 md:gap-10 py-7 border-b border-edge group hover:bg-surface/30 -mx-6 px-6 transition-colors rounded"
+                  className="grid md:grid-cols-[140px_1fr] gap-2 md:gap-10 p-6 md:p-8 border border-edge/50 bg-white/60 backdrop-blur-md shadow-[0_4px_20px_rgba(15,23,42,0.03)] group hover:shadow-[0_8px_30px_rgba(37,99,235,0.08)] hover:-translate-y-1 transition-all duration-500 rounded-2xl"
                 >
                   <p className="font-mono text-[11px] tracking-[0.18em] text-uv pt-1">
                     {c.code}
                   </p>
-                  <p className="text-lg text-muted leading-relaxed max-w-2xl group-hover:text-chalk-dim transition-colors">
+                  <p className="text-xl text-muted leading-relaxed max-w-3xl group-hover:text-chalk transition-colors">
                     {c.text}
                   </p>
                 </motion.div>
@@ -411,18 +410,18 @@ export default function Home() {
               What your IT department will ask.
             </h2>
 
-            <div className="border-t border-edge">
+            <div className="space-y-4">
               {specs.map((s, i) => (
                 <motion.div
                   key={s.k}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.06 }}
-                  className="grid md:grid-cols-[180px_1fr] gap-2 md:gap-10 py-7 border-b border-edge group hover:bg-surface/30 -mx-6 px-6 transition-colors rounded"
+                  className="grid md:grid-cols-[180px_1fr] gap-2 md:gap-10 p-6 md:p-8 border border-edge/50 bg-white/60 backdrop-blur-md shadow-[0_4px_20px_rgba(15,23,42,0.03)] group hover:shadow-[0_8px_30px_rgba(37,99,235,0.08)] hover:-translate-y-1 transition-all duration-500 rounded-2xl"
                 >
                   <p className="font-mono text-[11px] tracking-[0.18em] text-uv pt-1">{s.k}</p>
-                  <p className="text-lg text-muted leading-relaxed max-w-2xl group-hover:text-chalk-dim transition-colors">
+                  <p className="text-xl text-muted leading-relaxed max-w-3xl group-hover:text-chalk transition-colors">
                     {s.v}
                   </p>
                 </motion.div>
