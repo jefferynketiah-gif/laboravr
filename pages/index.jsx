@@ -14,7 +14,6 @@ import PrecipitateDemo from '../components/PrecipitateDemo';
 import ScrollSequence from '../components/ScrollSequence';
 import GlowCard from '../components/GlowCard';
 import TiltCard from '../components/TiltCard';
-import Lab3DViewer from '../components/Lab3DViewer';
 
 /* ── Data ─────────────────────────────────────────────────────────── */
 
@@ -447,7 +446,7 @@ export default function Home() {
               This is the chemistry,{' '}
               <span className="gradient-text">not a video of it.</span>
             </h2>
-            <div className="mt-12 grid lg:grid-cols-3 gap-8">
+            <div className="mt-12 grid lg:grid-cols-2 gap-8">
               <div>
                 <p className="text-lg text-muted leading-relaxed mb-8">
                   A strong acid–strong base titration, solved live from the same
@@ -462,14 +461,6 @@ export default function Home() {
                   specified in the marking scheme.
                 </p>
                 <PrecipitateDemo />
-              </div>
-              <div className="h-[400px] lg:h-auto">
-                <p className="text-lg text-muted leading-relaxed mb-8">
-                  Or inspect the molecular structure using our WebGL 3D rendering engine.
-                </p>
-                <div className="h-full w-full min-h-[300px]">
-                  <Lab3DViewer />
-                </div>
               </div>
             </div>
             <p className="mt-8 font-mono text-[10px] tracking-[0.15em] text-muted text-center lg:text-left">
