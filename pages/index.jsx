@@ -14,9 +14,6 @@ import PrecipitateDemo from '../components/PrecipitateDemo';
 import ScrollSequence from '../components/ScrollSequence';
 import GlowCard from '../components/GlowCard';
 import TiltCard from '../components/TiltCard';
-import TrustTicker from '../components/TrustTicker';
-import Integrations from '../components/Integrations';
-import TeacherAnalytics from '../components/TeacherAnalytics';
 import Lab3DViewer from '../components/Lab3DViewer';
 
 /* ── Data ─────────────────────────────────────────────────────────── */
@@ -116,7 +113,6 @@ export default function Home() {
       />
       <Navbar />
       <CinematicHero />
-      <TrustTicker />
 
       {/* ── Stats counter ──────────────────────────────────────── */}
       <ScrollReveal>
@@ -474,11 +470,6 @@ export default function Home() {
           </div>
         </section>
       </ScrollReveal>
-
-      <Integrations />
-      
-      <TeacherAnalytics />
-
 
       {/* ── Download / Demo ────────────────────────────────────── */}
       <ScrollReveal>
