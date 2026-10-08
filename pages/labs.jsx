@@ -1,5 +1,6 @@
 import Seo from '../components/Seo';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FlaskConical, Zap, Microscope, ChevronRight } from 'lucide-react';
 
