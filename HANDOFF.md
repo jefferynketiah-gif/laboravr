@@ -73,7 +73,9 @@ authority on whether chemistry content is correct).
   the test row in Supabase. Test messages start with `[TEST]`.
 - Connect `media.laboravr.com` in Cloudflare R2, add it to the CORS list, set `NEXT_PUBLIC_MEDIA_BASE`, and
   update the hardcoded URL in `public/360/index.html`. The hero loop and films currently use the r2.dev URL.
-- Rotate the Supabase `sb_secret_…` key (part of it appeared in a screenshot shared in chat).
+- Supabase keys: the site only uses the **anon** key, which is public by design and safe because RLS allows
+  INSERT only. The `sb_secret_…` / `service_role` keys are not used anywhere in this project and must never go
+  in a `NEXT_PUBLIC_` variable. Rotate them only if the full value is ever pasted somewhere it shouldn't be.
 - Optional: `.git` in the old OneDrive folder is ~210 MB from one orphaned film commit; a fresh clone is small.
 - Ideas not started: a second small interactive demo beside `TitrationDemo`; real case study once a pilot
   school exists; real physics/biology screenshots when those labs have any.
