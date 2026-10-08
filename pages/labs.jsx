@@ -145,7 +145,7 @@ export default function Labs() {
                       </div>
                     </div>
 
-                    <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-3">
+                    <h2 className="text-2xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-3">
                       {lab.name}
                     </h2>
                     {lab.syllabus && (
@@ -153,7 +153,7 @@ export default function Labs() {
                         {lab.syllabus}
                       </p>
                     )}
-                    <p className="text-lg text-muted leading-relaxed">
+                    <p className="text-base md:text-lg text-muted leading-relaxed">
                       {lab.thesis}
                     </p>
                   </div>
@@ -262,11 +262,11 @@ export default function Labs() {
       <ScrollReveal>
         <section className="relative bg-panel py-24 md:py-32 overflow-hidden">
           <div className="relative max-w-2xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
+            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
               <span className="text-chalk">Something missing </span>
               <span className="gradient-text">from that list?</span>
             </h2>
-            <p className="mt-6 text-lg text-muted leading-relaxed">
+            <p className="mt-6 text-base md:text-lg text-muted leading-relaxed">
               That&apos;s the useful conversation. Tell us which practical your
               department can&apos;t reliably run, and it goes to the front of
               the queue.

@@ -41,7 +41,7 @@ export default function PageHeader({ eyebrow, title, intro, accentWord }) {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tightest text-chalk max-w-3xl leading-[1.0]"
+          className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tightest text-chalk max-w-3xl leading-[1.05]"
         >
           {renderTitle()}
         </motion.h1>
@@ -51,7 +51,7 @@ export default function PageHeader({ eyebrow, title, intro, accentWord }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.18 }}
-            className="mt-6 text-lg text-muted max-w-xl leading-relaxed"
+            className="mt-6 text-base md:text-lg text-muted max-w-xl leading-relaxed"
           >
             {intro}
           </motion.p>

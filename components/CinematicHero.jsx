@@ -72,7 +72,7 @@ export default function CinematicHero() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[2.75rem] leading-[0.95] sm:text-6xl md:text-[5rem] font-extrabold tracking-tightest"
+            className="text-[2.25rem] leading-[0.95] sm:text-5xl md:text-[5rem] font-extrabold tracking-tightest"
           >
             <span className="gradient-text">The lab that</span>
             <br />
@@ -86,7 +86,7 @@ export default function CinematicHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.28 }}
-            className="mt-7 text-lg text-muted max-w-md leading-relaxed [text-shadow:0_2px_12px_rgba(10,11,16,0.9)] relative z-10"
+            className="mt-7 text-lg text-muted max-w-md leading-relaxed relative z-10"
           >
             Practical chemistry, physics and biology in virtual reality — built
             for schools and universities, where an equipment budget shouldn&apos;t
@@ -127,7 +127,7 @@ export default function CinematicHero() {
           {readouts.map((r) => (
             <div
               key={r.label}
-              className="py-5 sm:px-6 sm:first:pl-0 border-b sm:border-b-0 sm:border-r border-edge last:border-none group"
+              className="px-4 py-5 sm:px-6 sm:first:pl-0 border-b sm:border-b-0 sm:border-r border-edge last:border-none group"
             >
               <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-1.5">
                 {r.label}

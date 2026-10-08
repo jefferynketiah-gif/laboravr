@@ -30,9 +30,9 @@ export default function Footer() {
       <div className="h-px bg-gradient-to-r from-transparent via-uv/50 to-transparent" />
 
       <div className="relative max-w-6xl mx-auto px-6 py-16 md:py-20">
-        <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8 md:gap-12">
           {/* Brand */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <div className="mb-5">
               <Wordmark size="lg" showCaret={false} />
             </div>

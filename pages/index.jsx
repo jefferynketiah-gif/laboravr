@@ -90,12 +90,12 @@ function StatTile({ display, label, note, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-white/60 backdrop-blur-md border border-edge/50 rounded-2xl p-8 md:p-10 flex flex-col gap-2 group hover:shadow-[0_8px_30px_rgba(37,99,235,0.08)] hover:-translate-y-1 transition-all duration-500"
+      className="bg-white/60 backdrop-blur-md border border-edge/50 rounded-2xl p-5 md:p-10 flex flex-col gap-1.5 md:gap-2 group hover:shadow-[0_8px_30px_rgba(37,99,235,0.08)] hover:-translate-y-1 transition-all duration-500"
     >
-      <p className="font-mono text-4xl md:text-5xl font-extrabold text-uv leading-none tabular-nums">
+      <p className="font-mono text-2xl md:text-5xl font-extrabold text-uv leading-none tabular-nums">
         {display}
       </p>
-      <p className="font-semibold text-chalk mt-1">{label}</p>
+      <p className="font-semibold text-chalk mt-1 text-sm md:text-base">{label}</p>
       <p className="font-mono text-[10px] tracking-[0.15em] text-muted leading-snug">{note}</p>
     </motion.div>
   );
@@ -207,7 +207,7 @@ export default function Home() {
                       <p className="text-muted leading-relaxed">{labs[0].line}</p>
 
                       {/* Real numbers from the build */}
-                      <div className="mt-7 grid grid-cols-4 gap-3">
+                      <div className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-3">
                         {[
                           ['12', 'Cation tests'],
                           ['8',  'Anion tests'],
@@ -323,20 +323,20 @@ export default function Home() {
           {/* Big glow */}
 
           <div className="relative max-w-5xl mx-auto px-6">
-            <GlowCard innerClassName="p-8 md:p-14">
+            <GlowCard innerClassName="p-6 md:p-14">
               <div className="grid md:grid-cols-[1fr_auto] gap-10 items-center">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
                     <span className="w-6 h-px bg-uv" />
                     <p className="font-mono text-[11px] tracking-[0.2em] text-uv">DEMO BUILD</p>
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk leading-[1.05] mb-4">
+                  <h2 className="text-2xl md:text-4xl font-extrabold tracking-tightest text-chalk leading-[1.05] mb-4">
                     {COMING_SOON ? 'Building this now.' : 'Try it in the headset.'}{' '}
                     <span className="gradient-text">
                       {COMING_SOON ? 'Be the first to try it.' : 'No cost, no account.'}
                     </span>
                   </h2>
-                  <p className="text-lg text-muted leading-relaxed mb-8 max-w-xl">
+                  <p className="text-base md:text-lg text-muted leading-relaxed mb-8 max-w-xl">
                     {COMING_SOON
                       ? 'We\'re building a full VR chemistry lab. The titration practical you can run above will be the first experiment — with real glassware in your hands. Join the pilot to be notified the moment it\'s ready.'
                       : 'The chemistry lab is in active development. Run the titration practical yourself, exactly as your students will.'}
@@ -355,7 +355,7 @@ export default function Home() {
                         href="/contact"
                         className="btn-glow inline-flex items-center gap-2 bg-uv text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-uv-bright transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
                       >
-                        Join the pilot — get early access
+                        Join the pilot — early access
                       </Link>
                     ) : (
                       <a
@@ -445,12 +445,12 @@ export default function Home() {
             <p className="font-mono text-[11px] tracking-[0.2em] text-uv mb-6">
               PILOT PROGRAMME
             </p>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
+            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
               <span className="gradient-text">We&apos;re looking for</span>
               <br />
               <span className="text-chalk">the first three departments.</span>
             </h2>
-            <p className="mt-6 text-lg text-muted leading-relaxed max-w-xl mx-auto">
+            <p className="mt-6 text-base md:text-lg text-muted leading-relaxed max-w-xl mx-auto">
               The pilot is free. You get the labs and your students&apos;
               practical time back; we get the feedback that decides what gets
               built next.
@@ -458,13 +458,13 @@ export default function Home() {
             <div className="mt-10 flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"
-                className="btn-glow inline-block bg-uv text-white px-10 py-4 rounded-xl font-semibold hover:bg-uv-bright transition-colors text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
+                className="btn-glow inline-block bg-uv text-white px-8 py-4 rounded-xl font-semibold hover:bg-uv-bright transition-colors text-base md:text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
               >
                 Join the pilot
               </Link>
               <Link
                 href="/labs"
-                className="glass inline-block border border-edge text-chalk px-10 py-4 rounded-xl font-semibold hover:border-uv/50 transition-all text-lg"
+                className="glass inline-block border border-edge text-chalk px-8 py-4 rounded-xl font-semibold hover:border-uv/50 transition-all text-base md:text-lg"
               >
                 Explore the labs
               </Link>

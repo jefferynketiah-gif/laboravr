@@ -84,7 +84,7 @@ export default function About() {
       {/* Full-bleed students photo */}
       <ScrollReveal>
         <section className="relative bg-void">
-          <div className="relative h-[280px] md:h-[460px] w-full overflow-hidden">
+          <div className="relative h-[220px] md:h-[460px] w-full overflow-hidden rounded-b-2xl md:rounded-none">
             <video
               src="/lab-screens/hero-loop.webm"
               poster="/lab-screens/hero-loop-poster.jpg"
@@ -158,7 +158,7 @@ export default function About() {
             </div>
 
             <GlowCard innerClassName="p-8 md:p-12">
-              <div className="grid sm:grid-cols-[240px_1fr] gap-10 items-start">
+              <div className="flex flex-col sm:grid sm:grid-cols-[200px_1fr] gap-8 sm:gap-10 items-center sm:items-start">
                 {/* Photo */}
                 <div className="relative w-[180px] sm:w-[200px] aspect-square flex-shrink-0 mx-auto sm:mx-0 overflow-hidden rounded-full border-4 border-white glow-ring-tight">
                   <Image
@@ -331,17 +331,17 @@ export default function About() {
       <ScrollReveal>
         <section className="relative bg-void grain py-24 md:py-32 overflow-hidden">
           <div className="relative max-w-2xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
+            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
               <span className="gradient-text">Work with us </span>
               <span className="text-chalk">early.</span>
             </h2>
-            <p className="mt-6 text-lg text-muted leading-relaxed">
+            <p className="mt-6 text-base md:text-lg text-muted leading-relaxed">
               The first departments get the most say in what gets built.
             </p>
             <div className="mt-10">
               <Link
                 href="/contact"
-                className="btn-glow inline-block bg-uv text-white px-10 py-4 rounded-xl font-semibold hover:bg-uv-bright transition-colors text-lg"
+                className="btn-glow inline-block bg-uv text-white px-8 py-4 rounded-xl font-semibold hover:bg-uv-bright transition-colors text-base md:text-lg"
               >
                 Join the pilot
               </Link>
