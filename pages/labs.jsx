@@ -19,6 +19,7 @@ const labs = [
     status: 'IN DEVELOPMENT',
     active: true,
     colour: '#2563EB',
+    image: '/images/chemistry.jpg',
     syllabus: 'CAMBRIDGE IGCSE CHEMISTRY 0620',
     thesis:
       'The discipline where the gap between reading a method and running it is widest — and where a mistake in the real lab is expensive or dangerous.',
@@ -35,6 +36,7 @@ const labs = [
     status: 'PLANNED — 2027',
     active: false,
     colour: '#0D9488',
+    image: '/images/physics.jpg',
     thesis:
       'Apparatus that never drifts out of calibration, never goes missing, and lets a student repeat a measurement until the method makes sense.',
     practicals: [
@@ -50,6 +52,7 @@ const labs = [
     status: 'PLANNED — 2028',
     active: false,
     colour: '#7C3AED',
+    image: '/images/biology.jpg',
     thesis:
       'Specimens and prepared slides cost money and run out. Here they don\'t, and dissection carries no ethical cost.',
     practicals: [
@@ -110,9 +113,17 @@ export default function Labs() {
               <GlowCard className="lift-hover group" innerClassName="p-0 overflow-hidden">
                 <div className="grid md:grid-cols-[1fr_1fr]">
                   {/* Left: info */}
-                  <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-edge">
+                  <div className="relative p-8 md:p-12 border-b md:border-b-0 md:border-r border-edge overflow-hidden">
+                    {/* Hover Background Image */}
+                    {lab.image && (
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-15 md:group-hover:opacity-25 transition-opacity duration-700 pointer-events-none z-0">
+                        <Image src={lab.image} alt={lab.name} fill className="object-cover mix-blend-luminosity grayscale" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-void via-void/50 to-transparent" />
+                      </div>
+                    )}
+
                     {/* Icon + status */}
-                    <div className="flex items-start justify-between mb-8">
+                    <div className="relative z-10 flex items-start justify-between mb-8">
                       <div
                         className="w-14 h-14 rounded-2xl flex items-center justify-center border bg-white/60 backdrop-blur-md shadow-sm transition-all duration-300 group-hover:scale-105"
                         style={{
@@ -145,17 +156,19 @@ export default function Labs() {
                       </div>
                     </div>
 
-                    <h2 className="text-2xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-3">
-                      {lab.name}
-                    </h2>
-                    {lab.syllabus && (
-                      <p className="font-mono text-[10px] tracking-[0.15em] text-warm mb-4">
-                        {lab.syllabus}
+                    <div className="relative z-10">
+                      <h2 className="text-2xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-3">
+                        {lab.name}
+                      </h2>
+                      {lab.syllabus && (
+                        <p className="font-mono text-[10px] tracking-[0.15em] text-warm mb-4">
+                          {lab.syllabus}
+                        </p>
+                      )}
+                      <p className="text-base md:text-lg text-muted leading-relaxed">
+                        {lab.thesis}
                       </p>
-                    )}
-                    <p className="text-base md:text-lg text-muted leading-relaxed">
-                      {lab.thesis}
-                    </p>
+                    </div>
                   </div>
 
                   {/* Right: practicals list */}

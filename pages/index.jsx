@@ -37,21 +37,21 @@ const constraints = [
 
 const labs = [
   {
-    image: '/lab-screens/vr_hands_lesson1.jpg',
+    image: '/images/chemistry.jpg',
     name: 'Chemistry',
     line: 'Titrations, reaction kinetics and organic synthesis. Get it wrong, see what happens, run it again.',
     status: 'IN DEVELOPMENT',
     active: true,
   },
   {
-    image: '/lab-screens/lab_physics_clean.jpg',
+    image: '/images/physics.jpg',
     name: 'Physics',
     line: 'Mechanics, optics and circuits on apparatus that never drifts out of calibration.',
     status: 'PLANNED',
     active: false,
   },
   {
-    image: '/lab-screens/lab_biology_clean.jpg',
+    image: '/images/biology.jpg',
     name: 'Biology',
     line: 'Microscopy, dissection and cell biology without specimen cost or ethical constraints.',
     status: 'PLANNED',
@@ -157,6 +157,141 @@ export default function Home() {
                   </p>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── See It In Action (Bento Grid) ──────────────────────── */}
+      <ScrollReveal>
+        <section className="relative bg-void py-24 md:py-32 overflow-hidden">
+          {/* Background effects */}
+          <div className="absolute inset-0 bg-gradient-to-b from-panel via-void to-panel" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-uv/10 blur-[120px] rounded-full pointer-events-none" />
+
+          <div className="relative max-w-6xl mx-auto px-6">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <span className="w-6 h-px bg-uv" />
+              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">SEE IT IN ACTION</p>
+              <span className="w-6 h-px bg-uv" />
+            </div>
+            
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tightest text-center text-chalk leading-[1.05] mb-16">
+              Immersive, safe, and <span className="gradient-text">limitless.</span>
+            </h2>
+
+            {/* Bento Grid */}
+            <div className="grid md:grid-cols-3 gap-4 md:gap-6">
+              
+              {/* Large Hero Tile */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="relative md:col-span-2 h-[400px] md:h-[500px] rounded-3xl overflow-hidden group"
+              >
+                <Image
+                  src="/images/african_student_vr.jpg"
+                  alt="Student using VR headset"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-transparent opacity-80" />
+                
+                {/* Overlay content */}
+                <div className="absolute bottom-0 left-0 p-8 md:p-10 w-full">
+                  <div className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] text-uv bg-void/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-uv/30 mb-4">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-uv opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-uv" />
+                    </span>
+                    100% SAFE
+                  </div>
+                  <h3 className="text-2xl md:text-4xl font-bold text-chalk mb-3">Zero Consumables</h3>
+                  <p className="text-muted text-lg max-w-md">No waiting for reagents to arrive. No shattered glassware. Every student gets hands-on time.</p>
+                </div>
+              </motion.div>
+
+              {/* Top Right Tile */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="relative h-[250px] md:h-[500px] rounded-3xl overflow-hidden group"
+              >
+                <Image
+                  src="/images/Vrheadset.avif"
+                  alt="VR Headset"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-void to-transparent opacity-90" />
+                
+                <div className="absolute bottom-0 left-0 p-8 w-full">
+                  <h3 className="text-xl font-bold text-chalk mb-2">Modern Hardware</h3>
+                  <p className="text-muted text-sm leading-relaxed">Built for standalone headsets. No PC required.</p>
+                </div>
+              </motion.div>
+
+              {/* Bottom Row - 3 Tiles */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative h-[250px] rounded-3xl overflow-hidden group"
+              >
+                <Image
+                  src="/images/chemistry.jpg"
+                  alt="Chemistry"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/40" />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <h3 className="text-2xl font-bold tracking-tightest text-white drop-shadow-md">Chemistry</h3>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="relative h-[250px] rounded-3xl overflow-hidden group"
+              >
+                <Image
+                  src="/images/physics.jpg"
+                  alt="Physics"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/40" />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <h3 className="text-2xl font-bold tracking-tightest text-white drop-shadow-md">Physics</h3>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="relative h-[250px] rounded-3xl overflow-hidden group"
+              >
+                <Image
+                  src="/images/biology.jpg"
+                  alt="Biology"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/40" />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <h3 className="text-2xl font-bold tracking-tightest text-white drop-shadow-md">Biology</h3>
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
