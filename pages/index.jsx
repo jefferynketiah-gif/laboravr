@@ -14,6 +14,10 @@ import PrecipitateDemo from '../components/PrecipitateDemo';
 import ScrollSequence from '../components/ScrollSequence';
 import GlowCard from '../components/GlowCard';
 import TiltCard from '../components/TiltCard';
+import TrustTicker from '../components/TrustTicker';
+import Integrations from '../components/Integrations';
+import TeacherAnalytics from '../components/TeacherAnalytics';
+import Lab3DViewer from '../components/Lab3DViewer';
 
 /* ── Data ─────────────────────────────────────────────────────────── */
 
@@ -112,6 +116,7 @@ export default function Home() {
       />
       <Navbar />
       <CinematicHero />
+      <TrustTicker />
 
       {/* ── Stats counter ──────────────────────────────────────── */}
       <ScrollReveal>
@@ -428,17 +433,17 @@ export default function Home() {
 
       {/* ── Try it ─────────────────────────────────────────────── */}
       <ScrollReveal>
-        <section className="relative bg-panel py-24 md:py-32">
-          <div className="max-w-5xl mx-auto px-6">
+        <section className="relative bg-panel py-24 md:py-32 border-t border-edge">
+          <div className="max-w-[85rem] mx-auto px-6">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-6 h-px bg-uv" />
-              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">RUN ONE NOW</p>
+              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">LIVE DEMOS</p>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
               This is the chemistry,{' '}
               <span className="gradient-text">not a video of it.</span>
             </h2>
-            <div className="mt-12 grid lg:grid-cols-2 gap-8">
+            <div className="mt-12 grid lg:grid-cols-3 gap-8">
               <div>
                 <p className="text-lg text-muted leading-relaxed mb-8">
                   A strong acid–strong base titration, solved live from the same
@@ -449,11 +454,18 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-lg text-muted leading-relaxed mb-8">
-                  A qualitative analysis cation test. Add sodium hydroxide to a
-                  copper(II) solution and observe the precipitate, exactly as
+                  A qualitative analysis cation test. Observe the precipitate, exactly as
                   specified in the marking scheme.
                 </p>
                 <PrecipitateDemo />
+              </div>
+              <div className="h-[400px] lg:h-auto">
+                <p className="text-lg text-muted leading-relaxed mb-8">
+                  Or inspect the molecular structure using our WebGL 3D rendering engine.
+                </p>
+                <div className="h-full w-full min-h-[300px]">
+                  <Lab3DViewer />
+                </div>
               </div>
             </div>
             <p className="mt-8 font-mono text-[10px] tracking-[0.15em] text-muted text-center lg:text-left">
@@ -462,6 +474,11 @@ export default function Home() {
           </div>
         </section>
       </ScrollReveal>
+
+      <Integrations />
+      
+      <TeacherAnalytics />
+
 
       {/* ── Download / Demo ────────────────────────────────────── */}
       <ScrollReveal>
