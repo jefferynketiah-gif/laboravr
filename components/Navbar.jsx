@@ -140,7 +140,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className="btn-glow block w-full text-center bg-uv text-white py-4 rounded-xl font-semibold text-lg"
+              className="btn-glow block w-full text-center bg-uv text-white py-4 rounded-3xl font-semibold text-lg"
             >
               Join the pilot
             </Link>

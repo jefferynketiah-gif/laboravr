@@ -130,11 +130,13 @@ export default function Home() {
 
       {/* ── The problem ────────────────────────────────────────── */}
       <ScrollReveal>
-        <section className="relative bg-void grain py-24 md:py-32">
+        <section className="relative bg-void py-24 md:py-32">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-6 h-px bg-uv" />
-              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">THE PROBLEM</p>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
+              <span className="flex h-2 w-2 rounded-full bg-uv" />
+              THE PROBLEM
+            </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
               Practical science is the first thing a{' '}
@@ -173,8 +175,10 @@ export default function Home() {
 
           <div className="relative max-w-6xl mx-auto px-6">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-6 h-px bg-uv" />
-              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">SEE IT IN ACTION</p>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
+              <span className="flex h-2 w-2 rounded-full bg-uv" />
+              SEE IT IN ACTION
+            </div>
               <span className="w-6 h-px bg-uv" />
             </div>
             
@@ -314,8 +318,10 @@ export default function Home() {
         <section id="labs" className="relative bg-panel py-24 md:py-32">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-6 h-px bg-uv" />
-              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">THE LABS</p>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
+              <span className="flex h-2 w-2 rounded-full bg-uv" />
+              THE LABS
+            </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
               Three disciplines.{' '}
@@ -393,7 +399,7 @@ export default function Home() {
                   transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
                 >
                   <GlowCard className="h-full" innerClassName="p-6 md:p-8 flex flex-col h-full">
-                    <div className="mb-5 relative w-full h-32 rounded-xl overflow-hidden border border-edge">
+                    <div className="mb-5 relative w-full h-32 rounded-3xl overflow-hidden border border-edge">
                       <Image
                         src={lab.image}
                         alt={`${lab.name} virtual lab`}
@@ -432,8 +438,10 @@ export default function Home() {
         <section className="relative bg-panel py-24 md:py-32 border-t border-edge">
           <div className="max-w-[85rem] mx-auto px-6">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-6 h-px bg-uv" />
-              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">LIVE DEMOS</p>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
+              <span className="flex h-2 w-2 rounded-full bg-uv" />
+              LIVE DEMOS
+            </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05]">
               This is the chemistry,{' '}
@@ -473,7 +481,7 @@ export default function Home() {
 
       {/* ── Download / Demo ────────────────────────────────────── */}
       <ScrollReveal>
-        <section className="relative bg-void grain py-24 md:py-32 overflow-hidden">
+        <section className="relative bg-void py-24 md:py-32 overflow-hidden">
           {/* Big glow */}
 
           <div className="relative max-w-5xl mx-auto px-6">
@@ -481,8 +489,10 @@ export default function Home() {
               <div className="grid md:grid-cols-[1fr_auto] gap-10 items-center">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="w-6 h-px bg-uv" />
-                    <p className="font-mono text-[11px] tracking-[0.2em] text-uv">DEMO BUILD</p>
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
+              <span className="flex h-2 w-2 rounded-full bg-uv" />
+              DEMO BUILD
+            </div>
                   </div>
                   <h2 className="text-2xl md:text-4xl font-extrabold tracking-tightest text-chalk leading-[1.05] mb-4">
                     {COMING_SOON ? 'Building this now.' : 'Try it in the headset.'}{' '}
@@ -507,14 +517,14 @@ export default function Home() {
                     {COMING_SOON ? (
                       <Link
                         href="/contact"
-                        className="btn-glow inline-flex items-center gap-2 bg-uv text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-uv-bright transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
+                        className="btn-glow inline-flex items-center gap-2 bg-uv text-white px-7 py-3.5 rounded-3xl font-semibold hover:bg-uv-bright transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
                       >
                         Join the pilot — early access
                       </Link>
                     ) : (
                       <a
                         href="#"
-                        className="btn-glow inline-flex items-center gap-2 bg-uv text-white px-7 py-3.5 rounded-xl font-semibold hover:bg-uv-bright transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
+                        className="btn-glow inline-flex items-center gap-2 bg-uv text-white px-7 py-3.5 rounded-3xl font-semibold hover:bg-uv-bright transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
                       >
                         <Download size={16} />
                         Download demo
@@ -522,7 +532,7 @@ export default function Home() {
                     )}
                     <Link
                       href="/contact"
-                      className="glass inline-flex items-center gap-2 border border-edge text-chalk px-7 py-3.5 rounded-xl font-semibold hover:border-uv/50 transition-all"
+                      className="glass inline-flex items-center gap-2 border border-edge text-chalk px-7 py-3.5 rounded-3xl font-semibold hover:border-uv/50 transition-all"
                     >
                       Request access
                     </Link>
@@ -557,8 +567,10 @@ export default function Home() {
         <section className="relative bg-panel py-24 md:py-32">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-6 h-px bg-uv" />
-              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">SPECIFICATION</p>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
+              <span className="flex h-2 w-2 rounded-full bg-uv" />
+              SPECIFICATION
+            </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl leading-[1.05] mb-16">
               What your IT department will ask.
@@ -587,7 +599,7 @@ export default function Home() {
 
       {/* ── Close CTA ──────────────────────────────────────────── */}
       <ScrollReveal>
-        <section className="relative bg-void grain py-24 md:py-36 overflow-hidden">
+        <section className="relative bg-void py-24 md:py-36 overflow-hidden">
           {/* Full-bleed real photo, faded under the page so it reads as texture, not a photo */}
           <div className="absolute inset-0">
             <Image src="/lab-screens/student_start.jpg" alt="" fill className="object-cover opacity-[0.32]" />
@@ -612,13 +624,13 @@ export default function Home() {
             <div className="mt-10 flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"
-                className="btn-glow inline-block bg-uv text-white px-8 py-4 rounded-xl font-semibold hover:bg-uv-bright transition-colors text-base md:text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
+                className="btn-glow inline-block bg-uv text-white px-8 py-4 rounded-3xl font-semibold hover:bg-uv-bright transition-colors text-base md:text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
               >
                 Join the pilot
               </Link>
               <Link
                 href="/labs"
-                className="glass inline-block border border-edge text-chalk px-8 py-4 rounded-xl font-semibold hover:border-uv/50 transition-all text-base md:text-lg"
+                className="glass inline-block border border-edge text-chalk px-8 py-4 rounded-3xl font-semibold hover:border-uv/50 transition-all text-base md:text-lg"
               >
                 Explore the labs
               </Link>

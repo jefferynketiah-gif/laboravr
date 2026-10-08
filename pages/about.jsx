@@ -110,7 +110,7 @@ export default function About() {
 
       {/* Body copy */}
       <ScrollReveal>
-        <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
+        <section className="relative bg-void py-20 md:py-28 overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
             <div className="grid-reticle absolute inset-0 opacity-20" />
           </div>
@@ -147,14 +147,16 @@ export default function About() {
 
       {/* Founder */}
       <ScrollReveal>
-        <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
+        <section className="relative bg-void py-20 md:py-28 overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
             <div className="grid-reticle absolute inset-0 opacity-20" />
           </div>
           <div className="max-w-5xl mx-auto px-6">
             <div className="flex items-center gap-3 mb-10">
-              <span className="w-6 h-px bg-uv" />
-              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">WHO IS BUILDING THIS</p>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
+                <span className="flex h-2 w-2 rounded-full bg-uv" />
+                WHO IS BUILDING THIS
+              </div>
             </div>
 
             <GlowCard innerClassName="p-8 md:p-12">
@@ -217,14 +219,16 @@ export default function About() {
 
       {/* Roadmap */}
       <ScrollReveal>
-        <section className="relative bg-void grain py-20 md:py-28 overflow-hidden">
+        <section className="relative bg-void py-20 md:py-28 overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
             <div className="grid-reticle absolute inset-0 opacity-20" />
           </div>
           <div className="max-w-5xl mx-auto px-6">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-6 h-px bg-uv" />
-              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">ROADMAP</p>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
+                <span className="flex h-2 w-2 rounded-full bg-uv" />
+                ROADMAP
+              </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05] mb-16">
               <span className="text-chalk">What&apos;s built. </span>
@@ -294,8 +298,10 @@ export default function About() {
         <section className="bg-panel py-20 md:py-28">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-6 h-px bg-uv" />
-              <p className="font-mono text-[11px] tracking-[0.2em] text-uv">HOW WE WORK</p>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
+                <span className="flex h-2 w-2 rounded-full bg-uv" />
+                HOW WE WORK
+              </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest leading-[1.05] mb-16">
               <span className="gradient-text">Three things</span>
@@ -329,7 +335,7 @@ export default function About() {
 
       {/* CTA */}
       <ScrollReveal>
-        <section className="relative bg-void grain py-24 md:py-32 overflow-hidden">
+        <section className="relative bg-void py-24 md:py-32 overflow-hidden">
           <div className="relative max-w-2xl mx-auto px-6 text-center">
             <h2 className="text-2xl md:text-4xl font-extrabold tracking-tightest leading-[1.05]">
               <span className="gradient-text">Work with us </span>
@@ -341,7 +347,7 @@ export default function About() {
             <div className="mt-10">
               <Link
                 href="/contact"
-                className="btn-glow inline-block bg-uv text-white px-8 py-4 rounded-xl font-semibold hover:bg-uv-bright transition-colors text-base md:text-lg"
+                className="btn-glow inline-block bg-uv text-white px-8 py-4 rounded-3xl font-semibold hover:bg-uv-bright transition-colors text-base md:text-lg"
               >
                 Join the pilot
               </Link>

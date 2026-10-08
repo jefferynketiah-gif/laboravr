@@ -14,7 +14,7 @@ export default function CinematicHero() {
   const yText = useTransform(scrollY, [0, 1000], [0, 150]);
 
   return (
-    <section className="relative overflow-hidden bg-void grain min-h-[96vh] flex flex-col justify-center">
+    <section className="relative overflow-hidden bg-void min-h-[96vh] flex flex-col justify-center">
       {/* Hero Video — right side */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -56,16 +56,15 @@ export default function CinematicHero() {
       {/* Copy layer */}
       <motion.div style={{ y: yText }} className="relative max-w-6xl mx-auto px-6 w-full pt-36 pb-12 md:pt-28">
         <div className="max-w-xl">
-          {/* Eyebrow */}
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-mono text-[11px] tracking-[0.2em] text-uv mb-6 flex items-center gap-3"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm mb-6 border border-uv/20 shadow-sm"
           >
-            <span className="w-6 h-px bg-uv inline-block" />
-            LABORAVR — VIRTUAL LABORATORY SYSTEM
-          </motion.p>
+            <span className="flex h-2 w-2 rounded-full bg-uv" />
+            LaboraVR Virtual Laboratory
+          </motion.div>
 
           {/* Headline with gradient */}
           <motion.h1
@@ -98,17 +97,17 @@ export default function CinematicHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.38 }}
-            className="mt-10 flex flex-wrap gap-3"
+            className="mt-10 flex flex-wrap items-center gap-4 relative z-10"
           >
             <Link
               href="/contact"
-              className="btn-glow bg-uv text-white px-8 py-4 rounded-xl font-semibold hover:bg-uv-bright transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
+              className="btn-glow inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all bg-uv rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 hover:bg-uv-bright focus:outline-none focus:ring-4 focus:ring-uv/30"
             >
               Join the pilot
             </Link>
             <Link
               href="/labs"
-              className="glass border border-edge text-chalk px-8 py-4 rounded-xl font-semibold hover:border-uv/50 hover:text-uv-bright transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
+              className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-chalk transition-all bg-surface border-2 border-edge rounded-full hover:border-edge-bright hover:bg-panel focus:outline-none focus:ring-4 focus:ring-edge"
             >
               See the labs
             </Link>

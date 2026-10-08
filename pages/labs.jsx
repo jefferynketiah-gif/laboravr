@@ -103,7 +103,7 @@ export default function Labs() {
       />
 
       {/* Lab showcase cards */}
-      <section className="relative bg-void grain py-12 md:py-16 overflow-hidden">
+      <section className="relative bg-void py-12 md:py-16 overflow-hidden">
         {/* Ambient depth */}
         <div className="pointer-events-none absolute inset-0">
           <div className="grid-reticle absolute inset-0 opacity-10" />
@@ -288,7 +288,7 @@ export default function Labs() {
             <div className="mt-10">
               <Link
                 href="/contact"
-                className="btn-glow inline-block bg-uv text-white px-10 py-4 rounded-xl font-semibold hover:bg-uv-bright transition-colors text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
+                className="btn-glow inline-block bg-uv text-white px-10 py-4 rounded-3xl font-semibold hover:bg-uv-bright transition-colors text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
               >
                 Tell us what you need
               </Link>
