@@ -447,19 +447,23 @@ export default function Home() {
               <span className="gradient-text">not a video of it.</span>
             </h2>
             <div className="mt-12 grid lg:grid-cols-2 gap-8">
-              <div>
-                <p className="text-lg text-muted leading-relaxed mb-8">
-                  A strong acid–strong base titration, solved live from the same
-                  equations the headset uses. Overshoot it and see what a spoiled
-                  titration costs.
-                </p>
+              <div className="flex flex-col">
+                <div className="lg:min-h-[90px] mb-8">
+                  <p className="text-lg text-muted leading-relaxed">
+                    A strong acid–strong base titration, solved live from the same
+                    equations the headset uses. Overshoot it and see what a spoiled
+                    titration costs.
+                  </p>
+                </div>
                 <TitrationDemo />
               </div>
-              <div>
-                <p className="text-lg text-muted leading-relaxed mb-8">
-                  A qualitative analysis cation test. Observe the precipitate, exactly as
-                  specified in the marking scheme.
-                </p>
+              <div className="flex flex-col">
+                <div className="lg:min-h-[90px] mb-8">
+                  <p className="text-lg text-muted leading-relaxed">
+                    A qualitative analysis cation test. Observe the precipitate, exactly as
+                    specified in the marking scheme.
+                  </p>
+                </div>
                 <PrecipitateDemo />
               </div>
             </div>
