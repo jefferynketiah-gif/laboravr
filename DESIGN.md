@@ -105,9 +105,9 @@ its own dark styling because it's read in an inbox, not on the site.
   motion.
 
 **Removed, don't bring back without a real reason:**
-- `Aurora` component (colored glow blobs) — still exists as a file but is
-  unused. If you want hero depth, extend `.mesh-hero`, don't re-add `Aurora`.
-- `ParticleField` — still exists as a file but is unused.
+- `Aurora` component (colored glow blobs) and `ParticleField` — deleted in the
+  Nov 2026 cleanup (still in git history). If you want hero depth, extend
+  `.mesh-hero`; don't bring them back.
 - `.grain` noise texture — reduced to near-invisible (1.2% opacity); don't
   raise it back up.
 - Per-section colored blur-blobs (`bg-[radial-gradient(circle,rgba(...),transparent)]`
@@ -209,11 +209,11 @@ animation class should be added to that list too.
 
 ## 8. Things intentionally left as-is
 
-- `components/Aurora.jsx`, `components/ParticleField.jsx`,
-  `components/FeatureCard.jsx`-style unused files from the old design are
-  sometimes kept (not deleted) when there's a reasonable chance of reverting
-  a direction. Check git history before deleting something that looks
-  unused — it might be a recent, deliberate rollback point.
+- Unused files are deleted rather than kept "just in case": git history is the
+  rollback. (The Nov 2026 cleanup removed the old stock photos, the retired
+  Aurora/ParticleField components, the unused 3D headset model, and the
+  three.js/GSAP packages that only the removed 3D viewer used.) Before deleting
+  something that looks unused, search the whole repo and `git log` for it.
 - `pages/api/contact.js`'s email HTML (the notification sent to the
   owner) keeps the old dark styling on purpose (read in an inbox, separate
   medium from the site). The email visitors receive
