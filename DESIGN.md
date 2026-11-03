@@ -155,6 +155,20 @@ animation class should be added to that list too.
 - Gallery captions (Labs page) describe what's on screen, nothing more —
   no claims about outcomes, correctness, or results. See §7.
 
+### Image sets (which capture each file came from)
+
+- `v2_*.jpg` in `public/lab-screens/` are the **29 Oct 2026** captures from the Unity project
+  (`IGCSEVRLab/Recordings/HeadsetCheck`): the current lab (outdoor window, "Change lab" board,
+  fume cupboard) plus the lobby. Prefer these.
+- Unprefixed files (`lab_titration`, `lab_chempractical_clean`, `lab_physics_clean`, `lab_biology_clean`,
+  `vr_hands_lesson1`, `lab_skills`, `lab_planning`, `lab_drawing`, `lab_raytrace`) are from the **earlier room**
+  (cream walls, orange cabinets). They show instrument/UI states that were not re-captured. Re-capture them
+  in the current build so the gallery shows one room, then delete the old files.
+- Do not reintroduce files from `public/images/` other than `Founder.jpg`. Stock or AI-generated product
+  imagery was added back once by mistake and had to be removed again.
+- Never publish headset footage that shows a private space (the 2 Nov Quest passthrough test was filmed
+  in a bedroom).
+
 ## 7. Copy rules (non-negotiable, not a style preference)
 
 - **No claim the product can't back up.** This site already had two

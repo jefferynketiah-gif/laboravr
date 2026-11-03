@@ -19,7 +19,7 @@ const STAGES = [
     n: '03',
     title: 'Review the attempt',
     body: 'Every action is timestamped. Demonstrators see who understood the method and who arrived at the answer by luck.',
-    image: '/lab-screens/lab_cations.jpg'
+    image: '/lab-screens/v2_cations.jpg'
   },
 ];
 
