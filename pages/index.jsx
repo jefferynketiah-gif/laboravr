@@ -68,7 +68,7 @@ const stats = [
 ];
 
 const specs = [
-  { k: 'HARDWARE',    v: 'Standalone headsets. No workstation, no cabling, no dedicated room.' },
+  { k: 'HARDWARE',    v: 'Standalone headsets. No workstation, no cabling, no dedicated room. Tested on Meta Quest 3S.' },
   { k: 'CONNECTIVITY',v: 'Practicals run offline. Results sync when the network returns.' },
   { k: 'DEPLOYMENT',  v: 'Managed install on department-owned devices. No per-seat licence keys to distribute.' },
   { k: 'ASSESSMENT',  v: 'Every action is timestamped, so a demonstrator sees method, not just the final answer.' },
@@ -239,7 +239,7 @@ export default function Home() {
                   
                   <div className="absolute bottom-0 left-0 p-8 w-full" style={{ transform: 'translateZ(30px)' }}>
                     <h3 className="text-xl font-bold text-chalk mb-2">Modern Hardware</h3>
-                    <p className="text-muted text-sm leading-relaxed">Built for standalone headsets. No PC required.</p>
+                    <p className="text-muted text-sm leading-relaxed">Runs on a standalone headset, tested on Meta Quest 3S. No PC required.</p>
                   </div>
                 </TiltCard>
               </motion.div>
@@ -431,6 +431,67 @@ export default function Home() {
 
       {/* ── In the room — scroll-driven ────────────────────────── */}
       <ScrollSequence />
+
+      {/* ── AI Practical Architect ─────────────────────────────── */}
+      <ScrollReveal>
+        <section className="relative bg-void py-24 md:py-32 overflow-hidden">
+          <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1fr_1.15fr] gap-12 lg:gap-16 items-center">
+            <div>
+              <div className="flex items-center gap-3 mb-5">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
+                  <span className="flex h-2 w-2 rounded-full bg-uv" />
+                  NEW · AI PRACTICAL ARCHITECT
+                </div>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk leading-[1.05]">
+                Say what you want to practise.{' '}
+                <span className="gradient-text">The bench sets itself up.</span>
+              </h2>
+              <p className="mt-6 text-lg text-muted leading-relaxed">
+                Describe the practical you want to run, in your own words. The
+                apparatus and reagents are arranged for you, and then you carry
+                it out in the headset.
+              </p>
+
+              <ol className="mt-8 space-y-5">
+                {[
+                  ['Say your brief', 'Tell the lab what you want to practise in your own words, or choose a saved brief.'],
+                  ['The bench is arranged', 'The apparatus and reagents for that practical appear on the bench.'],
+                  ['You do the practical', 'Carry it out yourself, step by step, in the headset.'],
+                ].map(([title, text], i) => (
+                  <li key={title} className="flex gap-4">
+                    <span className="font-mono text-xl font-bold text-warm tabular-nums leading-none pt-0.5">0{i + 1}</span>
+                    <div>
+                      <p className="font-semibold text-chalk">{title}</p>
+                      <p className="mt-1 text-sm text-muted leading-relaxed">{text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="mt-8 border-l-2 border-uv pl-4">
+                <p className="font-semibold text-chalk">The AI proposes, the specification decides.</p>
+                <p className="mt-1 font-mono text-[10px] tracking-[0.15em] text-muted">FROM THE BOARD IN THE LAB</p>
+              </div>
+            </div>
+
+            <figure className="overflow-hidden rounded-2xl border border-edge bg-panel card-shadow">
+              <Image
+                src="/lab-screens/v2_architect.jpg"
+                alt="The AI Practical Architect lesson in the LaboraVR lab, with its board and the bench laid out"
+                width={1280}
+                height={720}
+                sizes="(min-width: 1024px) 55vw, 100vw"
+                className="w-full h-auto"
+              />
+              <figcaption className="px-5 py-4">
+                <p className="font-mono text-[11px] tracking-[0.2em] text-uv">AI PRACTICAL ARCHITECT</p>
+                <p className="mt-2 text-sm text-chalk-dim">The lesson board and the bench, as seen in the headset.</p>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+      </ScrollReveal>
 
       {/* ── Try it ─────────────────────────────────────────────── */}
       <ScrollReveal>

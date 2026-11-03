@@ -197,6 +197,16 @@ animation class should be added to that list too.
   next), and university — not only African universities, which was the
   original, narrower framing.
 
+- **Hardware: say only "tested on Meta Quest 3S".** That is the one headset the owner has tested. Do not
+  list other headsets (Quest 2, Quest 3, Pico...) until they have been tested.
+- **AI Practical Architect** (added 2026-11): the owner confirmed it works; the user says a brief and the
+  bench is arranged, then they do the practical. Describe it in those terms. The in-lab board reads "The AI
+  proposes, the specification decides"; quote it as coming from the board, not as our own guarantee. Do not
+  name the underlying model (the panel names one) or claim accuracy or curriculum coverage unless the owner
+  says so.
+- **Demo school name:** some Unity scenes show "Sankofa Ridge International School" on a whiteboard. It is a
+  made-up demo name, not a partner. Caption any such screenshot as a demo and never imply a real school.
+
 ## 8. Things intentionally left as-is
 
 - `components/Aurora.jsx`, `components/ParticleField.jsx`,

@@ -89,6 +89,8 @@ const labScreens = [
   { src: '/lab-screens/v2_chromium.jpg', title: 'CHROMIUM TEST', subject: 'Chemistry', caption: 'The chromium test bench.', alt: 'Chromium test bench in the LaboraVR lab' },
   { src: '/lab-screens/v2_foodtests.jpg', title: 'FOOD TESTS', subject: 'Chemistry', caption: 'The food tests bench.', alt: 'Food tests bench in the LaboraVR lab' },
   { src: '/lab-screens/v2_unknownsalt.jpg', title: 'UNKNOWN SALT', subject: 'Chemistry', caption: 'The unknown salt bench.', alt: 'Unknown salt bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_architect.jpg', title: 'AI PRACTICAL ARCHITECT', subject: 'Chemistry', caption: 'The AI Practical Architect lesson: its board and the bench.', alt: 'The AI Practical Architect lesson in the LaboraVR lab' },
+  { src: '/lab-screens/v2_architect_right.jpg', title: 'THE LAB, FROM THE BENCH', subject: 'General', caption: 'The lab seen from the bench, with the fume cupboard, eyewash and first aid signs.', alt: 'The LaboraVR lab seen from the bench, with a fume cupboard and safety signs' },
   { src: '/lab-screens/lab_physics_clean.jpg', title: 'PHYSICS', subject: 'Physics', caption: 'The period of a pendulum: timing ten swings and recording the results.', alt: 'Pendulum practical table in the LaboraVR lab' },
   { src: '/lab-screens/lab_biology_clean.jpg', title: 'BIOLOGY', subject: 'Biology', caption: 'Osmosis in potato discs: measuring the lengths of the discs in each salt solution.', alt: 'Osmosis in potato discs practical table in the LaboraVR lab' },
 ];
