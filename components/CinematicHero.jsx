@@ -36,7 +36,7 @@ export default function CinematicHero() {
             <video
               src="/lab-screens/hero-loop.webm"
               poster="/lab-screens/hero-loop-poster.jpg"
-              aria-label="A slow view of the LaboraVR chemistry bench"
+              aria-label="Hands at the LaboraVR chemistry bench in VR, handling a reagent bottle"
               autoPlay
               loop
               muted

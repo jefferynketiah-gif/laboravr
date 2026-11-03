@@ -88,7 +88,7 @@ export default function About() {
             <video
               src="/lab-screens/hero-loop.webm"
               poster="/lab-screens/hero-loop-poster.jpg"
-              aria-label="A slow view of a LaboraVR chemistry practical"
+              aria-label="Hands at the LaboraVR chemistry bench in VR"
               autoPlay
               loop
               muted
