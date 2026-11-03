@@ -77,6 +77,11 @@ authority on whether chemistry content is correct).
 
 - Test the live contact form once (the curriculum field was never retested after it was added), then delete
   the test row in Supabase. Test messages start with `[TEST]`.
+- Films: `lib/media.js` points at `laboravr-student-view-v2.mp4` and `laboravr-ai-architect-v2.mp4` in the
+  R2 bucket (silent, ~50-70 s each). Both must be uploaded under those exact names before the branch that
+  wires them is merged. The 360 section is switched off (`films.lab360.enabled = false`) until a new 360 is
+  recorded in Unity (menu Tools > Film > Record 360 Film, output `Recordings/laboravr-360-cation-tests.mp4`);
+  then upload it, turn the flag on, and check `public/360/index.html` still points at that filename.
 - Connect `media.laboravr.com` in Cloudflare R2, add it to the CORS list, set `NEXT_PUBLIC_MEDIA_BASE`, and
   update the hardcoded URL in `public/360/index.html`. The hero loop and films currently use the r2.dev URL.
 - Supabase keys: the site only uses the **anon** key, which is public by design and safe because RLS allows

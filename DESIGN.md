@@ -142,11 +142,17 @@ animation class should be added to that list too.
   replaced with actual screenshots from the Unity build or stills from the
   lab films (see `public/lab-screens/`). Don't add generated/stock imagery
   back in; ask for a real screenshot instead.
-- The hero and the About banner use a short looping clip
-  (`public/lab-screens/hero-loop.webm` + poster) cut from the real
-  cation-trail film. It's pulled from the R2 test URL
-  (`pub-7ec837506c4d4d0a8c05482fc32de42c.r2.dev`), which is rate-limited —
-  switch to the real media domain once it's connected (see `lib/media.js`).
+- The hero and the About banner use a short silent looping clip
+  (`public/lab-screens/hero-loop.webm` + poster, ~1.3 MB, 8 s) cut from the Nov 2026
+  Quest recording of the cation test. It lives in the repo. The two films on the Labs
+  page are hosted on Cloudflare R2 (see `lib/media.js`; the r2.dev address is
+  rate-limited, so switch to the real media domain once it's connected).
+- **Films are silent and must not show the AI model's name.** Strip audio (`-an`). The
+  AI Practical Architect panels print a model name ("Meta's Muse model proposes a
+  practical...") and a tiny model-id line under the brief list; neither may be legible in
+  anything published. Cut from stretches where those panels are out of frame, or crop them
+  out, then OCR-scan the finished file (frames every 0.5 s) before publishing. Also keep
+  the Quest menu, passthrough room and any app names out of frame.
 - Screenshots live in `public/lab-screens/` as optimized JPEGs (~120–180KB
   each, 1600px wide max). Convert new ones the same way before adding them.
 - Photo backgrounds behind text (e.g. the homepage's final CTA) must come

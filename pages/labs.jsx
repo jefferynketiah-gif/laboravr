@@ -243,14 +243,16 @@ export default function Labs() {
               <LabFilm {...films.lab} />
             </ScrollReveal>
             <ScrollReveal>
-              <LabFilm {...films.student} />
+              <LabFilm {...films.architect} />
             </ScrollReveal>
           </div>
-          <ScrollReveal>
-            <div className="mt-6">
-              <Lab360 {...films.lab360} />
-            </div>
-          </ScrollReveal>
+          {films.lab360.enabled && (
+            <ScrollReveal>
+              <div className="mt-6">
+                <Lab360 {...films.lab360} />
+              </div>
+            </ScrollReveal>
+          )}
         </div>
       </section>
 
