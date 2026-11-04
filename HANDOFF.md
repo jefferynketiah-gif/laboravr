@@ -19,13 +19,15 @@ authority on whether chemistry content is correct).
 - `npm run dev` → http://localhost:3000. Stop the dev server **before** `npm run build`
   (they share `.next` and corrupt each other).
 - Visual check without a browser window: `node scripts/shoot.js /labs labs` (see the file).
+- Broken-image/file check across all pages: `node scripts/check-requests.js` (needs the dev server running).
+  The three R2 film files can show as "FAILED" there; headless Chrome aborts those video downloads. That is not a bug.
 
 ## Map
 
 - `pages/` — `index`, `about`, `labs`, `contact`, `404`; `pages/api/contact.js` is the only API route.
 - `components/` — `CinematicHero`, `ScrollSequence`, `TitrationDemo` (self-drawing SVG), `GlowCard`,
   `LabFilm`/`Lab360` (films + 360 player), `PageHeader`, `Navbar`, `Footer`, `Wordmark`.
-  `Aurora.jsx` and `ParticleField.jsx` are retired but kept as rollback points.
+  The old `Aurora`/`ParticleField` effects were deleted (see git history).
 - `lib/` — `media.js` (R2 URLs for the films), `supabase.js`, `resend.js`, `contactEmails.js` (visitor email).
 - `public/lab-screens/` — real Unity screenshots + `hero-loop.webm`. `public/360/index.html` is a
   standalone A-Frame viewer page, not part of Next (it won't show up in a pages/components search).
@@ -64,6 +66,10 @@ authority on whether chemistry content is correct).
 - **Do not work inside OneDrive.** Syncing locks `.next` files (`EBUSY`), dev server returns 500, and a
   stale `.next` needs `rm -rf .next`. This is the main reason to move the project.
 - Git Bash rewrites `/paths` into `C:/Program Files/Git/...` for native programs; use `MSYS_NO_PATHCONV=1`.
+- **One dev server per folder.** A second `next dev` (or `next build`) in the same folder corrupts `.next` and every page
+  returns 404 ("missing required error components"). A forgotten server is easy to miss: on Windows it listens on IPv6
+  (`::3000`), so filter by port only, e.g. PowerShell `Get-NetTCPConnection -LocalPort 3000`, not by `-State Listen`.
+  Stop exactly that process; never stop all node processes.
 - "LF will be replaced by CRLF" git warnings are harmless.
 - Node ES modules vs CommonJS: `generate-og.js` and `scripts/shoot.js` are CommonJS; `lib/*.js` are ESM.
 
@@ -71,6 +77,11 @@ authority on whether chemistry content is correct).
 
 - Test the live contact form once (the curriculum field was never retested after it was added), then delete
   the test row in Supabase. Test messages start with `[TEST]`.
+- Films: `lib/media.js` points at `laboravr-student-view-v2.mp4` and `laboravr-ai-architect-v2.mp4` in the
+  R2 bucket (silent, ~50-70 s each). Both must be uploaded under those exact names before the branch that
+  wires them is merged. A new 360 film (Unity menu Tools > Film > Record 360 Film, 78 s) is
+  wired in as `laboravr-360-cation-tests.mp4` (3840x1920, silent, ~20 MB). Uploading it replaces the old 360 of the
+  same name on R2. Set `films.lab360.enabled = false` to hide the section again.
 - Connect `media.laboravr.com` in Cloudflare R2, add it to the CORS list, set `NEXT_PUBLIC_MEDIA_BASE`, and
   update the hardcoded URL in `public/360/index.html`. The hero loop and films currently use the r2.dev URL.
 - Supabase keys: the site only uses the **anon** key, which is public by design and safe because RLS allows

@@ -38,21 +38,21 @@ const constraints = [
 
 const labs = [
   {
-    image: '/images/chemistry.jpg',
+    image: '/lab-screens/vr_hands_lesson1.jpg',
     name: 'Chemistry',
     line: 'Titrations, reaction kinetics and organic synthesis. Get it wrong, see what happens, run it again.',
     status: 'IN DEVELOPMENT',
     active: true,
   },
   {
-    image: '/images/physics.jpg',
+    image: '/lab-screens/lab_physics_clean.jpg',
     name: 'Physics',
     line: 'Mechanics, optics and circuits on apparatus that never drifts out of calibration.',
     status: 'PLANNED',
     active: false,
   },
   {
-    image: '/images/biology.jpg',
+    image: '/lab-screens/lab_biology_clean.jpg',
     name: 'Biology',
     line: 'Microscopy, dissection and cell biology without specimen cost or ethical constraints.',
     status: 'PLANNED',
@@ -68,7 +68,7 @@ const stats = [
 ];
 
 const specs = [
-  { k: 'HARDWARE',    v: 'Standalone headsets. No workstation, no cabling, no dedicated room.' },
+  { k: 'HARDWARE',    v: 'Standalone headsets. No workstation, no cabling, no dedicated room. Tested on Meta Quest 3S.' },
   { k: 'CONNECTIVITY',v: 'Practicals run offline. Results sync when the network returns.' },
   { k: 'DEPLOYMENT',  v: 'Managed install on department-owned devices. No per-seat licence keys to distribute.' },
   { k: 'ASSESSMENT',  v: 'Every action is timestamped, so a demonstrator sees method, not just the final answer.' },
@@ -198,8 +198,8 @@ export default function Home() {
               >
                 <TiltCard className="w-full h-full">
                   <Image
-                    src="/images/african_student_vr.jpg"
-                    alt="Student using VR headset"
+                    src="/lab-screens/v2_anions.jpg"
+                    alt="A test bench in the LaboraVR lab, with reagent bottles and a rack of test tubes"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -212,10 +212,10 @@ export default function Home() {
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-uv opacity-75" />
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-uv" />
                       </span>
-                      100% SAFE
+                      NO CHEMICAL HAZARDS
                     </div>
                     <h3 className="text-2xl md:text-4xl font-bold text-chalk mb-3">Zero Consumables</h3>
-                    <p className="text-muted text-lg max-w-md">No waiting for reagents to arrive. No shattered glassware. Every student gets hands-on time.</p>
+                    <p className="text-muted text-lg max-w-md">No waiting for reagents to arrive and no broken glassware. Students run the practical themselves, in the headset.</p>
                   </div>
                 </TiltCard>
               </motion.div>
@@ -230,8 +230,8 @@ export default function Home() {
               >
                 <TiltCard className="w-full h-full">
                   <Image
-                    src="/images/Vrheadset.avif"
-                    alt="VR Headset"
+                    src="/lab-screens/vr_hands_lesson1.jpg"
+                    alt="The lab seen from inside the headset, with the controllers"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -239,7 +239,7 @@ export default function Home() {
                   
                   <div className="absolute bottom-0 left-0 p-8 w-full" style={{ transform: 'translateZ(30px)' }}>
                     <h3 className="text-xl font-bold text-chalk mb-2">Modern Hardware</h3>
-                    <p className="text-muted text-sm leading-relaxed">Built for standalone headsets. No PC required.</p>
+                    <p className="text-muted text-sm leading-relaxed">Runs on a standalone headset, tested on Meta Quest 3S. No PC required.</p>
                   </div>
                 </TiltCard>
               </motion.div>
@@ -254,12 +254,12 @@ export default function Home() {
               >
                 <TiltCard className="w-full h-full">
                   <Image
-                    src="/images/chemistry.jpg"
-                    alt="Chemistry"
+                    src="/lab-screens/v2_flame.jpg"
+                    alt="A chemistry bench in the LaboraVR lab"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/30" />
+                  <div className="absolute inset-0 bg-void/10 transition-colors duration-500 group-hover:bg-void/0" />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'translateZ(20px)' }}>
                     <h3 className="text-2xl font-bold tracking-tightest text-chalk drop-shadow-sm bg-void/50 backdrop-blur-md px-6 py-2 rounded-full border border-void/50">Chemistry</h3>
                   </div>
@@ -275,12 +275,12 @@ export default function Home() {
               >
                 <TiltCard className="w-full h-full">
                   <Image
-                    src="/images/physics.jpg"
-                    alt="Physics"
+                    src="/lab-screens/lab_physics_clean.jpg"
+                    alt="A physics practical in the LaboraVR lab"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/30" />
+                  <div className="absolute inset-0 bg-void/10 transition-colors duration-500 group-hover:bg-void/0" />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'translateZ(20px)' }}>
                     <h3 className="text-2xl font-bold tracking-tightest text-chalk drop-shadow-sm bg-void/50 backdrop-blur-md px-6 py-2 rounded-full border border-void/50">Physics</h3>
                   </div>
@@ -296,12 +296,12 @@ export default function Home() {
               >
                 <TiltCard className="w-full h-full">
                   <Image
-                    src="/images/biology.jpg"
-                    alt="Biology"
+                    src="/lab-screens/lab_biology_clean.jpg"
+                    alt="A biology practical in the LaboraVR lab"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-void/60 transition-colors duration-500 group-hover:bg-void/30" />
+                  <div className="absolute inset-0 bg-void/10 transition-colors duration-500 group-hover:bg-void/0" />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'translateZ(20px)' }}>
                     <h3 className="text-2xl font-bold tracking-tightest text-chalk drop-shadow-sm bg-void/50 backdrop-blur-md px-6 py-2 rounded-full border border-void/50">Biology</h3>
                   </div>
@@ -432,6 +432,67 @@ export default function Home() {
       {/* ── In the room — scroll-driven ────────────────────────── */}
       <ScrollSequence />
 
+      {/* ── AI Practical Architect ─────────────────────────────── */}
+      <ScrollReveal>
+        <section className="relative bg-void py-24 md:py-32 overflow-hidden">
+          <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1fr_1.15fr] gap-12 lg:gap-16 items-center">
+            <div>
+              <div className="flex items-center gap-3 mb-5">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
+                  <span className="flex h-2 w-2 rounded-full bg-uv" />
+                  NEW · AI PRACTICAL ARCHITECT
+                </div>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk leading-[1.05]">
+                Say what you want to practise.{' '}
+                <span className="gradient-text">The bench sets itself up.</span>
+              </h2>
+              <p className="mt-6 text-lg text-muted leading-relaxed">
+                Describe the practical you want to run, in your own words. The
+                apparatus and reagents are arranged for you, and then you carry
+                it out in the headset.
+              </p>
+
+              <ol className="mt-8 space-y-5">
+                {[
+                  ['Say your brief', 'Tell the lab what you want to practise in your own words, or choose a saved brief.'],
+                  ['The bench is arranged', 'The apparatus and reagents for that practical appear on the bench.'],
+                  ['You do the practical', 'Carry it out yourself, step by step, in the headset.'],
+                ].map(([title, text], i) => (
+                  <li key={title} className="flex gap-4">
+                    <span className="font-mono text-xl font-bold text-warm tabular-nums leading-none pt-0.5">0{i + 1}</span>
+                    <div>
+                      <p className="font-semibold text-chalk">{title}</p>
+                      <p className="mt-1 text-sm text-muted leading-relaxed">{text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="mt-8 border-l-2 border-uv pl-4">
+                <p className="font-semibold text-chalk">The AI proposes, the specification decides.</p>
+                <p className="mt-1 font-mono text-[10px] tracking-[0.15em] text-muted">FROM THE BOARD IN THE LAB</p>
+              </div>
+            </div>
+
+            <figure className="overflow-hidden rounded-2xl border border-edge bg-panel card-shadow">
+              <Image
+                src="/lab-screens/v2_architect.jpg"
+                alt="The AI Practical Architect lesson in the LaboraVR lab, with its board and the bench laid out"
+                width={1280}
+                height={720}
+                sizes="(min-width: 1024px) 55vw, 100vw"
+                className="w-full h-auto"
+              />
+              <figcaption className="px-5 py-4">
+                <p className="font-mono text-[11px] tracking-[0.2em] text-uv">AI PRACTICAL ARCHITECT</p>
+                <p className="mt-2 text-sm text-chalk-dim">The lesson board and the bench, as seen in the headset.</p>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+      </ScrollReveal>
+
       {/* ── Try it ─────────────────────────────────────────────── */}
       <ScrollReveal>
         <section className="relative bg-panel py-24 md:py-32 border-t border-edge">
@@ -540,7 +601,7 @@ export default function Home() {
                 {/* Visual — lab screenshot */}
                 <div className="hidden md:block relative w-52 h-36 rounded-2xl overflow-hidden border border-uv/20 glow-ring flex-shrink-0">
                   <Image
-                    src="/lab-screens/lab_lobby.jpg"
+                    src="/lab-screens/v2_lobby_front.jpg"
                     alt="The LaboraVR lab lobby seen in VR"
                     fill
                     sizes="208px"
@@ -597,7 +658,7 @@ export default function Home() {
         <section className="relative bg-void py-24 md:py-36 overflow-hidden">
           {/* Full-bleed real photo, faded under the page so it reads as texture, not a photo */}
           <div className="absolute inset-0">
-            <Image src="/lab-screens/student_start.jpg" alt="" fill className="object-cover opacity-[0.32]" />
+            <Image src="/lab-screens/v2_lobby_front.jpg" alt="" fill className="object-cover opacity-[0.32]" />
             <div className="absolute inset-0 bg-gradient-to-b from-void via-transparent to-void" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_68%_88%_at_50%_50%,rgba(255,255,255,0.96),rgba(255,255,255,0.7)_45%,transparent_78%)]" />
           </div>

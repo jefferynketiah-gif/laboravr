@@ -105,9 +105,9 @@ its own dark styling because it's read in an inbox, not on the site.
   motion.
 
 **Removed, don't bring back without a real reason:**
-- `Aurora` component (colored glow blobs) — still exists as a file but is
-  unused. If you want hero depth, extend `.mesh-hero`, don't re-add `Aurora`.
-- `ParticleField` — still exists as a file but is unused.
+- `Aurora` component (colored glow blobs) and `ParticleField` — deleted in the
+  Nov 2026 cleanup (still in git history). If you want hero depth, extend
+  `.mesh-hero`; don't bring them back.
 - `.grain` noise texture — reduced to near-invisible (1.2% opacity); don't
   raise it back up.
 - Per-section colored blur-blobs (`bg-[radial-gradient(circle,rgba(...),transparent)]`
@@ -142,11 +142,17 @@ animation class should be added to that list too.
   replaced with actual screenshots from the Unity build or stills from the
   lab films (see `public/lab-screens/`). Don't add generated/stock imagery
   back in; ask for a real screenshot instead.
-- The hero and the About banner use a short looping clip
-  (`public/lab-screens/hero-loop.webm` + poster) cut from the real
-  cation-trail film. It's pulled from the R2 test URL
-  (`pub-7ec837506c4d4d0a8c05482fc32de42c.r2.dev`), which is rate-limited —
-  switch to the real media domain once it's connected (see `lib/media.js`).
+- The hero and the About banner use a short silent looping clip
+  (`public/lab-screens/hero-loop.webm` + poster, ~1.3 MB, 8 s) cut from the Nov 2026
+  Quest recording of the cation test. It lives in the repo. The two films on the Labs
+  page are hosted on Cloudflare R2 (see `lib/media.js`; the r2.dev address is
+  rate-limited, so switch to the real media domain once it's connected).
+- **Films are silent and must not show the AI model's name.** Strip audio (`-an`). The
+  AI Practical Architect panels print a model name ("Meta's Muse model proposes a
+  practical...") and a tiny model-id line under the brief list; neither may be legible in
+  anything published. Cut from stretches where those panels are out of frame, or crop them
+  out, then OCR-scan the finished file (frames every 0.5 s) before publishing. Also keep
+  the Quest menu, passthrough room and any app names out of frame.
 - Screenshots live in `public/lab-screens/` as optimized JPEGs (~120–180KB
   each, 1600px wide max). Convert new ones the same way before adding them.
 - Photo backgrounds behind text (e.g. the homepage's final CTA) must come
@@ -154,6 +160,20 @@ animation class should be added to that list too.
   lobby) ghosts its text through the heading, even at low opacity.
 - Gallery captions (Labs page) describe what's on screen, nothing more —
   no claims about outcomes, correctness, or results. See §7.
+
+### Image sets (which capture each file came from)
+
+- `v2_*.jpg` in `public/lab-screens/` are the **29 Oct 2026** captures from the Unity project
+  (`IGCSEVRLab/Recordings/HeadsetCheck`): the current lab (outdoor window, "Change lab" board,
+  fume cupboard) plus the lobby. Prefer these.
+- Unprefixed files (`lab_titration`, `lab_chempractical_clean`, `lab_physics_clean`, `lab_biology_clean`,
+  `vr_hands_lesson1`, `lab_skills`, `lab_planning`, `lab_drawing`, `lab_raytrace`) are from the **earlier room**
+  (cream walls, orange cabinets). They show instrument/UI states that were not re-captured. Re-capture them
+  in the current build so the gallery shows one room, then delete the old files.
+- Do not reintroduce files from `public/images/` other than `Founder.jpg`. Stock or AI-generated product
+  imagery was added back once by mistake and had to be removed again.
+- Never publish headset footage that shows a private space (the 2 Nov Quest passthrough test was filmed
+  in a bedroom).
 
 ## 7. Copy rules (non-negotiable, not a style preference)
 
@@ -183,13 +203,23 @@ animation class should be added to that list too.
   next), and university — not only African universities, which was the
   original, narrower framing.
 
+- **Hardware: say only "tested on Meta Quest 3S".** That is the one headset the owner has tested. Do not
+  list other headsets (Quest 2, Quest 3, Pico...) until they have been tested.
+- **AI Practical Architect** (added 2026-11): the owner confirmed it works; the user says a brief and the
+  bench is arranged, then they do the practical. Describe it in those terms. The in-lab board reads "The AI
+  proposes, the specification decides"; quote it as coming from the board, not as our own guarantee. Do not
+  name the underlying model (the panel names one) or claim accuracy or curriculum coverage unless the owner
+  says so.
+- **Demo school name:** some Unity scenes show "Sankofa Ridge International School" on a whiteboard. It is a
+  made-up demo name, not a partner. Caption any such screenshot as a demo and never imply a real school.
+
 ## 8. Things intentionally left as-is
 
-- `components/Aurora.jsx`, `components/ParticleField.jsx`,
-  `components/FeatureCard.jsx`-style unused files from the old design are
-  sometimes kept (not deleted) when there's a reasonable chance of reverting
-  a direction. Check git history before deleting something that looks
-  unused — it might be a recent, deliberate rollback point.
+- Unused files are deleted rather than kept "just in case": git history is the
+  rollback. (The Nov 2026 cleanup removed the old stock photos, the retired
+  Aurora/ParticleField components, the unused 3D headset model, and the
+  three.js/GSAP packages that only the removed 3D viewer used.) Before deleting
+  something that looks unused, search the whole repo and `git log` for it.
 - `pages/api/contact.js`'s email HTML (the notification sent to the
   owner) keeps the old dark styling on purpose (read in an inbox, separate
   medium from the site). The email visitors receive

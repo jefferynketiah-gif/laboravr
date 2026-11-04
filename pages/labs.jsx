@@ -21,7 +21,7 @@ const labs = [
     status: 'IN DEVELOPMENT',
     active: true,
     colour: '#3B82F6',
-    image: '/images/chemistry.jpg',
+    image: '/lab-screens/vr_hands_lesson1.jpg',
     syllabus: 'CAMBRIDGE IGCSE CHEMISTRY 0620',
     thesis:
       'The discipline where the gap between reading a method and running it is widest — and where a mistake in the real lab is expensive or dangerous.',
@@ -38,7 +38,7 @@ const labs = [
     status: 'PLANNED — 2027',
     active: false,
     colour: '#F59E0B',
-    image: '/images/physics.jpg',
+    image: '/lab-screens/lab_physics_clean.jpg',
     thesis:
       'Apparatus that never drifts out of calibration, never goes missing, and lets a student repeat a measurement until the method makes sense.',
     practicals: [
@@ -54,7 +54,7 @@ const labs = [
     status: 'PLANNED — 2028',
     active: false,
     colour: '#8B5CF6',
-    image: '/images/biology.jpg',
+    image: '/lab-screens/lab_biology_clean.jpg',
     thesis:
       'Specimens and prepared slides cost money and run out. Here they don\'t, and dissection carries no ethical cost.',
     practicals: [
@@ -67,23 +67,30 @@ const labs = [
 ];
 
 const labScreens = [
-  { src: '/lab-screens/lab_organic.jpg', title: 'ORGANIC TESTS', subject: 'Chemistry', caption: 'Three unknown liquids, identified with bromine water, sodium carbonate and acidified dichromate.', alt: 'Organic tests bench in the LaboraVR lab' },
-  { src: '/lab-screens/lab_flame.jpg', title: 'FLAME TESTS', subject: 'Chemistry', caption: 'The flame tests bench, seen from the starting position.', alt: 'Flame tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_organic.jpg', title: 'ORGANIC TESTS', subject: 'Chemistry', caption: 'Three unknown liquids, identified with bromine water, sodium carbonate and acidified dichromate.', alt: 'Organic tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_flame.jpg', title: 'FLAME TESTS', subject: 'Chemistry', caption: 'The flame tests bench, seen from the starting position.', alt: 'Flame tests bench in the LaboraVR lab' },
   { src: '/lab-screens/lab_skills.jpg', title: 'GRAPH SKILLS', subject: 'Physics', caption: 'Drawing and reading graphs from a set of results.', alt: 'Graph skills practical in the LaboraVR lab' },
   { src: '/lab-screens/lab_planning.jpg', title: 'PLANNING', subject: 'Chemistry', caption: 'Planning an experiment before any apparatus is used.', alt: 'Experiment planning screen in the LaboraVR lab' },
   { src: '/lab-screens/lab_drawing.jpg', title: 'BIOLOGY DRAWING', subject: 'Biology', caption: 'The biology drawing board, for labelled drawings of specimens.', alt: 'Biology drawing board in the LaboraVR lab' },
   { src: '/lab-screens/lab_raytrace.jpg', title: 'RAY TRACE', subject: 'Physics', caption: 'A physics ray trace through a lens or mirror.', alt: 'Physics ray trace practical in the LaboraVR lab' },
   { src: '/lab-screens/lab_titration.jpg', title: 'TITRATION', subject: 'Chemistry', caption: 'The acid–base titration practical.', alt: 'Acid–base titration practical in the LaboraVR lab' },
-  { src: '/lab-screens/lab_gases.jpg', title: 'GAS TESTS', subject: 'Chemistry', caption: 'Identifying a gas, seen from the student view of the lab.', alt: 'Gas identification practical in the LaboraVR lab' },
+  { src: '/lab-screens/v2_gases.jpg', title: 'GAS TESTS', subject: 'Chemistry', caption: 'Identifying a gas, seen from the student view of the lab.', alt: 'Gas identification practical in the LaboraVR lab' },
   { src: '/lab-screens/student_start.jpg', title: 'START OF THE LESSON', subject: 'General', caption: 'The qualitative analysis lab, as a student sees it at the start.', alt: 'Start of the qualitative analysis lesson in the LaboraVR lab' },
   { src: '/lab-screens/lab_chempractical_clean.jpg', title: 'PRACTICAL', subject: 'Chemistry', caption: 'Temperature change when a salt dissolves: the reading table in the lab.', alt: 'Chemistry practical table for temperature change when a salt dissolves' },
   { src: '/lab-screens/vr_hands_lesson1.jpg', title: 'THE LESSON', subject: 'Chemistry', caption: 'The qualitative analysis lesson, seen from inside the headset with the controllers.', alt: 'Qualitative analysis lesson in VR with controllers' },
-  { src: '/lab-screens/lab_lobby.jpg', title: 'THE LOBBY', subject: 'General', caption: 'The lab lobby, where students choose a lesson.', alt: 'LaboraVR lab lobby' },
-  { src: '/lab-screens/lab_cations.jpg', title: 'CATION TESTS', subject: 'Chemistry', caption: 'More cation tests: sodium hydroxide first, then ammonia, with the reagent key.', alt: 'Cation tests bench in the LaboraVR lab' },
-  { src: '/lab-screens/lab_anions.jpg', title: 'ANION TESTS', subject: 'Chemistry', caption: 'The anion test bench.', alt: 'Anion tests bench in the LaboraVR lab' },
-  { src: '/lab-screens/lab_carbonate.jpg', title: 'CARBONATE TEST', subject: 'Chemistry', caption: 'The carbonate test bench.', alt: 'Carbonate test bench in the LaboraVR lab' },
-  { src: '/lab-screens/lab_ammonia.jpg', title: 'AMMONIA TEST', subject: 'Chemistry', caption: 'The ammonia test bench.', alt: 'Ammonia test bench in the LaboraVR lab' },
-  { src: '/lab-screens/lab_sulfite.jpg', title: 'SULFITE TEST', subject: 'Chemistry', caption: 'The sulfite test bench.', alt: 'Sulfite test bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_lobby_front.jpg', title: 'THE ENTRANCE', subject: 'General', caption: 'The LaboraVR building, seen from the entrance path.', alt: 'The entrance to the LaboraVR building in VR' },
+  { src: '/lab-screens/v2_lobby_atrium.jpg', title: 'THE ATRIUM', subject: 'General', caption: 'The lobby atrium, with the guide character.', alt: 'The lobby atrium with the guide character' },
+  { src: '/lab-screens/v2_lobby_fountain.jpg', title: 'THE FOUNTAIN', subject: 'General', caption: 'The lobby fountain and the guide.', alt: 'The lobby fountain with the guide character' },
+  { src: '/lab-screens/v2_cations.jpg', title: 'CATION TESTS', subject: 'Chemistry', caption: 'More cation tests: sodium hydroxide first, then ammonia, with the reagent key.', alt: 'Cation tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_anions.jpg', title: 'ANION TESTS', subject: 'Chemistry', caption: 'The anion test bench.', alt: 'Anion tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_carbonate.jpg', title: 'CARBONATE TEST', subject: 'Chemistry', caption: 'The carbonate test bench.', alt: 'Carbonate test bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_ammonia.jpg', title: 'AMMONIA TEST', subject: 'Chemistry', caption: 'The ammonia test bench.', alt: 'Ammonia test bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_sulfite.jpg', title: 'SULFITE TEST', subject: 'Chemistry', caption: 'The sulfite test bench.', alt: 'Sulfite test bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_chromium.jpg', title: 'CHROMIUM TEST', subject: 'Chemistry', caption: 'The chromium test bench.', alt: 'Chromium test bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_foodtests.jpg', title: 'FOOD TESTS', subject: 'Chemistry', caption: 'The food tests bench.', alt: 'Food tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_unknownsalt.jpg', title: 'UNKNOWN SALT', subject: 'Chemistry', caption: 'The unknown salt bench.', alt: 'Unknown salt bench in the LaboraVR lab' },
+  { src: '/lab-screens/v2_architect.jpg', title: 'AI PRACTICAL ARCHITECT', subject: 'Chemistry', caption: 'The AI Practical Architect lesson: its board and the bench.', alt: 'The AI Practical Architect lesson in the LaboraVR lab' },
+  { src: '/lab-screens/v2_architect_right.jpg', title: 'THE LAB, FROM THE BENCH', subject: 'General', caption: 'The lab seen from the bench, with the fume cupboard, eyewash and first aid signs.', alt: 'The LaboraVR lab seen from the bench, with a fume cupboard and safety signs' },
   { src: '/lab-screens/lab_physics_clean.jpg', title: 'PHYSICS', subject: 'Physics', caption: 'The period of a pendulum: timing ten swings and recording the results.', alt: 'Pendulum practical table in the LaboraVR lab' },
   { src: '/lab-screens/lab_biology_clean.jpg', title: 'BIOLOGY', subject: 'Biology', caption: 'Osmosis in potato discs: measuring the lengths of the discs in each salt solution.', alt: 'Osmosis in potato discs practical table in the LaboraVR lab' },
 ];
@@ -236,14 +243,16 @@ export default function Labs() {
               <LabFilm {...films.lab} />
             </ScrollReveal>
             <ScrollReveal>
-              <LabFilm {...films.student} />
+              <LabFilm {...films.architect} />
             </ScrollReveal>
           </div>
-          <ScrollReveal>
-            <div className="mt-6">
-              <Lab360 {...films.lab360} />
-            </div>
-          </ScrollReveal>
+          {films.lab360.enabled && (
+            <ScrollReveal>
+              <div className="mt-6">
+                <Lab360 {...films.lab360} />
+              </div>
+            </ScrollReveal>
+          )}
         </div>
       </section>
 
