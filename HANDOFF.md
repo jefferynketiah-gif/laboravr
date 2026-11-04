@@ -77,7 +77,9 @@ authority on whether chemistry content is correct).
 
 - Test the live contact form once (the curriculum field was never retested after it was added), then delete
   the test row in Supabase. Test messages start with `[TEST]`.
-- Films: `lib/media.js` points at `laboravr-student-view-v2.mp4` and `laboravr-ai-architect-v2.mp4` in the
+- Films: `lib/media.js` also has `laboravr-arrival-v1.mp4` (17 s walk from the entrance into the lobby, from the 2026-11-04 Quest
+  recordings; the sign-in keypad clips were not used because the Architect board with the model name sits behind the keypad).
+  `lib/media.js` points at `laboravr-student-view-v2.mp4` and `laboravr-ai-architect-v2.mp4` in the
   R2 bucket (silent, ~50-70 s each). Both must be uploaded under those exact names before the branch that
   wires them is merged. A new 360 film (Unity menu Tools > Film > Record 360 Film, 78 s) is
   wired in as `laboravr-360-cation-tests.mp4` (3840x1920, silent, ~20 MB). Uploading it replaces the old 360 of the
