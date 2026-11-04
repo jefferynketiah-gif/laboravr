@@ -239,6 +239,11 @@ export default function Labs() {
             </h2>
           </ScrollReveal>
           <div className="grid md:grid-cols-2 gap-6">
+            <ScrollReveal className="md:col-span-2">
+              <div className="mx-auto w-full max-w-3xl">
+                <LabFilm {...films.arrival} />
+              </div>
+            </ScrollReveal>
             <ScrollReveal>
               <LabFilm {...films.lab} />
             </ScrollReveal>
