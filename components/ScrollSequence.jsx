@@ -7,19 +7,19 @@ const STAGES = [
     n: '01',
     title: 'Put on the headset',
     body: 'Standalone hardware. No workstation, no cabling, no dedicated room — the lab goes where the students already are.',
-    image: '/lab-screens/vr_hands_lesson1.jpg'
+    image: '/lab-screens/n_cation_bench.jpg'
   },
   {
     n: '02',
     title: 'Run the practical',
     body: 'The same procedure your syllabus specifies, with every instrument to hand and no queue for the one working set.',
-    image: '/lab-screens/lab_chempractical_clean.jpg'
+    image: '/lab-screens/n_bung.jpg'
   },
   {
     n: '03',
     title: 'Review the attempt',
     body: 'Every action is timestamped. Demonstrators see who understood the method and who arrived at the answer by luck.',
-    image: '/lab-screens/v2_cations.jpg'
+    image: '/lab-screens/n_cation_pour.jpg'
   },
 ];
 

@@ -163,13 +163,12 @@ animation class should be added to that list too.
 
 ### Image sets (which capture each file came from)
 
-- `v2_*.jpg` in `public/lab-screens/` are the **29 Oct 2026** captures from the Unity project
-  (`IGCSEVRLab/Recordings/HeadsetCheck`): the current lab (outdoor window, "Change lab" board,
-  fume cupboard) plus the lobby. Prefer these.
-- Unprefixed files (`lab_titration`, `lab_chempractical_clean`, `lab_physics_clean`, `lab_biology_clean`,
-  `vr_hands_lesson1`, `lab_skills`, `lab_planning`, `lab_drawing`, `lab_raytrace`) are from the **earlier room**
-  (cream walls, orange cabinets). They show instrument/UI states that were not re-captured. Re-capture them
-  in the current build so the gallery shows one room, then delete the old files.
+- `n_*.jpg` in `public/lab-screens/` are the **4 Nov 2026** captures with the new gloves and grabbing
+  (`IGCSEVRLab/Recordings/HeadsetShots/2026-11-04*`, the 16:9 Unity shots, plus 1:1 shots cropped to 16:9).
+  Prefer these. The older `v2_*` bench-start shots and the earlier-room shots (titration, pendulum, osmosis,
+  graph skills, planning, drawing, ray trace) were deleted on 4 Nov. Only `v2_architect*` and `v2_lobby_*` remain.
+- Physics and Biology have no new-build screenshots. Their cards show a plain gradient and the gallery has no
+  Physics/Biology filter. Do not use a chemistry picture for them, and do not reuse the deleted old-room shots.
 - Do not reintroduce files from `public/images/` other than `Founder.jpg`. Stock or AI-generated product
   imagery was added back once by mistake and had to be removed again.
 - Never publish headset footage that shows a private space (the 2 Nov Quest passthrough test was filmed
