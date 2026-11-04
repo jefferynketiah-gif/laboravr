@@ -77,12 +77,12 @@ authority on whether chemistry content is correct).
 
 - Test the live contact form once (the curriculum field was never retested after it was added), then delete
   the test row in Supabase. Test messages start with `[TEST]`.
-- Films (`lib/media.js`): `laboravr-arrival-v1.mp4` (17 s walk from the entrance into the lobby, 2026-11-04 Quest
-  recording) and the 360 `laboravr-360-cation-tests.mp4` (3840x1920, silent, ~20 MB; Unity menu Tools > Film >
-  Record 360 Film). The old cation-test and AI Practical Architect films were removed on 4 Nov (old hands and
-  grabbing); their R2 files can be deleted. New bench films should come from the 4 Nov recordings, which are mixed
-  reality (real table and room behind the bench), so crop or re-record them virtual-only. Set
-  `films.lab360.enabled = false` to hide the 360 section.
+- Films (`lib/media.js`, all silent, hosted on R2): `laboravr-arrival-v1.mp4` (entrance to lobby), `laboravr-chemistry-v1.mp4`
+  (81 s) and `laboravr-physics-v1.mp4` (30 s), cut from the long virtual-lab recordings of 4 Nov 22:26-22:46, plus the
+  360 `laboravr-360-cation-tests.mp4` (Unity menu Tools > Film > Record 360 Film). The older cation-test and AI Practical
+  Architect films were removed (old hands); their R2 files can be deleted. Mixed-reality clips (real room behind the
+  bench) are not published. Every film is OCR-scanned (every 0.5 s) for the model name and Quest menus before use.
+  Set `films.lab360.enabled = false` to hide the 360.
 - Connect `media.laboravr.com` in Cloudflare R2, add it to the CORS list, set `NEXT_PUBLIC_MEDIA_BASE`, and
   update the hardcoded URL in `public/360/index.html`. The hero loop and films currently use the r2.dev URL.
 - Supabase keys: the site only uses the **anon** key, which is public by design and safe because RLS allows

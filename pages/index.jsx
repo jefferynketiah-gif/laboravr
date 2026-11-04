@@ -45,6 +45,7 @@ const labs = [
     active: true,
   },
   {
+    image: '/lab-screens/s_phys_dial.jpg',
     name: 'Physics',
     line: 'Mechanics, optics and circuits on apparatus that never drifts out of calibration.',
     status: 'PLANNED',
@@ -272,7 +273,12 @@ export default function Home() {
                 className="relative h-[250px] rounded-3xl overflow-hidden group"
               >
                 <TiltCard className="w-full h-full">
-                  <div className="absolute inset-0 bg-gradient-to-br from-panel via-edge/50 to-panel" />
+                  <Image
+                    src="/lab-screens/s_phys_dial.jpg"
+                    alt="The pendulum practical in the LaboraVR physics lab, with the timing dial and reading table"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                   <div className="absolute inset-0 bg-void/10 transition-colors duration-500 group-hover:bg-void/0" />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'translateZ(20px)' }}>
                     <h3 className="text-2xl font-bold tracking-tightest text-chalk drop-shadow-sm bg-void/50 backdrop-blur-md px-6 py-2 rounded-full border border-void/50">Physics</h3>
@@ -387,7 +393,19 @@ export default function Home() {
                 >
                   <GlowCard className="h-full" innerClassName="p-6 md:p-8 flex flex-col h-full">
                     <div className="mb-5 relative w-full h-32 rounded-3xl overflow-hidden border border-edge">
-                      <div className="absolute inset-0 bg-gradient-to-br from-panel via-edge/50 to-panel" />
+                      {lab.image ? (
+                        <>
+                          <Image
+                            src={lab.image}
+                            alt={`${lab.name} lab, seen in the headset`}
+                            fill
+                            className="object-cover opacity-80"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-void/70 to-transparent" />
+                        </>
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-panel via-edge/50 to-panel" />
+                      )}
                     </div>
 
                     <h3 className="text-xl font-bold text-chalk mb-2">{lab.name}</h3>

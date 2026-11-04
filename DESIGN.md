@@ -167,8 +167,10 @@ animation class should be added to that list too.
   (`IGCSEVRLab/Recordings/HeadsetShots/2026-11-04*`, the 16:9 Unity shots, plus 1:1 shots cropped to 16:9).
   Prefer these. The older `v2_*` bench-start shots and the earlier-room shots (titration, pendulum, osmosis,
   graph skills, planning, drawing, ray trace) were deleted on 4 Nov. Only `v2_architect*` and `v2_lobby_*` remain.
-- Physics and Biology have no new-build screenshots. Their cards show a plain gradient and the gallery has no
-  Physics/Biology filter. Do not use a chemistry picture for them, and do not reuse the deleted old-room shots.
+- `s_*.jpg` are stills cut from the 4 Nov 22:26-22:46 Quest recordings (lobby, flame tests, hint, ammonia lesson and the
+  physics pendulum). Physics now has real stills (pendulum, dial board, graph board). Biology still has none: its card
+  shows a plain gradient. The physics card keeps the owner's status wording (PLANNED), so captions describe what is on
+  screen only. Never use a chemistry picture for biology, and never reuse the deleted old-room shots.
 - Do not reintroduce files from `public/images/` other than `Founder.jpg`. Stock or AI-generated product
   imagery was added back once by mistake and had to be removed again.
 - Never publish headset footage that shows a private space (the 2 Nov Quest passthrough test was filmed

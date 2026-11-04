@@ -38,6 +38,7 @@ const labs = [
     status: 'PLANNED — 2027',
     active: false,
     colour: '#F59E0B',
+    image: '/lab-screens/s_phys_dial.jpg',
     thesis:
       'Apparatus that never drifts out of calibration, never goes missing, and lets a student repeat a measurement until the method makes sense.',
     practicals: [
@@ -65,20 +66,26 @@ const labs = [
 ];
 
 const labScreens = [
+  { src: '/lab-screens/s_lobby_welcome.jpg', title: 'THE LOBBY', subject: 'General', caption: 'The lobby with the guide, and the subject boards: Exam skills, Biology, Physics and Chemistry.', alt: 'The LaboraVR lobby with the guide and the subject boards' },
+  { src: '/lab-screens/s_lobby_lessons.jpg', title: 'CHOOSING A LESSON', subject: 'General', caption: 'The lesson boards in the lobby, from flame tests to the cation trail.', alt: 'The lesson boards in the LaboraVR lobby' },
   { src: '/lab-screens/n_litmus.jpg', title: 'BLUE LITMUS', subject: 'Chemistry', caption: 'Blue litmus held over the carbonate test, with the reminder to dip it in water first.', alt: 'A gloved hand holding a blue litmus strip in the LaboraVR lab' },
   { src: '/lab-screens/n_gas_delivery.jpg', title: 'COLLECTING A GAS', subject: 'Chemistry', caption: 'A delivery tube set up to collect a gas, with the nitric acid bottle on the bench.', alt: 'A gloved hand with a gas delivery tube at the bench' },
   { src: '/lab-screens/n_bung.jpg', title: 'THE BUNG AND TUBE', subject: 'Chemistry', caption: 'Fitting the bung and delivery tube to the test tube.', alt: 'A gloved hand fitting a bung and delivery tube to a test tube' },
-  { src: '/lab-screens/n_limewater.jpg', title: 'THE LIMEWATER TEST', subject: 'Chemistry', caption: 'The delivery tube beside the limewater label, with the nitric acid bottle in view.', alt: 'A delivery tube and limewater at the bench' },
-  { src: '/lab-screens/n_litmus_strip.jpg', title: 'TESTING WITH LITMUS', subject: 'Chemistry', caption: 'A blue litmus strip at the bench, with the carbonate rack and nitric acid bottle.', alt: 'A blue litmus strip held at the chemistry bench' },
-  { src: '/lab-screens/n_flame.jpg', title: 'FLAME TESTS', subject: 'Chemistry', caption: 'Sample dishes for copper, potassium, sodium and lithium, and the wire to carry each sample to the flame.', alt: 'The flame tests bench with sample dishes and a wire' },
-  { src: '/lab-screens/n_cation_pour.jpg', title: 'CATION TESTS', subject: 'Chemistry', caption: 'A test tube in hand, and the sodium hydroxide bottle ready to grab.', alt: 'A gloved hand holding a test tube beside the sodium hydroxide bottle' },
+  { src: '/lab-screens/s_carbonate_tube.jpg', title: 'THE LIMEWATER TEST', subject: 'Chemistry', caption: 'The delivery tube and the limewater label, with a gloved hand on the bung.', alt: 'A gloved hand with a delivery tube beside the limewater label' },
+  { src: '/lab-screens/n_limewater.jpg', title: 'HOLDING THE TUBE', subject: 'Chemistry', caption: 'Holding the delivery tube beside the limewater label and the nitric acid bottle.', alt: 'A delivery tube and limewater at the bench' },
+  { src: '/lab-screens/s_flame_bunsen.jpg', title: 'FLAME TESTS', subject: 'Chemistry', caption: 'The Bunsen burner, the wire, and sample dishes for calcium, copper and potassium.', alt: 'The flame tests bench with the Bunsen burner and sample dishes' },
+  { src: '/lab-screens/n_flame.jpg', title: 'THE FLAME TEST DISHES', subject: 'Chemistry', caption: 'Sample dishes for copper, potassium, sodium and lithium, and the wire to carry each sample to the flame.', alt: 'The flame tests bench with sample dishes and a wire' },
+  { src: '/lab-screens/s_cation_pour2.jpg', title: 'CATION TESTS', subject: 'Chemistry', caption: 'A dropper of sodium hydroxide over a test tube, with the cations labelled on the bench.', alt: 'A gloved hand adding sodium hydroxide to a test tube' },
   { src: '/lab-screens/n_cation_hand.jpg', title: 'HOLDING THE TUBE', subject: 'Chemistry', caption: 'Holding a test tube over the rack, with the sodium hydroxide bottle on the right.', alt: 'A gloved hand holding a test tube over the rack' },
   { src: '/lab-screens/n_cation_bench.jpg', title: 'THE CATION BENCH', subject: 'Chemistry', caption: 'The cation test bench: a rack of test tubes, the labelled cations, and the reagent bottles.', alt: 'The cation tests bench in the LaboraVR lab' },
+  { src: '/lab-screens/s_hint.jpg', title: 'A HINT ON A WRONG STEP', subject: 'Chemistry', caption: 'The lesson tells the student that is not the reagent for this step, and what to do next.', alt: 'A hint shown in the ammonium and nitrate lesson' },
+  { src: '/lab-screens/s_red_litmus.jpg', title: 'RED LITMUS', subject: 'Chemistry', caption: 'Red litmus, the Bunsen burner and a test tube in the ammonium and nitrate lesson.', alt: 'A gloved hand with red litmus and a test tube at the Bunsen burner' },
+  { src: '/lab-screens/s_phys_stand.jpg', title: 'THE PENDULUM', subject: 'Physics', caption: 'The pendulum on its stand, with the timing board to its right.', alt: 'A pendulum on its stand in the LaboraVR physics lab' },
+  { src: '/lab-screens/s_phys_dial.jpg', title: 'THE PERIOD OF A PENDULUM', subject: 'Physics', caption: 'The timing dial and the table for recording each reading.', alt: 'The dial and reading table for the period of a pendulum' },
+  { src: '/lab-screens/s_phys_graph.jpg', title: 'THE GRAPH BOARD', subject: 'Physics', caption: 'The graph board, for plotting T squared against length.', alt: 'The graph board for the pendulum practical' },
   { src: '/lab-screens/v2_architect.jpg', title: 'AI PRACTICAL ARCHITECT', subject: 'Chemistry', caption: 'The AI Practical Architect lesson: its board and the bench.', alt: 'The AI Practical Architect lesson in the LaboraVR lab' },
   { src: '/lab-screens/v2_architect_right.jpg', title: 'THE LAB, FROM THE BENCH', subject: 'General', caption: 'The lab seen from the bench, with the fume cupboard, eyewash and first aid signs.', alt: 'The LaboraVR lab seen from the bench, with a fume cupboard and safety signs' },
   { src: '/lab-screens/v2_lobby_front.jpg', title: 'THE ENTRANCE', subject: 'General', caption: 'The LaboraVR building, seen from the entrance path.', alt: 'The entrance to the LaboraVR building in VR' },
-  { src: '/lab-screens/v2_lobby_atrium.jpg', title: 'THE ATRIUM', subject: 'General', caption: 'The lobby atrium, with the guide character.', alt: 'The lobby atrium with the guide character' },
-  { src: '/lab-screens/v2_lobby_fountain.jpg', title: 'THE FOUNTAIN', subject: 'General', caption: 'The lobby fountain and the guide.', alt: 'The lobby fountain with the guide character' },
 ];
 
 export default function Labs() {
@@ -221,21 +228,25 @@ export default function Labs() {
               SEE THE CHEMISTRY LAB
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk mb-12">
-              Walk in, then look around the lab.
+              Walk in, run the practicals, look around.
             </h2>
           </ScrollReveal>
-          <ScrollReveal>
-            <div className="mx-auto w-full max-w-3xl">
-              <LabFilm {...films.arrival} />
-            </div>
-          </ScrollReveal>
-          {films.lab360.enabled && (
+          <div className="grid md:grid-cols-2 gap-6">
             <ScrollReveal>
-              <div className="mt-6">
-                <Lab360 {...films.lab360} />
-              </div>
+              <LabFilm {...films.arrival} />
             </ScrollReveal>
-          )}
+            <ScrollReveal>
+              <LabFilm {...films.chemistry} />
+            </ScrollReveal>
+            <ScrollReveal>
+              <LabFilm {...films.physics} />
+            </ScrollReveal>
+            {films.lab360.enabled && (
+              <ScrollReveal>
+                <Lab360 {...films.lab360} />
+              </ScrollReveal>
+            )}
+          </div>
         </div>
       </section>
 
@@ -250,13 +261,13 @@ export default function Labs() {
                   INSIDE THE BUILD
                 </div>
                 <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl">
-                  Real screens from the chemistry lab.
+                  Real screens from the chemistry and physics labs.
                 </h2>
               </div>
               
               {/* Subject Filter Tabs */}
               <div className="flex flex-wrap gap-2 p-1.5 bg-panel rounded-full border border-edge">
-                {['All', 'Chemistry'].map(subject => (
+                {['All', 'Chemistry', 'Physics'].map(subject => (
                   <button
                     key={subject}
                     onClick={() => setActiveSubject(subject)}
