@@ -9,6 +9,7 @@ const PRODUCT_LINKS = [
 const COMPANY_LINKS = [
   { href: '/about',   label: 'About'   },
   { href: '/contact', label: 'Contact' },
+  { href: '/privacy', label: 'Privacy' },
 ];
 
 const SOCIAL_LINKS = [
