@@ -52,6 +52,7 @@ authority on whether chemistry content is correct).
 | Domain + forwarding | Porkbun | `hello@laboravr.com` forwards to two Gmail addresses; MX is Porkbun forwarding only (no outgoing mail from `hello@`). |
 | Films | Cloudflare R2 bucket `laboravr-media` | Uses the rate-limited `r2.dev` address. Custom domain `media.laboravr.com` not set up yet. |
 | Code | GitHub `jefferynketiah-gif/laboravr` | |
+| Search | Google Search Console, URL-prefix property `https://www.laboravr.com` (owner's Google account) | Verified by the `google-site-verification` meta tag in `components/Seo.jsx`; don't remove it. Sitemap: `/sitemap.xml`. |
 
 ## Rules (not style preferences)
 
