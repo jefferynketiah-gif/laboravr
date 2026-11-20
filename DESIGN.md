@@ -168,11 +168,22 @@ animation class should be added to that list too.
   replaced with actual screenshots from the Unity build or stills from the
   lab films (see `public/lab-screens/`). Don't add generated/stock imagery
   back in; ask for a real screenshot instead.
-- The hero and the About banner use a short silent looping clip
-  (`public/lab-screens/hero-loop.webm` + poster, ~1.3 MB, 8 s) cut from the Nov 2026
-  Quest recording of the cation test. It lives in the repo. The two films on the Labs
-  page are hosted on Cloudflare R2 (see `lib/media.js`; the r2.dev address is
-  rate-limited, so switch to the real media domain once it's connected).
+- Since Stage 3 (Nov 2026) neither the home page nor About uses
+  `public/lab-screens/hero-loop.webm` any more (the file stays in the repo). The Labs
+  page shows the **competition film** (`YouTubeFilm`) and the 360 view. The three older
+  R2 films (`films.arrival/chemistry/physics` in `lib/media.js`) are no longer shown
+  anywhere; they stay on R2 and in `lib/media.js` in case they're wanted again.
+- **Labs page (Stage 3):** one panel per science, its current picture at full strength
+  beside the practicals (image side alternates on desktop). Gallery is ~14 pictures:
+  `public/competition/` first, then a few `lab-screens` that still show the lab
+  accurately. Subject dots use the tokens (`bg-uv` chemistry, `bg-physics`,
+  `bg-biology`, `bg-muted` general) — never amber/purple Tailwind defaults.
+- **About page (Stage 3):** the founder is the main story, straight under the header:
+  large `Founder.jpg`, the same quote as the home page, the bio. Then "How it started"
+  (classroom in Accra → energy storage research → LaboraVR), why it exists, roadmap,
+  principles, ink CTA. The founder is always described as an energy storage scientist
+  *and* former IGCSE Chemistry and Physics teacher, never only a teacher. Don't add
+  dates or achievements to his path that he hasn't confirmed.
 - **Films are silent and must not show the AI model's name.** Strip audio (`-an`). The
   AI Practical Architect panels print a model name ("Meta's Muse model proposes a
   practical...") and a tiny model-id line under the brief list; neither may be legible in
