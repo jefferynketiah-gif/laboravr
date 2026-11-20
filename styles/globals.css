@@ -21,13 +21,9 @@ body {
 }
 
 /* ── Gradient text ────────────────────────────────────────── */
+/* The accent words in a heading: Labora blue, still. (The old shimmering gradient read as a template.) */
 .gradient-text {
-  background: linear-gradient(135deg, #0F172A 0%, #2563EB 55%, #0EA5E9 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shine 6s linear infinite;
+  color: #2563EB;
 }
 
 @keyframes shine {

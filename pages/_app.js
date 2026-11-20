@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 import SmoothScroll from '../components/SmoothScroll';
-import Preloader from '../components/Preloader';
 
 const sora = Sora({
   subsets: ['latin'],
@@ -23,7 +22,6 @@ export default function App({ Component, pageProps }) {
 
   return (
     <main className={`${sora.variable} ${mono.variable} font-sans`}>
-      <Preloader />
       <SmoothScroll>
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
