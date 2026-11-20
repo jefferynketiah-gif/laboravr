@@ -2,7 +2,7 @@ import Seo from '../components/Seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FlaskConical, Zap, Microscope, Check } from 'lucide-react';
+import { FlaskConical, Zap, Microscope, Check, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 
 import Navbar from '../components/Navbar';
@@ -69,6 +69,16 @@ const labs = [
     ],
   },
 ];
+
+// Practicals that have their own page under /practicals (lib/practicals.js).
+const PRACTICAL_PAGE = {
+  'Cation tests with aqueous sodium hydroxide and ammonia': 'cation-tests',
+  'Anion, gas and flame tests': 'flame-tests',
+  'Time a pendulum at five lengths and plot T² against length': 'pendulum',
+  'Read a measuring cylinder at eye level': 'measuring-cylinder',
+  'Test bread, milk, an egg or an apple for starch, sugar and protein': 'food-tests',
+  'Measure potato strips in sugar solutions': 'potato-osmosis',
+};
 
 // Current build first, then the earlier screens that still show the lab accurately.
 const labScreens = [
@@ -163,7 +173,17 @@ export default function Labs() {
                           <span className={`mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border ${c.ring}`}>
                             <Check size={12} strokeWidth={3} className={c.text} />
                           </span>
-                          <span className="font-medium leading-snug text-chalk">{p}</span>
+                          {PRACTICAL_PAGE[p] ? (
+                            <Link
+                              href={`/practicals/${PRACTICAL_PAGE[p]}`}
+                              className="group/link inline-flex items-start gap-1.5 font-medium leading-snug text-chalk hover:text-uv"
+                            >
+                              {p}
+                              <ArrowRight size={14} className="mt-1 flex-shrink-0 text-uv transition-transform group-hover/link:translate-x-0.5" />
+                            </Link>
+                          ) : (
+                            <span className="font-medium leading-snug text-chalk">{p}</span>
+                          )}
                         </li>
                       ))}
                     </ul>

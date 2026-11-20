@@ -161,6 +161,20 @@ animation class should be added to that list too.
 - Cards: `rounded-xl` or `rounded-2xl`, `border border-edge`, `bg-panel`,
   `card-shadow`. Add `lift-hover` if the card is clickable/interactive.
 
+### Practical pages (Stage 4, Nov 2026)
+
+- `/practicals` (hub, grouped by science) and `/practicals/<slug>` (one page per
+  practical), all built from `lib/practicals.js`. Add a practical there and in
+  `public/sitemap.xml`; nothing else needs to change. The labs page links a
+  practical to its page through `PRACTICAL_PAGE` in `pages/labs.jsx`.
+- Each page: header (subject, syllabus, picture), **What you do** + a results
+  table + an **In the exam** tip (warm box, because it's a fact, not an action),
+  **In LaboraVR** (only what is built), more practicals, ink pilot CTA, and the
+  not-affiliated-with-Cambridge line. JSON-LD: `LearningResource` + `BreadcrumbList`.
+- The science on these pages must be correct IGCSE content; the LaboraVR part
+  must be true of the build. No AI model names. Navbar marks "Practicals"
+  active on every `/practicals/*` page.
+
 ## 6. Imagery
 
 - **Real screenshots and real footage over generated/stock images.** Every
