@@ -175,6 +175,12 @@ animation class should be added to that list too.
   imagery was added back once by mistake and had to be removed again.
 - Never publish headset footage that shows a private space (the 2 Nov Quest passthrough test was filmed
   in a bedroom).
+- `public/competition/` (added 20 Nov 2026) holds the competition gallery from
+  `IGCSEVRLab/Recordings/Film/Gallery`, resized to 1600 px JPEG (q80). `06-on-your-desk` and `02-real-hands` were
+  left out on purpose: they show the owner's room in passthrough. These are now the preferred pictures for physics
+  (`07`, `08`, `09`) and biology (`10`, `11`); biology no longer needs a gradient placeholder.
+- Films hosted on YouTube are embedded only through `components/YouTubeFilm.jsx`: a poster and a play button, and
+  nothing loads from YouTube until the click (then `youtube-nocookie.com`). The privacy page says so; keep it true.
 
 ## 7. Copy rules (non-negotiable, not a style preference)
 
@@ -207,12 +213,31 @@ animation class should be added to that list too.
 - **Hardware: say only "tested on Meta Quest 3S".** That is the one headset the owner has tested. Do not
   list other headsets (Quest 2, Quest 3, Pico...) until they have been tested.
 - **AI Practical Architect** (added 2026-11): the owner confirmed it works; the user says a brief and the
-  bench is arranged, then they do the practical. Describe it in those terms. The in-lab board reads "The AI
+  bench is arranged, then they do the practical. Since the competition entry it can also design the next
+  practical around what the student got wrong, with a checker testing every design against the teacher's
+  specification. Describe it in those terms. The in-lab board reads "The AI
   proposes, the specification decides"; quote it as coming from the board, not as our own guarantee. Do not
   name the underlying model (the panel names one) or claim accuracy or curriculum coverage unless the owner
   says so.
 - **Demo school name:** some Unity scenes show "Sankofa Ridge International School" on a whiteboard. It is a
   made-up demo name, not a partner. Caption any such screenshot as a demo and never imply a real school.
+
+- **What is built (20 Nov 2026, from the owner's competition entry):** chemistry (cation, anion, gas and flame
+  tests, the spoken examiner), and the first physics (pendulum, eye-level readings, glass block) and biology
+  (food tests, potato strips, leaf drawings) practicals. Physics and biology are labelled "FIRST PRACTICALS BUILT",
+  not "planned" and not "complete". Removed as unbacked: "results sync", "every action is timestamped",
+  "managed install / no licence keys", titration-first wording, and the old titration-only roadmap.
+- **Competitions:** say "submitted to" the Meta VR Start Developer Competition 2026 (results about 11 Dec) and
+  that the AI Practical Architect was "first built during" Meta's Global AI Developer Hackathon (Cerebral Valley,
+  Nov 2026). The hackathon was not won. Never "finalist" or "winner" unless it happens; no Meta logo; keep the
+  not-affiliated line on `/competition`. Do not link the Devpost page before the results (it may show the
+  judges-only build link), and never the Competition channel link.
+- **Location:** "Based in France. Built from years of teaching in Accra, and for students in Ghana and beyond."
+  Do not imply partnerships with Ghanaian schools. The founder is an energy storage scientist and former IGCSE
+  Chemistry and Physics teacher, never only "a teacher".
+- **Canonical address is `https://www.laboravr.com`** (the bare domain 308-redirects to it). `components/Seo.jsx`,
+  `public/sitemap.xml` and `public/robots.txt` must all use www. `Seo` also prints the Organization JSON-LD on
+  every page; pages add their own items through the `jsonLd` prop.
 
 ## 8. Things intentionally left as-is
 

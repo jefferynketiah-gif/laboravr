@@ -62,7 +62,7 @@ export default function Privacy() {
 
       <main className="relative bg-void py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-6">
-          <p className="font-mono text-[10px] tracking-[0.18em] text-muted mb-12">LAST UPDATED 17 NOVEMBER 2026</p>
+          <p className="font-mono text-[10px] tracking-[0.18em] text-muted mb-12">LAST UPDATED 20 NOVEMBER 2026</p>
 
           <Section title="In short">
             <ul className="list-disc pl-6 space-y-3">
@@ -131,6 +131,27 @@ export default function Privacy() {
               A research dataset of students&apos; observations (text and numbers only: no pictures, no audio) is
               designed but switched off. It can only be switched on by a school, with parents&apos; consent for
               students under 15.
+            </p>
+          </Section>
+
+          <Section title="This website">
+            <p>
+              If you send the contact form, what you write (your name, email address, institution, department,
+              curriculum and message) is stored so we can reply, and you receive one confirmation email. Nothing else
+              you do on the site is stored by LaboraVR.
+            </p>
+            <p>
+              The competition film plays from YouTube. Nothing is loaded from YouTube until you press play; then it
+              plays in YouTube&apos;s privacy-enhanced mode (youtube-nocookie.com), under{' '}
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-uv hover:text-uv-bright underline"
+              >
+                Google&apos;s privacy policy
+              </a>
+              .
             </p>
           </Section>
 
