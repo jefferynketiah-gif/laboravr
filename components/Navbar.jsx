@@ -12,13 +12,15 @@ const links = [
   { href: '/about',       label: 'About' },
 ];
 
-export default function Navbar() {
+// `dark`: the page opens on a dark hero, so the bar shows light text until the visitor scrolls.
+export default function Navbar({ dark = false }) {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen]     = useState(false);
   const router = useRouter();
 
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 60));
+  const onDark = dark && !scrolled;
 
   return (
     <>
@@ -34,7 +36,7 @@ export default function Navbar() {
       >
         <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" aria-label="LaboraVR home">
-            <Wordmark size="md" showMark />
+            <Wordmark size="md" showMark tone={onDark ? 'light' : 'dark'} />
           </Link>
 
           {/* Desktop links */}
@@ -45,20 +47,19 @@ export default function Navbar() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="relative text-sm font-medium transition-colors duration-200 group"
-                  style={{ color: active ? '#0F172A' : '#64748B' }}
+                  className={`relative text-sm font-medium transition-colors duration-200 group ${
+                    onDark
+                      ? active ? 'text-white' : 'text-white/70 hover:text-white'
+                      : active ? 'text-chalk' : 'text-muted hover:text-chalk'
+                  }`}
                 >
                   {l.label}
                   {/* Active/hover underline */}
                   <span
-                    className={`absolute -bottom-1 left-0 h-px bg-uv transition-all duration-300 ${
+                    className={`absolute -bottom-1 left-0 h-px ${onDark ? 'bg-white' : 'bg-uv'} transition-all duration-300 ${
                       active ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
                   />
-                  {/* Hover text colour */}
-                  <style jsx>{`
-                    a:hover { color: #0F172A !important; }
-                  `}</style>
                 </Link>
               );
             })}
@@ -76,9 +77,9 @@ export default function Navbar() {
             onClick={() => setIsOpen(true)}
             aria-label="Open menu"
           >
-            <span className="w-5 h-px bg-chalk transition-all group-hover:bg-uv" />
-            <span className="w-4 h-px bg-chalk transition-all group-hover:w-5 group-hover:bg-uv" />
-            <span className="w-5 h-px bg-chalk transition-all group-hover:bg-uv" />
+            <span className={`w-5 h-px ${onDark ? 'bg-white' : 'bg-chalk'} transition-all group-hover:bg-uv`} />
+            <span className={`w-4 h-px ${onDark ? 'bg-white' : 'bg-chalk'} transition-all group-hover:w-5 group-hover:bg-uv`} />
+            <span className={`w-5 h-px ${onDark ? 'bg-white' : 'bg-chalk'} transition-all group-hover:bg-uv`} />
           </button>
         </nav>
 

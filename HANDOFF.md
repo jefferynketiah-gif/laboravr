@@ -27,9 +27,11 @@ authority on whether chemistry content is correct).
 - `pages/` — `index`, `about`, `labs`, `competition`, `contact`, `privacy`, `404`; `pages/api/contact.js` is the only
   API route. `competition` shows the Meta VR Start competition film (YouTube, via `components/YouTubeFilm.jsx`) and
   the gallery in `public/competition/`.
-- `components/` — `CinematicHero`, `ScrollSequence`, `TitrationDemo` (self-drawing SVG), `GlowCard`,
-  `LabFilm`/`Lab360` (films + 360 player), `PageHeader`, `Navbar`, `Footer`, `Wordmark`.
-  The old `Aurora`/`ParticleField` effects were deleted (see git history).
+- `components/` — `TitrationDemo` (self-drawing SVG), `PrecipitateDemo`, `GlowCard`, `YouTubeFilm`, `FilmModal`
+  (the film in an overlay, used by the home page), `LabFilm`/`Lab360` (films + 360 player), `PageHeader`,
+  `Navbar` (`dark` prop for ink heroes), `Footer`, `Wordmark`. `Aurora`/`ParticleField`, and in Stage 2
+  `CinematicHero`/`ScrollSequence`/`TiltCard`/`Preloader`, were deleted (see git history).
+- `public/home/` — the home page's in-headset photos (from the Store screenshots; no private room).
 - `lib/` — `media.js` (R2 URLs for the films), `supabase.js`, `resend.js`, `contactEmails.js` (visitor email).
 - `public/lab-screens/` — real Unity screenshots + `hero-loop.webm`. `public/360/index.html` is a
   standalone A-Frame viewer page, not part of Next (it won't show up in a pages/components search).

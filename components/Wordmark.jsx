@@ -10,7 +10,7 @@
   tone="mono"  renders single-ink, for stamps and university forms.
 */
 export function Mark({ className = '', tone = 'dark' }) {
-  const ink = tone === 'light' ? '#0F172A' : tone === 'mono' ? 'currentColor' : '#0F172A';
+  const ink = tone === 'light' ? '#FFFFFF' : tone === 'mono' ? 'currentColor' : '#0F172A';
   const uv = tone === 'mono' ? 'currentColor' : '#2563EB';
   return (
     <svg

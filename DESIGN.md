@@ -19,9 +19,18 @@ earlier dark/purple "cyberpunk lab" direction; that direction is retired.
 Do not reintroduce glow blobs, grain, particle fields, or dark vignettes
 site-wide — see §4.
 
+**Stage 2 (Nov 2026):** the home page is built around the competition film
+and the line "See it. Say it. Score it." It opens on a dark **ink** hero
+(a real in-headset photo under an ink overlay) and closes on an ink pilot
+CTA; everything between is the light theme. Ink is a *section* colour on
+the home page, not a site-wide dark mode. Other pages still open light.
+The preloader and the template-style hero (`CinematicHero`,
+`ScrollSequence`, `TiltCard`, `Preloader`) were deleted; they're in git
+history and shouldn't come back.
+
 The "one signature flourish" rule: depth and richness come from **one**
-deliberate element per context (e.g., a glassmorphic nav bar, or the hero's
-gradient mesh), not from stacking multiple atmospheric effects. Scroll-driven
+deliberate element per context (e.g., a glassmorphic nav bar, or the home
+hero's photo), not from stacking multiple atmospheric effects. Scroll-driven
 animations should feel deliberate and elegant, following modern web guidance
 for performance and accessibility.
 
@@ -32,6 +41,12 @@ All colors are Tailwind theme tokens — use the token name in classes
 component unless it's SVG fill/stroke that Tailwind arbitrary values don't
 reach cleanly (then match the token's actual hex, listed below).
 
+The palette is the brand palette the owner approved on 14 Nov 2026
+(IGCSEVRLab `marketing/01-BRAND.md`). Coral, emerald, amber and purple
+tokens were removed in Stage 2; don't add colours outside this table.
+`.gradient-text` is now **solid Labora blue** — the shimmering gradient
+text is gone.
+
 | Token | Hex | Use |
 |---|---|---|
 | `void` | `#FFFFFF` | Page background |
@@ -40,12 +55,16 @@ reach cleanly (then match the token's actual hex, listed below).
 | `edge` | `#E2E8F0` | Default border |
 | `edge-bright` | `#CBD5E1` | Hover/emphasis border |
 | `uv` | `#2563EB` | **Primary accent** — CTAs, links, active states |
-| `uv-dim` | `#93C5FD` | Light tint of the accent (badges, subtle fills) |
+| `uv-dim` | `#DBEAFE` | Soft blue background (badges, subtle fills) |
 | `uv-bright` | `#1D4ED8` | Darker accent — hover state for `bg-uv`/`text-uv` |
 | `warm` | `#C2650C` | **Second accent** — real numbers, highlights only. Never a CTA color. |
 | `warm-bg` | `#FFF7ED` | Light tint of `warm` |
-| `glow-cyan` | `#0D9488` | Physics discipline color only |
-| `glow-magenta` | `#7C3AED` | Biology discipline color only |
+| `ochre` | `#D9972B` | Large numerals and small status shapes **on ink** only; never small text on white |
+| `bench` | `#1D6B63` | The lab's own teal; used in `gradient-uv` (blue → bench) |
+| `physics` (= `glow-cyan`) | `#0D9488` | Physics discipline color only |
+| `biology` (= `glow-magenta`) | `#7C3AED` | Biology discipline color only |
+| `ink` | `#0F172A` | Dark section background (home hero, trust band, pilot CTA, film modal overlay) |
+| `ink-2` | `#16213A` | A raised surface on `ink` |
 | `chalk` | `#0F172A` | Primary text |
 | `chalk-dim` | `#475569` | Secondary text |
 | `muted` | `#64748B` | Tertiary text, labels, captions |
@@ -75,7 +94,8 @@ its own dark styling because it's read in an inbox, not on the site.
 - Scale, by context:
   - **Page title** (`PageHeader`, 404): `text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tightest`
   - **Section heading** (`<h2>` on every page section): `text-3xl md:text-4xl font-extrabold tracking-tightest`
-  - **Hero headline** (`CinematicHero` only): its own larger scale, don't reuse elsewhere
+  - **Home section heading** (`pages/index.jsx` only): one step up, `md:text-5xl`, because the home page is the showcase. Don't spread it to other pages.
+  - **Hero headline** (home hero "See it. / Say it. / Score it." only): its own larger scale, don't reuse elsewhere
   - **Eyebrow/label**: `font-mono text-[10px]–[11px] tracking-[0.18em]–[0.2em] text-uv` (uppercase via content, not a class)
 - Keep section headings on ONE scale across the site. If you add a new
   page, match the section-heading scale above rather than inventing a new
@@ -90,9 +110,16 @@ its own dark styling because it's read in an inbox, not on the site.
 - `.card-shadow` — a soft *resting* shadow (not just on hover) on `GlowCard`,
   film frames (`LabFilm`, `Lab360`), and gallery cards. Depth shouldn't be
   hover-only.
-- `.mesh-hero` — the hero's static gradient mesh (blue + warm + teal radial
-  gradients, no animation). This is the "one signature flourish." Use it
-  **only** in the hero. In the DOM it must sit *after* the hero video and its white fade panel, so it tints both.
+- The home hero: a real headset photo (`public/home/hero-pour.jpg`) under an
+  `ink` gradient overlay, no animation. This is the home page's "one
+  signature flourish." `.mesh-hero` remains in `globals.css` but is no
+  longer used.
+- `Navbar dark` — on a page that opens on an ink hero, pass `<Navbar dark />`:
+  the bar shows white text and a white wordmark until the visitor scrolls,
+  then switches to the normal glass bar.
+- `FilmModal` — "Watch the film" opens the competition film in an ink
+  overlay (Escape or Close shuts it, page scroll is locked while open).
+  Nothing loads from YouTube until play is pressed inside it.
 - `.grid-reticle` — a very faint technical grid texture, kept at low opacity
   (10–20%). Used sparingly.
 - `.btn-glow` — a small elevation shadow on primary buttons, tinted with the
@@ -100,9 +127,8 @@ its own dark styling because it's read in an inbox, not on the site.
 - `.hero-drift` — a one-time 14s slow zoom-out on the hero's video loop.
 - `.pulse-ring` / the `LIVE` badge ping — a small animated status indicator.
   Fine; it signals real state, it's not decoration.
-- `.scan-line` / the preloader's counter and progress bar — brief (~2s),
-  plays once per session. Acceptable because it's not persistent site
-  motion.
+- The preloader was **removed** in Stage 2: the site opens straight on
+  content. Don't add a loading screen back.
 
 **Removed, don't bring back without a real reason:**
 - `Aurora` component (colored glow blobs) and `ParticleField` — deleted in the

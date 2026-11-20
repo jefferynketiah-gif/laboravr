@@ -18,29 +18,30 @@ module.exports = {
         edge:    '#E2E8F0',
         'edge-bright': '#CBD5E1',
         
-        // Primary playful colors (EdTech vibe)
-        uv:      '#3B82F6', // Brighter, friendlier blue
-        'uv-dim':'#DBEAFE', // Soft blue background
-        'uv-bright': '#2563EB',
-        
-        // Playful accents
-        coral:   '#FF6B6B',
-        'coral-dim': '#FFE3E3',
-        emerald: '#10B981',
-        'emerald-dim': '#D1FAE5',
-        amber:   '#F59E0B',
-        'amber-dim': '#FEF3C7',
-        purple:  '#8B5CF6',
-        'purple-dim': '#EDE9FE',
-        
-        // type
-        chalk:   '#1E293B', // Softer black/slate
+        // Brand palette approved by the owner on 14 Nov 2026 (IGCSEVRLab marketing/01-BRAND.md).
+        // Labora blue is the only "act on this" colour.
+        uv:      '#2563EB', // Labora blue
+        'uv-dim':'#DBEAFE', // soft blue background
+        'uv-bright': '#1D4ED8', // hover
+
+        // type and dark surfaces
+        chalk:   '#0F172A', // Ink
+        ink:     '#0F172A',
+        'ink-2': '#16213A', // a raised surface on ink
         'chalk-dim': '#475569',
         muted:   '#64748B',
-        
-        // second accent
-        warm:    '#F59E0B',
-        'warm-bg': '#FEF3C7',
+
+        // second accent: real numbers and facts only, never a button
+        warm:    '#C2650C',
+        'warm-bg': '#FFF7ED',
+        ochre:   '#D9972B', // large numerals and shapes on dark; never small text on white
+        bench:   '#1D6B63', // the lab's own teal, for anything that shows the inside of the lab
+
+        // subject tags (small dots and labels only)
+        physics: '#0D9488',
+        biology: '#7C3AED',
+        'glow-cyan': '#0D9488',
+        'glow-magenta': '#7C3AED',
       },
       letterSpacing: {
         tightest: '-0.02em',
@@ -48,10 +49,7 @@ module.exports = {
         widest3: '0.15em',
       },
       backgroundImage: {
-        'gradient-uv': 'linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%)',
-        'gradient-coral': 'linear-gradient(135deg, #FF6B6B 0%, #F59E0B 100%)',
-        'gradient-emerald': 'linear-gradient(135deg, #10B981 0%, #3B82F6 100%)',
-        'shimmer-uv': 'linear-gradient(90deg, #3B82F6 0%, #8B5CF6 40%, #3B82F6 60%, #10B981 100%)',
+        'gradient-uv': 'linear-gradient(135deg, #2563EB 0%, #1D6B63 100%)',
       },
       boxShadow: {
         'glow-sm':  '0 1px 2px rgba(15,23,42,0.06), 0 4px 10px -2px rgba(37,99,235,0.18)',
