@@ -42,6 +42,9 @@ export default function Seo({ title, description, image, jsonLd = [] }) {
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <link rel="apple-touch-icon" href="/brand/laboravr-icon.svg" />
       <link rel="canonical" href={url} />
+      {/* Google Search Console ownership check (URL-prefix property https://www.laboravr.com). Not a secret; keep it,
+          or Search Console loses verification. */}
+      <meta name="google-site-verification" content="Zq5bLqIfw47jUrkjFBs5k2pA0LHrjqmW8sKCgfWCLIo" />
 
       {/* Open Graph — WhatsApp, LinkedIn, Facebook */}
       <meta property="og:type" content="website" />
