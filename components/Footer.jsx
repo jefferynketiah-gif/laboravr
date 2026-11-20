@@ -2,8 +2,9 @@ import Link from 'next/link';
 import Wordmark from './Wordmark';
 
 const PRODUCT_LINKS = [
-  { href: '/labs',    label: 'Labs'          },
-  { href: '/contact', label: 'Join the pilot' },
+  { href: '/labs',        label: 'Labs'           },
+  { href: '/competition', label: 'Competition film' },
+  { href: '/contact',     label: 'Join the pilot' },
 ];
 
 const COMPANY_LINKS = [
@@ -38,13 +39,10 @@ export default function Footer() {
               <Wordmark size="lg" showCaret={false} />
             </div>
             <p className="text-muted max-w-xs leading-relaxed mb-6">
-              Virtual reality science labs for schools and universities on Cambridge IGCSE and A Levels, with WASSCE coming next. Built in Ghana,
-              for the students who deserve to do science.
+              A science lab for Meta Quest: chemistry, physics and biology practicals, done with bare hands and marked
+              like an examiner. Based in France. Built from years of teaching in Accra, and for students in Ghana and
+              beyond.
             </p>
-            {/* Ghana badge */}
-            <span className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.18em] text-uv border border-uv/30 rounded-full px-3 py-1.5">
-              🇬🇭 BUILT IN GHANA
-            </span>
           </div>
 
           {/* Product */}

@@ -18,54 +18,60 @@ const labs = [
   {
     icon: FlaskConical,
     name: 'Chemistry',
-    status: 'IN DEVELOPMENT',
+    status: 'IN THE HEADSET',
     active: true,
-    colour: '#3B82F6',
-    image: '/lab-screens/n_cation_hand.jpg',
+    colour: '#2563EB',
+    image: '/competition/00-pour.jpg',
     syllabus: 'CAMBRIDGE IGCSE CHEMISTRY 0620',
     thesis:
-      'The discipline where the gap between reading a method and running it is widest — and where a mistake in the real lab is expensive or dangerous.',
+      'The discipline where the gap between reading a method and running it is widest. After each test, the student says what they saw, and an examiner in the headset marks it.',
     practicals: [
-      'Acid–base titration to endpoint',
-      'Rates of reaction under varied concentration and temperature',
-      'Qualitative analysis of unknown salts',
-      'Simple organic synthesis and purification',
+      'Cation tests with aqueous sodium hydroxide and ammonia',
+      'Anion, gas and flame tests',
+      'Neutralise an acid in a cup, with a thermometer',
+      'Follow magnesium in acid with a gas syringe',
+      'Unknown of the day: name the cation and the anion',
     ],
   },
   {
     icon: Zap,
     name: 'Physics',
-    status: 'PLANNED — 2027',
-    active: false,
-    colour: '#F59E0B',
-    image: '/lab-screens/s_phys_dial.jpg',
+    status: 'FIRST PRACTICALS BUILT',
+    active: true,
+    colour: '#0D9488',
+    image: '/competition/07-pendulum.jpg',
     thesis:
-      'Apparatus that never drifts out of calibration, never goes missing, and lets a student repeat a measurement until the method makes sense.',
+      'Apparatus that never drifts out of calibration. The headset knows where the student’s eye is, so a reading taken from above is wrong, as it is in a real lab.',
     practicals: [
-      'Simple pendulum and determination of g',
-      'Forces on an inclined plane',
-      'Series and parallel circuits, Ohm\'s law',
-      'Refraction and lens focal length',
+      'Time a pendulum at five lengths and plot T² against length',
+      'Read a measuring cylinder at eye level',
+      'Line up pins through a glass block',
     ],
   },
   {
     icon: Microscope,
     name: 'Biology',
-    status: 'PLANNED — 2028',
-    active: false,
-    colour: '#8B5CF6',
+    status: 'FIRST PRACTICALS BUILT',
+    active: true,
+    colour: '#7C3AED',
+    image: '/competition/11-potato-strips.jpg',
     thesis:
-      'Specimens and prepared slides cost money and run out. Here they don\'t, and dissection carries no ethical cost.',
+      'Specimens cost money and run out. Here a student tests food from their own kitchen and judges drawings of a real leaf.',
     practicals: [
-      'Light microscopy and slide preparation',
-      'Cell structure and osmosis',
-      'Comparative dissection',
-      'Enzyme activity under varied pH',
+      'Test bread, milk, an egg or an apple for starch, sugar and protein',
+      'Measure potato strips in sugar solutions',
+      'Be the examiner: find the leaf drawing that earns full marks',
     ],
   },
 ];
 
 const labScreens = [
+  { src: '/competition/01-say-what-you-saw.jpg', title: 'SAY WHAT YOU SAW', subject: 'Chemistry', caption: 'The examiner marks a spoken observation point by point and says what was missing.', alt: 'The examiner panel marking a spoken observation in the LaboraVR lab' },
+  { src: '/competition/05-missed-it.jpg', title: 'YOU MISSED IT', subject: 'Chemistry', caption: 'The student was looking away when the precipitate formed, so the change is offered again, slowly.', alt: 'The You missed it panel, offering to show a reaction again slowly' },
+  { src: '/competition/09-sight-lines.jpg', title: 'READING AT EYE LEVEL', subject: 'Physics', caption: 'A measuring cylinder reads correctly only when the eye is level with the bottom of the meniscus.', alt: 'A magnified measuring cylinder reading taken at eye level' },
+  { src: '/competition/08-your-graph.jpg', title: 'YOUR OWN GRAPH', subject: 'Physics', caption: 'The student’s own pendulum timings, plotted as T² against length.', alt: 'A graph of the period squared against pendulum length from a student’s results' },
+  { src: '/competition/10-kitchen-starch.jpg', title: 'FROM YOUR KITCHEN', subject: 'Biology', caption: 'Bread shown to the headset, then tested for starch at the bench.', alt: 'A gloved hand holding a test tube during a starch test on bread' },
+  { src: '/competition/11-potato-strips.jpg', title: 'POTATO STRIPS', subject: 'Biology', caption: 'Each strip is measured before and after, and each length goes into the student’s table.', alt: 'Measuring potato strips in sugar solutions, with the results table' },
   { src: '/lab-screens/s_lobby_welcome.jpg', title: 'THE LOBBY', subject: 'General', caption: 'The lobby with the guide, and the subject boards: Exam skills, Biology, Physics and Chemistry.', alt: 'The LaboraVR lobby with the guide and the subject boards' },
   { src: '/lab-screens/s_lobby_lessons.jpg', title: 'CHOOSING A LESSON', subject: 'General', caption: 'The lesson boards in the lobby, from flame tests to the cation trail.', alt: 'The lesson boards in the LaboraVR lobby' },
   { src: '/lab-screens/n_litmus.jpg', title: 'BLUE LITMUS', subject: 'Chemistry', caption: 'Blue litmus held over the carbonate test, with the reminder to dip it in water first.', alt: 'A gloved hand holding a blue litmus strip in the LaboraVR lab' },
@@ -99,7 +105,7 @@ export default function Labs() {
     <>
       <Seo
         title="The labs — LaboraVR"
-        description="Chemistry practicals in virtual reality, built around Cambridge IGCSE Chemistry (0620). Physics and biology are in development."
+        description="Chemistry, physics and biology practicals for Meta Quest, used with bare hands. Chemistry is built around Cambridge IGCSE Chemistry (0620); the first physics and biology practicals are built."
       />
       <Navbar />
 
@@ -261,13 +267,13 @@ export default function Labs() {
                   INSIDE THE BUILD
                 </div>
                 <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk max-w-2xl">
-                  Real screens from the chemistry and physics labs.
+                  Real screens from the chemistry, physics and biology labs.
                 </h2>
               </div>
               
               {/* Subject Filter Tabs */}
               <div className="flex flex-wrap gap-2 p-1.5 bg-panel rounded-full border border-edge">
-                {['All', 'Chemistry', 'Physics'].map(subject => (
+                {['All', 'Chemistry', 'Physics', 'Biology'].map(subject => (
                   <button
                     key={subject}
                     onClick={() => setActiveSubject(subject)}

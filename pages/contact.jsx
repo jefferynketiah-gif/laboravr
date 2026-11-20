@@ -236,12 +236,9 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Ghana badge */}
-              <div className="pt-2">
-                <span className="inline-flex items-center gap-2 font-mono text-[9px] tracking-[0.15em] text-muted border border-edge rounded-full px-3 py-1.5">
-                  🇬🇭 BUILT IN GHANA
-                </span>
-              </div>
+              <p className="pt-2 text-sm leading-relaxed text-muted">
+                Based in France. Schools and families in Ghana are especially welcome to get in touch.
+              </p>
             </GlowCard>
           </aside>
 

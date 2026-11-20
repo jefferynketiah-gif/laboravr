@@ -24,7 +24,9 @@ authority on whether chemistry content is correct).
 
 ## Map
 
-- `pages/` — `index`, `about`, `labs`, `contact`, `404`; `pages/api/contact.js` is the only API route.
+- `pages/` — `index`, `about`, `labs`, `competition`, `contact`, `privacy`, `404`; `pages/api/contact.js` is the only
+  API route. `competition` shows the Meta VR Start competition film (YouTube, via `components/YouTubeFilm.jsx`) and
+  the gallery in `public/competition/`.
 - `components/` — `CinematicHero`, `ScrollSequence`, `TitrationDemo` (self-drawing SVG), `GlowCard`,
   `LabFilm`/`Lab360` (films + 360 player), `PageHeader`, `Navbar`, `Footer`, `Wordmark`.
   The old `Aurora`/`ParticleField` effects were deleted (see git history).

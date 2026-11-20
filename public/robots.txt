@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://laboravr.com/sitemap.xml
+Sitemap: https://www.laboravr.com/sitemap.xml

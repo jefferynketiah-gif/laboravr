@@ -30,39 +30,39 @@ const principles = [
 const roadmap = [
   {
     status: 'done',
-    period: 'NOW',
-    title: 'Chemistry Lab — Titration',
-    desc: 'Acid–base titration practical, in active development and being refined.',
+    period: 'NOVEMBER 2026',
+    title: 'The lab, in the headset',
+    desc: 'Chemistry, physics and biology practicals on Meta Quest, used with bare hands, with a spoken examiner for chemistry observations. Submitted to the Meta VR Start Developer Competition 2026.',
   },
   {
     status: 'active',
-    period: 'Q1 2027',
-    title: 'Chemistry Lab — Full Module',
-    desc: 'Rates of reaction, qualitative analysis, and organic synthesis added — completing Cambridge IGCSE Chemistry (0620). Pilot programme with first institutions.',
+    period: 'EARLY 2027',
+    title: 'A pilot with a school',
+    desc: 'The first classes use LaboraVR, and their teachers decide what gets built next.',
   },
   {
     status: 'upcoming',
-    period: 'Q3 2027',
-    title: 'Physics Lab',
-    desc: 'Mechanics, optics and circuits. Apparatus that never drifts out of calibration.',
+    period: '2027',
+    title: 'Physics and biology in depth',
+    desc: 'Working with physics and biology teachers to bring those two sciences to the depth the chemistry has now.',
   },
   {
     status: 'upcoming',
-    period: 'Q1 2028',
-    title: 'Biology Lab',
-    desc: 'Microscopy, dissection and cell biology without specimen cost or ethical constraints.',
+    period: 'MID-2027 · TARGET',
+    title: 'Release to schools',
+    desc: 'Through the Meta Horizon Store, for schools that already have headsets.',
   },
   {
     status: 'upcoming',
-    period: 'LATE 2028',
-    title: 'Multi-user Mode',
-    desc: 'Shared virtual lab sessions — demonstrators and students in the same environment simultaneously.',
+    period: 'AFTER THAT',
+    title: 'Phones and ordinary computers',
+    desc: 'The same practicals, examiner and rules, for the students who will never hold a headset.',
   },
 ];
 
 const statusStyles = {
   done:     { dot: 'bg-uv', line: 'bg-uv/50', label: 'text-uv', border: 'border-uv/30' },
-  active:   { dot: 'bg-glow-cyan', line: 'bg-glow-cyan/30', label: 'text-glow-cyan', border: 'border-glow-cyan/30' },
+  active:   { dot: 'bg-[#0D9488]', line: 'bg-[#0D9488]/30', label: 'text-[#0D9488]', border: 'border-[#0D9488]/30' },
   upcoming: { dot: 'bg-edge-bright', line: 'bg-edge', label: 'text-muted', border: 'border-edge' },
 };
 
@@ -78,7 +78,7 @@ export default function About() {
       <PageHeader
         eyebrow="ABOUT"
         title="Bright students, empty benches."
-        intro="LaboraVR is being built in Ghana, for schools and universities on Cambridge IGCSE and A Levels, with WASSCE coming next."
+        intro="Based in France. Built from years of teaching in Accra, and for students in Ghana and beyond."
       />
 
       {/* Full-bleed students photo */}
@@ -99,7 +99,7 @@ export default function About() {
             <div className="absolute inset-0 bg-gradient-to-t from-void via-void/25 to-transparent" />
             {/* Overlay text */}
             <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
-              <p className="font-mono text-[10px] tracking-[0.2em] text-uv/80 mb-2">ACCRA, GHANA</p>
+              <p className="font-mono text-[10px] tracking-[0.2em] text-uv/80 mb-2">FROM A CLASSROOM IN ACCRA</p>
               <p className="text-chalk text-xl md:text-3xl font-extrabold tracking-tightest max-w-md leading-tight">
                 The students who deserve to do science.
               </p>
@@ -178,19 +178,21 @@ export default function About() {
                     Jeffery Nketiah
                   </h2>
                   <p className="font-mono text-[10px] tracking-[0.18em] text-uv mb-2">
-                    FOUNDER — DEVELOPER
+                    FOUNDER
                   </p>
                   <span className="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-[0.15em] text-muted border border-edge rounded-full px-3 py-1 mb-6">
-                    🇬🇭 BASED IN GHANA
+                    BASED IN FRANCE
                   </span>
                   <p className="text-muted leading-relaxed max-w-lg mb-5">
-                    LaboraVR is a one-person company right now. I write the code,
-                    build the simulations, and sit in the meetings — which means
-                    when a department tells me something is wrong, it gets changed
-                    by the person who built it.
+                    I am an energy storage scientist. Before my research years, I
+                    taught IGCSE Chemistry and Physics at an international school in
+                    Accra, where I helped build the school&apos;s new science lab. Even
+                    then, we rarely had the chemicals or the equipment for every
+                    practical.
                   </p>
                   <p className="text-muted leading-relaxed max-w-lg mb-8">
-                    If you run a science department in Ghana, I&apos;d rather hear
+                    I design the practicals and write the marking rules myself. If
+                    you teach science, in Ghana or anywhere else, I&apos;d rather hear
                     what you actually need than guess at it.
                   </p>
                   {/* Social stubs */}
@@ -267,13 +269,13 @@ export default function About() {
                           </span>
                           {item.status === 'done' && (
                             <span className="font-mono text-[9px] tracking-[0.15em] text-uv border border-uv/30 rounded px-2 py-0.5">
-                              WORKING DRAFT
+                              SUBMITTED BUILD
                             </span>
                           )}
                           {item.status === 'active' && (
-                            <span className="font-mono text-[9px] tracking-[0.15em] text-glow-cyan border border-glow-cyan/30 rounded px-2 py-0.5 flex items-center gap-1.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-glow-cyan animate-pulse" />
-                              IN PROGRESS
+                            <span className="font-mono text-[9px] tracking-[0.15em] text-[#0D9488] border border-[#0D9488]/30 rounded px-2 py-0.5 flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#0D9488] animate-pulse" />
+                              BEING PREPARED
                             </span>
                           )}
                         </div>

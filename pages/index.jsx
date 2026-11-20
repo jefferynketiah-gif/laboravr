@@ -40,21 +40,22 @@ const labs = [
   {
     image: '/lab-screens/n_cation_pour.jpg',
     name: 'Chemistry',
-    line: 'Titrations, reaction kinetics and organic synthesis. Get it wrong, see what happens, run it again.',
-    status: 'IN DEVELOPMENT',
+    line: 'Cation, anion, gas and flame tests, then say what you saw. An examiner in the headset marks it and tells you what was missing.',
+    status: 'IN THE HEADSET',
     active: true,
   },
   {
-    image: '/lab-screens/s_phys_dial.jpg',
+    image: '/competition/07-pendulum.jpg',
     name: 'Physics',
-    line: 'Mechanics, optics and circuits on apparatus that never drifts out of calibration.',
-    status: 'PLANNED',
+    line: 'Time a pendulum on the bench stopwatch, read a measuring cylinder at eye level, and plot your own graph.',
+    status: 'FIRST PRACTICALS BUILT',
     active: false,
   },
   {
+    image: '/competition/11-potato-strips.jpg',
     name: 'Biology',
-    line: 'Microscopy, dissection and cell biology without specimen cost or ethical constraints.',
-    status: 'PLANNED',
+    line: 'Test bread from your kitchen for starch, and measure potato strips in sugar solutions.',
+    status: 'FIRST PRACTICALS BUILT',
     active: false,
   },
 ];
@@ -68,16 +69,16 @@ const stats = [
 
 const specs = [
   { k: 'HARDWARE',    v: 'Standalone headsets. No workstation, no cabling, no dedicated room. Tested on Meta Quest 3S.' },
-  { k: 'CONNECTIVITY',v: 'Practicals run offline. Results sync when the network returns.' },
-  { k: 'DEPLOYMENT',  v: 'Managed install on department-owned devices. No per-seat licence keys to distribute.' },
-  { k: 'ASSESSMENT',  v: 'Every action is timestamped, so a demonstrator sees method, not just the final answer.' },
-  { k: 'CURRICULUM',  v: 'Procedures are authored against your existing practical manual, not a generic one.' },
+  { k: 'CONNECTIVITY',v: 'Most practicals work with no internet. The features that see, hear or read (the examiner, the exam paper, the kitchen) need a connection. Results stay on the headset.' },
+  { k: 'ACCOUNTS',    v: 'No sign-in, no account, no name and no face. A student puts on the headset and starts.' },
+  { k: 'ASSESSMENT',  v: 'Each spoken observation is marked point by point by rules a teacher wrote, and the student is told what was missing.' },
+  { k: 'CURRICULUM',  v: 'Every reaction, observation and mark comes from a specification written by a teacher, so new practicals can be added without a developer.' },
 ];
 
 const demoFeatures = [
-  'Full chemistry lab environment',
-  'Acid–base titration practical',
-  'Built in Unity 6',
+  'Chemistry, physics and biology practicals',
+  'Used with bare hands, no controllers',
+  'Built in Unity 6, tested on Meta Quest 3S',
   'No account or login required',
 ];
 
@@ -294,7 +295,12 @@ export default function Home() {
                 className="relative h-[250px] rounded-3xl overflow-hidden group"
               >
                 <TiltCard className="w-full h-full">
-                  <div className="absolute inset-0 bg-gradient-to-br from-panel via-edge/50 to-panel" />
+                  <Image
+                    src="/competition/10-kitchen-starch.jpg"
+                    alt="Testing bread from the kitchen for starch at the LaboraVR biology bench"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                   <div className="absolute inset-0 bg-void/10 transition-colors duration-500 group-hover:bg-void/0" />
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'translateZ(20px)' }}>
                     <h3 className="text-2xl font-bold tracking-tightest text-chalk drop-shadow-sm bg-void/50 backdrop-blur-md px-6 py-2 rounded-full border border-void/50">Biology</h3>
@@ -440,24 +446,24 @@ export default function Home() {
               <div className="flex items-center gap-3 mb-5">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-uv/10 text-uv font-semibold text-sm border border-uv/20 shadow-sm">
                   <span className="flex h-2 w-2 rounded-full bg-uv" />
-                  NEW · AI PRACTICAL ARCHITECT
+                  AI PRACTICAL ARCHITECT
                 </div>
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold tracking-tightest text-chalk leading-[1.05]">
-                Say what you want to practise.{' '}
-                <span className="gradient-text">The bench sets itself up.</span>
+                The next practical{' '}
+                <span className="gradient-text">comes from your mistakes.</span>
               </h2>
               <p className="mt-6 text-lg text-muted leading-relaxed">
-                Describe the practical you want to run, in your own words. The
-                apparatus and reagents are arranged for you, and then you carry
-                it out in the headset.
+                Say what you want to practise, or finish a practical and let the
+                lab design the next one around what you got wrong. First built
+                during Meta&apos;s Global AI Developer Hackathon in November 2026.
               </p>
 
               <ol className="mt-8 space-y-5">
                 {[
-                  ['Say your brief', 'Tell the lab what you want to practise in your own words, or choose a saved brief.'],
-                  ['The bench is arranged', 'The apparatus and reagents for that practical appear on the bench.'],
-                  ['You do the practical', 'Carry it out yourself, step by step, in the headset.'],
+                  ['Ask, or finish a practical', 'Say what you want to practise in your own words, or let the lab look at the marks you lost.'],
+                  ['A practical is designed and checked', 'A checker tests every design against the teacher’s specification before it reaches the bench.'],
+                  ['You do the practical', 'The apparatus and reagents appear, and you carry it out yourself in the headset.'],
                 ].map(([title, text], i) => (
                   <li key={title} className="flex gap-4">
                     <span className="font-mono text-xl font-bold text-warm tabular-nums leading-none pt-0.5">0{i + 1}</span>
@@ -551,15 +557,15 @@ export default function Home() {
             </div>
                   </div>
                   <h2 className="text-2xl md:text-4xl font-extrabold tracking-tightest text-chalk leading-[1.05] mb-4">
-                    {COMING_SOON ? 'Building this now.' : 'Try it in the headset.'}{' '}
+                    {COMING_SOON ? 'Built, and with the judges.' : 'Try it in the headset.'}{' '}
                     <span className="gradient-text">
-                      {COMING_SOON ? 'Be the first to try it.' : 'No cost, no account.'}
+                      {COMING_SOON ? 'Be first in the pilot.' : 'No cost, no account.'}
                     </span>
                   </h2>
                   <p className="text-base md:text-lg text-muted leading-relaxed mb-8 max-w-xl">
                     {COMING_SOON
-                      ? 'We\'re building a full VR chemistry lab. The titration practical you can run above will be the first experiment — with real glassware in your hands. Join the pilot to be notified the moment it\'s ready.'
-                      : 'The chemistry lab is in active development. Run the titration practical yourself, exactly as your students will.'}
+                      ? 'The headset build was submitted to the Meta VR Start Developer Competition 2026. It is not available to download yet. A school pilot is planned for early 2027: join it to be among the first to use it.'
+                      : 'Run the practicals yourself, exactly as your students will.'}
                   </p>
                   <ul className="space-y-2 mb-8">
                     {demoFeatures.map((f) => (
@@ -587,14 +593,14 @@ export default function Home() {
                       </a>
                     )}
                     <Link
-                      href="/contact"
+                      href="/competition"
                       className="glass inline-flex items-center gap-2 border border-edge text-chalk px-7 py-3.5 rounded-3xl font-semibold hover:border-uv/50 transition-all"
                     >
-                      Request access
+                      Watch the film
                     </Link>
                   </div>
                   <p className="mt-4 font-mono text-[9px] tracking-[0.15em] text-muted">
-                    {COMING_SOON ? 'VR BUILD IN PROGRESS · CONTACT US FOR EARLY ACCESS' : 'DOWNLOAD LINK COMING SOON · CONTACT US FOR EARLY ACCESS'}
+                    {COMING_SOON ? 'NOT YET AVAILABLE TO DOWNLOAD · PILOT FROM EARLY 2027' : 'DOWNLOAD LINK COMING SOON · CONTACT US FOR EARLY ACCESS'}
                   </p>
                 </div>
 

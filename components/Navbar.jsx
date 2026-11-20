@@ -7,8 +7,9 @@ import Wordmark from './Wordmark';
 
 const links = [
   { href: '/',        label: 'Home'  },
-  { href: '/labs',    label: 'Labs'  },
-  { href: '/about',   label: 'About' },
+  { href: '/labs',        label: 'Labs'  },
+  { href: '/competition', label: 'Competition' },
+  { href: '/about',       label: 'About' },
 ];
 
 export default function Navbar() {

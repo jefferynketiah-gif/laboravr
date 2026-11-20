@@ -11,15 +11,15 @@ const STAGES = [
   },
   {
     n: '02',
-    title: 'Run the practical',
-    body: 'The same procedure your syllabus specifies, with every instrument to hand and no queue for the one working set.',
-    image: '/lab-screens/n_bung.jpg'
+    title: 'Run the practical with your hands',
+    body: 'No controllers: pinch, grip and pour. Every instrument is to hand, and there is no queue for the one working set.',
+    image: '/competition/00-pour.jpg'
   },
   {
     n: '03',
-    title: 'Review the attempt',
-    body: 'Every action is timestamped. Demonstrators see who understood the method and who arrived at the answer by luck.',
-    image: '/lab-screens/n_cation_pour.jpg'
+    title: 'Say what you saw',
+    body: 'The student describes the observation aloud. Rules a teacher wrote mark it like an examiner, point by point, and say what was missing.',
+    image: '/competition/01-say-what-you-saw.jpg'
   },
 ];
 
