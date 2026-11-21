@@ -9,6 +9,7 @@ const links = [
   { href: '/',        label: 'Home'  },
   { href: '/labs',        label: 'Labs'  },
   { href: '/practicals',  label: 'Practicals' },
+  { href: '/tools',       label: 'Tools' },
   { href: '/competition', label: 'Competition' },
   { href: '/about',       label: 'About' },
 ];
@@ -41,7 +42,7 @@ export default function Navbar({ dark = false }) {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex gap-8 items-center">
+          <div className="hidden md:flex gap-5 lg:gap-8 items-center">
             {links.map((l) => {
               const active = router.pathname === l.href || (l.href !== '/' && router.pathname.startsWith(`${l.href}/`));
               return (
