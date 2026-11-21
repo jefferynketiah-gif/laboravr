@@ -76,6 +76,11 @@ const PRACTICAL_PAGE = {
   'Anion, gas and flame tests': 'flame-tests',
   'Time a pendulum at five lengths and plot T² against length': 'pendulum',
   'Read a measuring cylinder at eye level': 'measuring-cylinder',
+  'Line up pins through a glass block': 'glass-block',
+  'Neutralise an acid in a cup, with a thermometer': 'neutralisation-temperature',
+  'Follow magnesium in acid with a gas syringe': 'rate-gas-syringe',
+  'Unknown of the day: name the cation and the anion': 'unknown-salt',
+  'Be the examiner: find the leaf drawing that earns full marks': 'biological-drawing',
   'Test bread, milk, an egg or an apple for starch, sugar and protein': 'food-tests',
   'Measure potato strips in sugar solutions': 'potato-osmosis',
 };

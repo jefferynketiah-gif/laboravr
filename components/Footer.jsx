@@ -4,6 +4,7 @@ import Wordmark from './Wordmark';
 const PRODUCT_LINKS = [
   { href: '/labs',        label: 'Labs'           },
   { href: '/practicals',  label: 'Practicals'     },
+  { href: '/tools',       label: 'Free tools'     },
   { href: '/competition', label: 'Competition film' },
   { href: '/contact',     label: 'Join the pilot' },
 ];

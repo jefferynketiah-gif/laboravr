@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { ArrowLeft, ArrowRight, Check, Lightbulb, Play } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Lightbulb, Play, Wrench } from 'lucide-react';
 
 import Seo, { SITE } from '../../components/Seo';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import ScrollReveal from '../../components/ScrollReveal';
 import FilmModal from '../../components/FilmModal';
+import { PracticalPicture } from '../../components/PracticalDiagram';
 import { practicals, getPractical, SUBJECTS } from '../../lib/practicals';
 
 const TONE = {
@@ -30,7 +31,11 @@ export default function PracticalPage({ slug }) {
   const [filmOpen, setFilmOpen] = useState(false);
   const subject = SUBJECTS[p.subject];
   const tone = TONE[p.subject];
-  const others = practicals.filter((o) => o.slug !== p.slug).slice(0, 3);
+  // Same science first, then the rest.
+  const others = [
+    ...practicals.filter((o) => o.slug !== p.slug && o.subject === p.subject),
+    ...practicals.filter((o) => o.subject !== p.subject),
+  ].slice(0, 3);
   const url = `${SITE}/practicals/${p.slug}`;
 
   const jsonLd = [
@@ -40,7 +45,7 @@ export default function PracticalPage({ slug }) {
       name: p.title,
       description: p.summary,
       url,
-      image: `${SITE}${p.image}`,
+      ...(p.image ? { image: `${SITE}${p.image}` } : {}),
       inLanguage: 'en-GB',
       learningResourceType: 'Practical activity',
       educationalLevel: 'IGCSE (ages 14 to 16)',
@@ -58,7 +63,7 @@ export default function PracticalPage({ slug }) {
 
   return (
     <>
-      <Seo title={`${p.title} — LaboraVR`} description={p.summary} image={p.image} jsonLd={jsonLd} />
+      <Seo title={`${p.title} — LaboraVR`} description={p.summary} image={p.image || undefined} jsonLd={jsonLd} />
       <Navbar />
 
       {/* Header */}
@@ -82,7 +87,7 @@ export default function PracticalPage({ slug }) {
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-chalk-dim">{p.summary}</p>
             </div>
             <div className="card-shadow relative aspect-video overflow-hidden rounded-3xl border border-edge">
-              <Image src={p.image} alt={p.imageAlt} fill priority sizes="(min-width: 1024px) 500px, 100vw" className="object-cover" />
+              <PracticalPicture practical={p} priority sizes="(min-width: 1024px) 500px, 100vw" />
               <span className="absolute left-4 top-4 rounded-full bg-ink/80 px-3 py-1.5 font-mono text-[10px] tracking-[0.15em] text-white backdrop-blur-sm">
                 IN LABORAVR · {subject.status.toUpperCase()}
               </span>
@@ -145,6 +150,24 @@ export default function PracticalPage({ slug }) {
               </div>
             </div>
           </ScrollReveal>
+
+          {p.tools?.length > 0 && (
+            <ScrollReveal>
+              <div className="mt-4 flex flex-wrap items-center gap-3 rounded-2xl border border-edge bg-panel p-6">
+                <Wrench size={18} className="text-uv" />
+                <p className="mr-2 font-semibold text-chalk">Practise it here, free:</p>
+                {p.tools.map((t) => (
+                  <Link
+                    key={t.href}
+                    href={t.href}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-uv/30 bg-white px-4 py-2 text-sm font-semibold text-uv transition-colors hover:bg-uv hover:text-white"
+                  >
+                    {t.label} <ArrowRight size={14} />
+                  </Link>
+                ))}
+              </div>
+            </ScrollReveal>
+          )}
         </div>
       </section>
 
@@ -213,7 +236,7 @@ export default function PracticalPage({ slug }) {
                 className="lift-hover group flex flex-col overflow-hidden rounded-2xl border border-edge bg-white shadow-sm"
               >
                 <div className="relative aspect-video bg-panel">
-                  <Image src={o.image} alt={o.imageAlt} fill sizes="(min-width: 768px) 360px, 100vw" className="object-cover" />
+                  <PracticalPicture practical={o} sizes="(min-width: 768px) 360px, 100vw" />
                 </div>
                 <div className="p-5">
                   <p className="mb-1 flex items-center gap-2 font-mono text-[10px] tracking-[0.18em] text-muted">

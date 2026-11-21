@@ -174,6 +174,24 @@ animation class should be added to that list too.
 - The science on these pages must be correct IGCSE content; the LaboraVR part
   must be true of the build. No AI model names. Navbar marks "Practicals"
   active on every `/practicals/*` page.
+- Stage 5 (21 Nov 2026) brought it to 13 practicals. Four have no headset
+  screenshot yet (neutralisation, gas syringe, glass block, biological drawing):
+  they set `diagram` instead of `image` and show a plain apparatus drawing from
+  `components/PracticalDiagram.jsx`, always tagged **DIAGRAM**. Replace with a
+  real screenshot (no private room in view) when one exists.
+
+### Free tools (Stage 5)
+
+- `/tools` hub and three tools: `ion-identifier` (data in `lib/ions.js`),
+  `mark-my-observation` (rules in `lib/observations.js`), `pendulum-graph`.
+  All share `components/ToolPage.jsx` (header, related practicals, headset
+  line, not-affiliated line, `WebApplication` JSON-LD) and its `Chips` control.
+- They run entirely in the browser: no API, no AI, no storage, nothing sent.
+  Keep it that way, and keep the privacy line under each tool true.
+- The marking tool is **fixed rules**, the site's version of "Models perceive.
+  Rules mark." Its scores use `warm` (a fact), ticks use `physics`; buttons stay `uv`.
+- The science in `lib/ions.js` and `lib/observations.js` must match the
+  practical pages' tables.
 
 ## 6. Imagery
 

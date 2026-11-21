@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 import Seo, { SITE } from '../../components/Seo';
@@ -7,6 +6,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageHeader from '../../components/PageHeader';
 import ScrollReveal from '../../components/ScrollReveal';
+import { PracticalPicture } from '../../components/PracticalDiagram';
 import { practicals, SUBJECTS } from '../../lib/practicals';
 
 const DOT = { Chemistry: 'bg-uv', Physics: 'bg-physics', Biology: 'bg-biology' };
@@ -27,7 +27,7 @@ export default function Practicals() {
     <>
       <Seo
         title="IGCSE practicals in VR — LaboraVR"
-        description="Cation tests, flame tests, the pendulum, reading at eye level, food tests and osmosis: what each IGCSE practical expects, and how it runs in the LaboraVR headset."
+        description="Thirteen IGCSE practicals in chemistry, physics and biology: what each one expects, the results an examiner wants, and how it runs in the LaboraVR headset."
         jsonLd={[list]}
       />
       <Navbar />
@@ -63,13 +63,7 @@ export default function Practicals() {
                         className="lift-hover group flex h-full flex-col overflow-hidden rounded-3xl border border-edge bg-white shadow-sm hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-uv"
                       >
                         <div className="relative aspect-video bg-panel">
-                          <Image
-                            src={p.image}
-                            alt={p.imageAlt}
-                            fill
-                            sizes="(min-width: 640px) 560px, 100vw"
-                            className="object-cover"
-                          />
+                          <PracticalPicture practical={p} sizes="(min-width: 640px) 560px, 100vw" />
                         </div>
                         <div className="flex flex-1 flex-col p-6 md:p-8">
                           <h3 className="mb-2 text-xl font-bold leading-snug text-chalk group-hover:text-uv">{p.title}</h3>
