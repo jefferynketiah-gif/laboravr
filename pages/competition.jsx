@@ -70,7 +70,8 @@ export default function Competition() {
             description:
               'LaboraVR is a science lab for Meta Quest, used with bare hands: students do the practical, say what they saw, and are marked like an examiner.',
             thumbnailUrl: 'https://www.laboravr.com/competition/youtube-thumbnail.jpg',
-            uploadDate: '2026-11-18',
+            // Google needs a full date-time with a time zone here, not just a date.
+            uploadDate: '2026-11-18T00:00:00+01:00',
             duration: 'PT2M48S',
             embedUrl: `https://www.youtube-nocookie.com/embed/${FILM_ID}`,
             url: `https://youtu.be/${FILM_ID}`,
